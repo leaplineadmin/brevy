@@ -919,6 +919,9 @@ export default function Dashboard() {
   return (
     <>
       <Helmet>
+        <title>Dashboard | Brevy</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://brevy.me/dashboard" />
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZK3DRL6LH"></script>
         <script

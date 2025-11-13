@@ -1449,10 +1449,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         publishedLanguage: language || req.user.language || 'en'
       });
 
+      const isProd = process.env.NODE_ENV === 'production' || process.env.FRONT_ORIGIN;
+      const baseUrl = isProd ? 'https://brevy.me' : 'http://localhost:10000';
+      
       return res.json({
-        message: `CV published successfully! Your resume is now available at ${cleanedSubdomain}.brevy.me`,
+        message: `CV published successfully! Your resume is now available at ${baseUrl}/shared/${cleanedSubdomain}`,
         subdomain: cleanedSubdomain,
-        url: `https://${cleanedSubdomain}.brevy.me`
+        shareUrl: `${baseUrl}/shared/${cleanedSubdomain}`,
+        url: `${baseUrl}/shared/${cleanedSubdomain}`
       });
 
     } catch (error: any) {
@@ -1583,15 +1587,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
         publishedLanguage: language || req.user.language || 'en'
       });
       
+      const isProd = process.env.NODE_ENV === 'production' || process.env.FRONT_ORIGIN;
+      const baseUrl = isProd ? 'https://brevy.me' : 'http://localhost:10000';
+      
       return res.json({ 
         success: true, 
         subdomain: finalSubdomain,
-        shareUrl: `https://${finalSubdomain}.brevy.me`,
+        shareUrl: `${baseUrl}/shared/${finalSubdomain}`,
         isPublished: true,
         publishedAt: updatedCV.publishedAt,
         message: counter > 1 
-          ? `CV publié avec succès sur ${finalSubdomain}.brevy.me`
-          : `CV publié avec succès sur ${finalSubdomain}.brevy.me`
+          ? `CV publié avec succès ! Lien : ${baseUrl}/shared/${finalSubdomain}`
+          : `CV publié avec succès ! Lien : ${baseUrl}/shared/${finalSubdomain}`
       });
     } catch (error: any) {
       return res.status(500).json({ message: "Erreur lors de la publication du CV" });

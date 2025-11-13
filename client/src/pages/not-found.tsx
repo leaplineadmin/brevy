@@ -1,9 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
+import { Helmet } from "react-helmet-async";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+    <>
+      <Helmet>
+        <title>404 - Page Not Found | Brevy</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://brevy.me/404" />
+      </Helmet>
+      <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md mx-4">
         <CardContent className="pt-6">
           <div className="flex mb-4 gap-2">
@@ -23,5 +31,6 @@ export default function NotFound() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

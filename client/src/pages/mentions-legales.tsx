@@ -1,10 +1,15 @@
 import { Link } from "wouter";
 import Navbar from "@/components/layout/navbar";
+import { SEOHead } from "@/components/SEOHead";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function LegalNotice() {
+  const { language } = useLanguage();
   return (
-    <div className="min-h-screen bg-light">
-      <Navbar />
+    <>
+      <SEOHead lang={language} page="legal" />
+      <div className="min-h-screen bg-light">
+        <Navbar />
 
       <div className="mx-auto px-8 max-w-[1280px] py-12">
         <div className="bg-white rounded-lg shadow-sm p-8">
@@ -85,6 +90,7 @@ export default function LegalNotice() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

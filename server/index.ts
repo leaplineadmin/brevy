@@ -115,7 +115,7 @@ if (prerenderToken && prerenderToken !== 'disabled') {
 app.use(prerender
   .set('prerenderToken', prerenderToken || 'disabled') // Use Prerender.io token if available, otherwise disabled
   .set('protocol', 'https') // Use HTTPS for pre-rendering
-  .set('host', 'www.brevy.me') // Set the host for pre-rendering (actual production domain)
+  .set('host', 'brevy.me') // Set the host for pre-rendering (actual production domain)
   .set('forwardHeaders', true) // Forward original headers to Prerender.io
   .set('waitFor', 5000) // Wait up to 5 seconds for window.prerenderReady to be true (increased for slower loads)
   .set('followRedirects', true) // Follow redirects during pre-rendering

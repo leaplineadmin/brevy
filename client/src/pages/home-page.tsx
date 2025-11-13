@@ -101,6 +101,8 @@ export default function HomePage() {
                 src={imgHeaderBrevy}
                 alt="Person working on resume"
                 className="w-full object-cover object-center rounded-lg"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -115,6 +117,7 @@ export default function HomePage() {
                   src={brevyHomeDesc2}
                   alt="Style and color customization"
                   className="w-full h-auto rounded-lg"
+                  loading="lazy"
                 />
               </div>
               <div className="cardContent p-6">
@@ -131,6 +134,7 @@ export default function HomePage() {
                   src={brevyHomeDesc3}
                   alt="CV link sharing"
                   className="w-full h-auto rounded-lg"
+                  loading="lazy"
                 />
               </div>
               <div className="cardContent p-6">
@@ -147,6 +151,7 @@ export default function HomePage() {
                   src={brevyHomeDesc1}
                   alt="Interactive responsive CV"
                   className="w-full h-auto rounded-lg"
+                  loading="lazy"
                 />
               </div>
               <div className="cardContent p-6">

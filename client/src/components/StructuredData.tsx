@@ -5,54 +5,103 @@ interface StructuredDataProps {
 }
 
 export const StructuredData = ({ lang = 'en' }: StructuredDataProps) => {
-  const structuredDataConfig = {
-    en: {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Brevy",
-      "description": "Create professional, interactive resumes in minutes. No design skills required.",
-      "url": "https://brevy.me",
-      "inLanguage": "en-US",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "Brevy"
-      }
-    },
-    fr: {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Brevy",
-      "description": "Créez des CV professionnels et interactifs en quelques minutes. Aucune compétence en design requise.",
-      "url": "https://brevy.me/fr",
-      "inLanguage": "fr-FR",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Navigateur Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "Brevy"
-      }
+  const organizationSchema = {
+    "@type": "Organization",
+    "name": "Brevy",
+    "url": "https://brevy.me",
+    "logo": "https://brevy.me/logo-brevy.svg",
+    "sameAs": [],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "contact@brevy.me"
     }
+  };
+
+  const structuredDataConfig = {
+    en: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Brevy",
+        "description": "Create professional, interactive resumes in minutes. No design skills required.",
+        "url": "https://brevy.me",
+        "inLanguage": "en-US",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": organizationSchema,
+        "publisher": organizationSchema
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Brevy",
+        "url": "https://brevy.me",
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://brevy.me/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": organizationSchema
+      },
+      organizationSchema
+    ],
+    fr: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Brevy",
+        "description": "Créez des CV professionnels et interactifs en quelques minutes. Aucune compétence en design requise.",
+        "url": "https://brevy.me/fr",
+        "inLanguage": "fr-FR",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Navigateur Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "creator": organizationSchema,
+        "publisher": organizationSchema
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Brevy",
+        "url": "https://brevy.me",
+        "inLanguage": "fr-FR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://brevy.me/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": organizationSchema
+      },
+      organizationSchema
+    ]
   };
 
   const structuredData = structuredDataConfig[lang as keyof typeof structuredDataConfig] || structuredDataConfig.en;
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      {Array.isArray(structuredData) ? (
+        structuredData.map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))
+      ) : (
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      )}
     </Helmet>
   );
 };

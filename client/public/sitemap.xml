@@ -3,49 +3,84 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.brevy.me/</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.brevy.me/fr/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.brevy.me/" />
-    <lastmod>2025-11-12</lastmod>
+    <loc>https://brevy.me/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/" />
+    <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://www.brevy.me/fr/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.brevy.me/" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.brevy.me/fr/" />
-    <lastmod>2025-11-12</lastmod>
+    <loc>https://brevy.me/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/fr/" />
+    <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://www.brevy.me/blog</loc>
-    <lastmod>2025-11-12</lastmod>
+    <loc>https://brevy.me/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/blog" />
+    <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.brevy.me/blog/how-to-create-professional-resume-2025</loc>
+    <loc>https://brevy.me/blog/how-to-create-professional-resume-2025</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/blog/how-to-create-professional-resume-2025" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/blog/how-to-create-professional-resume-2025" />
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.brevy.me/blog/how-to-create-resume-website-10-minutes</loc>
+    <loc>https://brevy.me/blog/how-to-create-resume-website-10-minutes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/blog/how-to-create-resume-website-10-minutes" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/blog/how-to-create-resume-website-10-minutes" />
     <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://www.brevy.me/blog/top-7-best-resume-builder-tools-2025</loc>
+    <loc>https://brevy.me/blog/top-7-best-resume-builder-tools-2025</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/blog/top-7-best-resume-builder-tools-2025" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/blog/top-7-best-resume-builder-tools-2025" />
     <lastmod>2025-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://brevy.me/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/privacy-policy" />
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://brevy.me/terms-of-service</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/terms-of-service" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/terms-of-service" />
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://brevy.me/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/legal-notice" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/legal-notice" />
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
 </urlset>

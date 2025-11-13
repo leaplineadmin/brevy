@@ -140,7 +140,7 @@ export function SubdomainConflictModal({
                   {t('dashboard.subdomainConflict.suggested')}
                 </p>
                 <p className="text-sm text-blue-700">
-                  {suggestedSubdomain}.brevy.me
+                  brevy.me/shared/{suggestedSubdomain}
                 </p>
               </div>
               <Button

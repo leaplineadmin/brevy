@@ -325,6 +325,9 @@ export default function CVBuilder() {
   return (
     <>
       <Helmet>
+        <title>CV Builder | Brevy</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://brevy.me/cv-builder" />
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZK3DRL6LH"></script>
         <script

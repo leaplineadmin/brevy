@@ -35,13 +35,17 @@ export const BlogPostingSchema: React.FC<BlogPostingSchemaProps> = ({
     "author": {
       "@type": "Organization",
       "name": "Brevy",
+      "url": "https://brevy.me"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Brevy",
+      "url": "https://brevy.me",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.brevy.app/logo-brevy.svg",
+        "url": "https://brevy.me/logo-brevy.svg",
+        "width": 85,
+        "height": 32
       },
     },
     "datePublished": publishedTime.split('T')[0], // Format: YYYY-MM-DD

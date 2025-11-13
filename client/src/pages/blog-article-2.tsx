@@ -55,7 +55,7 @@ Prêt ? Chronomètre en main !
 
 **Minute 0-8 : Remplissage du formulaire et Choix du Modèle**
 
-1.  Allez sur [Brevy.app](https://www.brevy.me) et remplissez le formulaire (ou téléchargez un CV existant et vos informations sont extraites en quelques secondes)
+1.  Allez sur [Brevy.me](https://brevy.me) et remplissez le formulaire (ou téléchargez un CV existant et vos informations sont extraites en quelques secondes)
 2.  Parcourez les modèles de CV professionnels et choisissez celui qui correspond à votre style.
 3.  Ajustez vos informations et la couleur de votre template.
 
@@ -67,7 +67,7 @@ Prêt ? Chronomètre en main !
 **Minute 9-10 : Publication !**
 
 6.  Cliquez sur le bouton **"Publier"**. Félicitations, votre site CV est en ligne !
-7.  Vous obtenez votre URL unique (ex: \`votre-nom.brevy.me\`) que vous pouvez immédiatement partager.
+7.  Vous obtenez votre URL unique (ex: \`brevy.me/shared/votre-nom\`) que vous pouvez immédiatement partager.
 8.  Rendez-vous à l'adresse et cliquez sur **"Exporter en PDF"** pour télécharger la version compatible ATS à joindre à vos candidatures.
 
 ## FAQ : Vos Questions sur la Création de Site CV
@@ -92,7 +92,7 @@ Grâce à des outils comme Brevy, cette démarche n'est plus réservée à une �
 
 N'attendez plus pour faire passer votre candidature au niveau supérieur.
 
-[Créez votre site CV professionnel gratuitement en moins de 10 minutes avec Brevy !](https://www.brevy.me/)
+[Créez votre site CV professionnel gratuitement en moins de 10 minutes avec Brevy !](https://brevy.me/)
 
 ---
 
@@ -148,7 +148,7 @@ Ready? Timer in hand!
 
 **Minute 0-8: Fill out the form and Choose a Template**
 
-1.  Go to [Brevy.app](https://www.brevy.me) and fill out the form (or upload an existing resume and your information is extracted in seconds)
+1.  Go to [Brevy.me](https://brevy.me) and fill out the form (or upload an existing resume and your information is extracted in seconds)
 2.  Browse professional resume templates and choose the one that matches your style.
 3.  Adjust your information and your template color.
 
@@ -160,7 +160,7 @@ Ready? Timer in hand!
 **Minute 9-10: Publish!**
 
 6.  Click the **"Publish"** button. Congratulations, your resume website is online!
-7.  You get your unique URL (e.g., \`your-name.brevy.me\`) that you can immediately share.
+7.  You get your unique URL (e.g., \`brevy.me/shared/your-name\`) that you can immediately share.
 8.  Go to the address and click **"Export to PDF"** to download the ATS-compatible version to attach to your applications.
 
 ## FAQ: Your Questions About Creating a Resume Website
@@ -185,7 +185,7 @@ Thanks to tools like Brevy, this approach is no longer reserved for a technical 
 
 Don't wait any longer to take your application to the next level.
 
-[Create your professional resume website for free in less than 10 minutes with Brevy!](https://www.brevy.me/)
+[Create your professional resume website for free in less than 10 minutes with Brevy!](https://brevy.me/)
 
 ---
 
@@ -205,7 +205,7 @@ export default function BlogArticle2() {
   const articleTitle = article?.title[language as 'en' | 'fr'] || article?.title.en || '';
   const articleDescription = article?.description[language as 'en' | 'fr'] || article?.description.en || '';
   const articleKeywords = article?.keywords?.[language as 'en' | 'fr'] || article?.keywords?.en || '';
-  const canonicalUrl = `https://www.brevy.me/blog/${article?.slug || 'how-to-create-resume-website-10-minutes'}`;
+  const canonicalUrl = `https://brevy.me/blog/${article?.slug || 'how-to-create-resume-website-10-minutes'}`;
 
   if (!article) {
     return null;

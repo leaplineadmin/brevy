@@ -42,7 +42,7 @@ Brevy prend une approche résolument moderne en se spécialisant dans la créati
 
 -   **Prix :** Gratuit. Abonnements premium pour débloquer des templates et créer plus de CVs.
 
-> **Notre avis :** Pour laisser une impression mémorable et moderne, **Brevy** est sans conteste le choix le plus stratégique en 2025. [Créez votre CV interactif gratuitement](https://www.brevy.me/)
+> **Notre avis :** Pour laisser une impression mémorable et moderne, **Brevy** est sans conteste le choix le plus stratégique en 2025. [Créez votre CV interactif gratuitement](https://brevy.me/)
 
 ### 2. Canva : Le Meilleur pour la Créativité et la Flexibilité
 
@@ -168,7 +168,7 @@ Le "meilleur" outil de création de CV est celui qui correspond à vos besoins, 
 
 Prêt à choisir l'outil qui vous fera décrocher votre prochain entretien ?
 
-[Testez Brevy et créez un CV qui fait la différence, gratuitement !](https://www.brevy.me/)`,
+[Testez Brevy et créez un CV qui fait la différence, gratuitement !](https://brevy.me/)`,
   
   en: `# Top 7 Best Tools to Create a Resume Online in 2025 (Free and Paid)
 
@@ -205,7 +205,7 @@ Brevy takes a decidedly modern approach by specializing in creating **interactiv
 
 -   **Price:** Free. Premium subscriptions to unlock templates and create more resumes.
 
-> **Our opinion:** To leave a memorable and modern impression, **Brevy** is undoubtedly the most strategic choice in 2025. [Create your interactive resume for free](https://www.brevy.me/)
+> **Our opinion:** To leave a memorable and modern impression, **Brevy** is undoubtedly the most strategic choice in 2025. [Create your interactive resume for free](https://brevy.me/)
 
 ### 2. Canva: The Best for Creativity and Flexibility
 
@@ -331,7 +331,7 @@ The "best" resume creation tool is the one that matches your needs, your sector,
 
 Ready to choose the tool that will land you your next interview?
 
-[Try Brevy and create a resume that makes a difference, for free!](https://www.brevy.me/)`
+[Try Brevy and create a resume that makes a difference, for free!](https://brevy.me/)`
 };
 
 export default function BlogArticle3() {
@@ -345,7 +345,7 @@ export default function BlogArticle3() {
   const articleTitle = article?.title[language as 'en' | 'fr'] || article?.title.en || '';
   const articleDescription = article?.description[language as 'en' | 'fr'] || article?.description.en || '';
   const articleKeywords = article?.keywords?.[language as 'en' | 'fr'] || article?.keywords?.en || '';
-  const canonicalUrl = `https://www.brevy.me/blog/${article?.slug || 'top-7-best-resume-builder-tools-2025'}`;
+  const canonicalUrl = `https://brevy.me/blog/${article?.slug || 'top-7-best-resume-builder-tools-2025'}`;
 
   if (!article) {
     return null;

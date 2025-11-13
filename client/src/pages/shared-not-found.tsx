@@ -1,8 +1,15 @@
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
 
 export default function SharedNotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <>
+      <Helmet>
+        <title>CV Not Found | Brevy</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://brevy.me/shared/not-found" />
+      </Helmet>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full text-center">
         <div className="mb-8">
           {/* Brevy Logo */}
@@ -30,9 +37,10 @@ export default function SharedNotFound() {
         </div>
         
         <div className="mt-8 text-xs text-gray-500">
-          <p>© 2025 Brevy.app - Créateur de CV professionnel</p>
+          <p>© 2025 Brevy.me - Créateur de CV professionnel</p>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

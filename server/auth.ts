@@ -17,7 +17,7 @@ const {
   SESSION_SECRET,
 } = process.env;
 
-const FRONT_ORIGIN = process.env.FRONT_ORIGIN || "https://www.brevy.me";
+const FRONT_ORIGIN = process.env.FRONT_ORIGIN || "https://brevy.me";
 const GOOGLE_CALLBACK_URL = `https://cvfolio.onrender.com/api/google/callback`;
 
 // ====== Passport serialize/deserialize ======

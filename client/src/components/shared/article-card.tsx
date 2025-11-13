@@ -25,6 +25,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               src={imageUrl}
               alt={title}
               className="w-full h-auto rounded-lg object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         )}

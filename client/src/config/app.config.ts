@@ -1,7 +1,7 @@
 export const APP_CONFIG = {
   // API Configuration
   API_BASE_URL: process.env.NODE_ENV === 'production' 
-    ? 'https://www.brevy.me'
+    ? 'https://brevy.me'
     : 'http://localhost:5000',
   
   // File Upload

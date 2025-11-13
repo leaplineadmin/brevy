@@ -40,6 +40,6 @@ services:
       - key: PRERENDER_TOKEN
         sync: false
       - key: FRONT_ORIGIN
-        value: https://www.brevy.app
+        value: https://brevy.me
       - key: GOOGLE_CALLBACK_URL
         value: https://cvfolio.onrender.com/api/auth/google/callback

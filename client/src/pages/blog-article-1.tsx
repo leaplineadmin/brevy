@@ -100,7 +100,7 @@ Un bon contenu mérite un bon design. Mais simplicité et professionnalisme sont
 
 Vous n'êtes pas designer ? Ce n'est pas un problème. Des outils en ligne peuvent vous aider à créer un CV au design impeccable en quelques clics.
 
-> **Passez au niveau supérieur avec Brevy :** Créer un CV au design parfait peut être long et frustrant. Avec **Brevy**, choisissez parmi des modèles interactifs professionnels, personnalisez les couleurs en un clic et obtenez un résultat impeccable sans aucune compétence en design. [Essayez Brevy gratuitement dès maintenant !](https://www.brevy.me/)
+> **Passez au niveau supérieur avec Brevy :** Créer un CV au design parfait peut être long et frustrant. Avec **Brevy**, choisissez parmi des modèles interactifs professionnels, personnalisez les couleurs en un clic et obtenez un résultat impeccable sans aucune compétence en design. [Essayez Brevy gratuitement dès maintenant !](https://brevy.me/)
 
 ## 5. L'Atout Maître en 2025 : Le CV Interactif
 
@@ -138,7 +138,7 @@ Créer un CV professionnel en 2025 demande de la méthode et de la stratégie. E
 
 Prêt à passer à l'action ? Ne perdez plus de temps avec des mises en page compliquées sur Word.
 
-[Créez votre CV professionnel et interactif en moins de 10 minutes avec Brevy !](https://www.brevy.me/)`,
+[Créez votre CV professionnel et interactif en moins de 10 minutes avec Brevy !](https://brevy.me/)`,
   
   en: `# How to Create a Professional Resume in 2025: The Complete Guide (+ Free Templates)
 
@@ -233,7 +233,7 @@ Good content deserves good design. But simplicity and professionalism are key.
 
 Not a designer? That's not a problem. Online tools can help you create a perfectly designed resume in just a few clicks.
 
-> **Take it to the next level with Brevy:** Creating a perfectly designed resume can be time-consuming and frustrating. With **Brevy**, choose from dozens of professional interactive templates, customize colors with one click, and get a flawless result without any design skills. [Try Brevy for free now!](https://www.brevy.me/)
+> **Take it to the next level with Brevy:** Creating a perfectly designed resume can be time-consuming and frustrating. With **Brevy**, choose from dozens of professional interactive templates, customize colors with one click, and get a flawless result without any design skills. [Try Brevy for free now!](https://brevy.me/)
 
 ## 5. The Master Asset in 2025: The Interactive Resume
 
@@ -271,7 +271,7 @@ Creating a professional resume in 2025 requires method and strategy. By followin
 
 Ready to take action? Stop wasting time with complicated layouts in Word.
 
-[Create your professional and interactive resume in less than 10 minutes with Brevy!](https://www.brevy.me/)`
+[Create your professional and interactive resume in less than 10 minutes with Brevy!](https://brevy.me/)`
 };
 
 export default function BlogArticle1() {
@@ -285,7 +285,7 @@ export default function BlogArticle1() {
   const articleTitle = article?.title[language as 'en' | 'fr'] || article?.title.en || '';
   const articleDescription = article?.description[language as 'en' | 'fr'] || article?.description.en || '';
   const articleKeywords = article?.keywords?.[language as 'en' | 'fr'] || article?.keywords?.en || '';
-  const canonicalUrl = `https://www.brevy.me/blog/${article?.slug || 'how-to-create-professional-resume-2025'}`;
+  const canonicalUrl = `https://brevy.me/blog/${article?.slug || 'how-to-create-professional-resume-2025'}`;
 
   if (!article) {
     return null;

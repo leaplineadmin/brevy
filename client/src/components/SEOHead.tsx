@@ -41,7 +41,7 @@ export const SEOHead = ({
   };
   
   const hreflangLinks = getHreflangLinks();
-  const ogImage = customOgImage || "https://www.brevy.app/assets/imgHeader-brevy.webp";
+  const ogImage = customOgImage || "https://brevy.me/assets/imgHeader-brevy.webp";
 
   return (
     <Helmet>
