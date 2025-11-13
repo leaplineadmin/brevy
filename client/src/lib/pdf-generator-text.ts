@@ -297,9 +297,7 @@ export async function generatePDFWithText(
 
     // CV Online URL (if published)
     if (subdomain) {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
-      const baseUrl = isProd ? 'https://brevy.me' : 'http://localhost:10000';
-      const cvUrl = `${baseUrl}/shared/${subdomain}`;
+      const cvUrl = `https://${subdomain}.brevy.me`;
       doc.setFontSize(9);
       doc.setTextColor(color.r, color.g, color.b);
       
