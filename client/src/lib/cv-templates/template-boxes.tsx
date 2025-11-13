@@ -23,7 +23,7 @@ export const TemplateBoxes: React.FC<TemplateProps> = ({
   hideLanguageLevels = false,
   hideLinkedIn = false,
   hideWebsite = false,
-  showCVfolioLink = false,
+  showBrevyLink = false,
   isPreview = false,
   hasSubscription = false,
   isPublished = false,
@@ -698,12 +698,12 @@ export const TemplateBoxes: React.FC<TemplateProps> = ({
         </div>
       </div>
 
-      {/* Footer unifié avec PDF et CVfolio */}
+      {/* Footer unifié avec PDF et Brevy */}
       <CVFooter
         cvData={data}
         templateId="template-boxes"
         mainColor={mainColor}
-        showCVfolioLink={true}
+        showBrevyLink={true}
         isPreview={isPreview}
         hasSubscription={hasSubscription}
         isPublished={isPublished}

@@ -105,7 +105,7 @@ export const PreviewWrapper: React.FC<PreviewWrapperProps> = ({
               <div className="w-3 h-3 rounded-full bg-gray-300"></div>
             </div>
             <div className="flex-1 bg-white border border-gray-200 rounded-md px-3 py-1 text-xs text-gray-500 truncate">
-              cvfolio.app/preview
+              brevy.me/preview
             </div>
           </div>
 
@@ -150,7 +150,7 @@ export const PreviewWrapper: React.FC<PreviewWrapperProps> = ({
                 cvData={placeholderData}
                 templateId={templateId}
                 mainColor={mainColor || "#008BC7"}
-                showCVfolioLink={true}
+                showBrevyLink={true}
                 isPreview={true}
                 className="cv-footer-wrapper"
               />

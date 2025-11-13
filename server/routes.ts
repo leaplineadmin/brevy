@@ -1200,7 +1200,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
       
-      // Set CORS headers to allow access from cvfolio.app
+      // Set CORS headers to allow access from brevy.me
       res.set({
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
@@ -1450,9 +1450,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       return res.json({
-        message: `CV published successfully! Your resume is now available at ${cleanedSubdomain}.cvfolio.app`,
+        message: `CV published successfully! Your resume is now available at ${cleanedSubdomain}.brevy.me`,
         subdomain: cleanedSubdomain,
-        url: `https://${cleanedSubdomain}.cvfolio.app`
+        url: `https://${cleanedSubdomain}.brevy.me`
       });
 
     } catch (error: any) {
@@ -1586,12 +1586,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json({ 
         success: true, 
         subdomain: finalSubdomain,
-        shareUrl: `https://${finalSubdomain}.cvfolio.app`,
+        shareUrl: `https://${finalSubdomain}.brevy.me`,
         isPublished: true,
         publishedAt: updatedCV.publishedAt,
         message: counter > 1 
-          ? `CV publié avec succès sur ${finalSubdomain}.cvfolio.app`
-          : `CV publié avec succès sur ${finalSubdomain}.cvfolio.app`
+          ? `CV publié avec succès sur ${finalSubdomain}.brevy.me`
+          : `CV publié avec succès sur ${finalSubdomain}.brevy.me`
       });
     } catch (error: any) {
       return res.status(500).json({ message: "Erreur lors de la publication du CV" });
@@ -3089,9 +3089,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // List all products
       const products = await stripe.products.list({ limit: 100 });
       
-      // Find CVfolio Premium products
-      const cvfolioProducts = products.data.filter(product => 
-        product.name === 'CVfolio Premium'
+      // Find Brevy Premium products
+      const brevyProducts = products.data.filter(product => 
+        product.name === 'Brevy Premium'
       );
 
 
@@ -3099,7 +3099,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let keptProduct = null;
       const productsToDelete = [];
 
-      for (const product of cvfolioProducts) {
+      for (const product of brevyProducts) {
         // Check if this product has the configured price
         const prices = await stripe.prices.list({ product: product.id });
         const hasConfiguredPrice = prices.data.some(price => price.id === process.env.STRIPE_PRICE_ID);

@@ -22,7 +22,7 @@ export const TemplateClassic: React.FC<TemplateProps> = ({
   hideLanguageLevels,
   hideLinkedIn,
   hideWebsite,
-  showCVfolioLink = false,
+  showBrevyLink = false,
   isPreview = false,
   hasSubscription = false,
   isPublished = false,
@@ -716,12 +716,12 @@ export const TemplateClassic: React.FC<TemplateProps> = ({
         </div>
       </div>
 
-      {/* Footer unifié avec PDF et CVfolio */}
+      {/* Footer unifié avec PDF et Brevy */}
       <CVFooter
         cvData={data}
         templateId="template-classic"
         mainColor={mainColor}
-        showCVfolioLink={true}
+        showBrevyLink={true}
         isPreview={isPreview}
         hasSubscription={hasSubscription}
         isPublished={isPublished}

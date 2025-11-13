@@ -73,8 +73,8 @@ export default function TermsOfService() {
                 </h2>
                 <p>
                   {language === "fr"
-                        ? "CVfolio.app est un service en ligne permettant de créer des CV interactifs et professionnels."
-                        : "CVfolio.app is an online service that allows you to create interactive and professional resumes."}
+                        ? "Brevy.me est un service en ligne permettant de créer des CV interactifs et professionnels."
+                        : "Brevy.me is an online service that allows you to create interactive and professional resumes."}
                 </p>
               </section>
 
@@ -115,8 +115,8 @@ export default function TermsOfService() {
                   </li>
                   <li>
                     {language === "fr"
-                          ? "CVfolio.app conserve une licence pour héberger et afficher le contenu."
-                          : "CVfolio.app retains a license to host and display the content."}
+                          ? "Brevy.me conserve une licence pour héberger et afficher le contenu."
+                          : "Brevy.me retains a license to host and display the content."}
                   </li>
                   <li>
                     {language === "fr"
@@ -139,13 +139,13 @@ export default function TermsOfService() {
                   </li>
                   <li>
                     {language === "fr"
-                          ? "CVfolio.app ne peut être tenu responsable des erreurs ou omissions dans les CV."
-                          : "CVfolio.app cannot be held responsible for errors or omissions in CVs."}
+                          ? "Brevy.me ne peut être tenu responsable des erreurs ou omissions dans les CV."
+                          : "Brevy.me cannot be held responsible for errors or omissions in CVs."}
                   </li>
                   <li>
                     {language === "fr"
-                          ? "CVfolio.app s'efforce d'assurer la disponibilité du service, mais ne garantit pas une disponibilité 24/7."
-                          : "CVfolio.app strives to ensure service availability, but does not guarantee 24/7 availability."}
+                          ? "Brevy.me s'efforce d'assurer la disponibilité du service, mais ne garantit pas une disponibilité 24/7."
+                          : "Brevy.me strives to ensure service availability, but does not guarantee 24/7 availability."}
                   </li>
                 </ul>
               </section>
@@ -158,8 +158,8 @@ export default function TermsOfService() {
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>
                     {language === "fr"
-                          ? "CVfolio.app se réserve le droit de modifier ces conditions à tout moment."
-                          : "CVfolio.app reserves the right to modify these terms at any time."}
+                          ? "Brevy.me se réserve le droit de modifier ces conditions à tout moment."
+                          : "Brevy.me reserves the right to modify these terms at any time."}
                   </li>
                   <li>
                     {language === "fr"
@@ -182,8 +182,8 @@ export default function TermsOfService() {
                   </li>
                   <li>
                     {language === "fr"
-                          ? "CVfolio.app peut suspendre ou supprimer un compte en cas de violation des conditions."
-                          : "CVfolio.app may suspend or delete an account in case of violation of the terms."}
+                          ? "Brevy.me peut suspendre ou supprimer un compte en cas de violation des conditions."
+                          : "Brevy.me may suspend or delete an account in case of violation of the terms."}
                   </li>
                 </ul>
               </section>

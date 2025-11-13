@@ -39,7 +39,7 @@ export function PublishButton({
     setLoading(true);
     
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/publish-cv`, {
         method: 'POST',
@@ -89,7 +89,7 @@ export function PublishButton({
     setShowConflictModal(false);
     
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       
       // Publish with custom subdomain
@@ -143,7 +143,7 @@ export function PublishButton({
     setLoading(true);
     
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/unpublish-cv`, {
         method: 'POST',
@@ -182,7 +182,7 @@ export function PublishButton({
   };
 
   const copyUrl = async () => {
-    const url = `https://${subdomain}.cvfolio.app`;
+    const url = `https://${subdomain}.brevy.me`;
     
     try {
       await navigator.clipboard.writeText(url);
@@ -204,7 +204,7 @@ export function PublishButton({
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const url = isLocalhost 
       ? `/dev/${subdomain}`
-      : `https://${subdomain}.cvfolio.app`;
+      : `https://${subdomain}.brevy.me`;
     
     window.open(url, '_blank');
   };
@@ -213,7 +213,7 @@ export function PublishButton({
     setSelectedLanguage(newLanguage);
     
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/update-cv-language`, {
         method: 'POST',
@@ -263,7 +263,7 @@ export function PublishButton({
         
         <div className="flex gap-1 mb-2 bg-white border border-green-300 rounded-lg p-1">
           <Input 
-            value={`${subdomain}.cvfolio.app`}
+            value={`${subdomain}.brevy.me`}
             readOnly
             className="text-xs h-8 bg-transparent border-0 flex-1"
           />

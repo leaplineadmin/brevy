@@ -15,7 +15,7 @@ const getEmailTemplate = (content: string) => `
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CVfolio</title>
+  <title>Brevy</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -90,7 +90,7 @@ const getEmailTemplate = (content: string) => `
     </div>
     ${content}
     <div class="footer">
-      <p>© 2025 CVfolio. All rights reserved.</p>
+      <p>© 2025 Brevy. All rights reserved.</p>
     </div>
   </div>
 </body>
@@ -118,11 +118,11 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
     console.log("📧 [EMAIL] Attempting to send email:", {
       to: params.to,
       subject: params.subject,
-      from: 'CVfolio <noreply@mail.cvfolio.app>'
+      from: 'Brevy <noreply@mail.brevy.me>'
     });
     
     const emailData = {
-      from: 'CVfolio <noreply@mail.cvfolio.app>',
+      from: 'Brevy <noreply@mail.brevy.me>',
       to: params.to,
       subject: params.subject,
       html: params.html,
@@ -153,15 +153,15 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
 // Welcome email
 export async function sendWelcomeEmail(to: string, firstName: string): Promise<boolean> {
   const content = `
-    <h1>Welcome to CVfolio!</h1>
+    <h1>Welcome to Brevy!</h1>
     <p>Hello ${firstName},</p>
-    <p>Thank you for signing up for CVfolio! Your account has been successfully created.</p>
+    <p>Thank you for signing up for Brevy! Your account has been successfully created.</p>
     <p>You can now create professional resumes in minutes with our modern and customizable templates.</p>
     <p style="text-align: center;">
-      <a href="https://cvfolio.app/dashboard" class="button">Access my dashboard</a>
+      <a href="https://brevy.me/dashboard" class="button">Access my dashboard</a>
     </p>
     <p>We look forward to helping you create the perfect resume!</p>
-    <p>The CVfolio team</p>
+    <p>The Brevy team</p>
   `;
 
   const html = getEmailTemplate(content);
@@ -169,20 +169,20 @@ export async function sendWelcomeEmail(to: string, firstName: string): Promise<b
   const textContent = `
 Hello ${firstName},
 
-Thank you for signing up for CVfolio! Your account has been successfully created.
+Thank you for signing up for Brevy! Your account has been successfully created.
 
 You can now create professional resumes in minutes with our modern and customizable templates.
 
-Access your dashboard: https://cvfolio.app/dashboard
+Access your dashboard: https://brevy.me/dashboard
 
 We look forward to helping you create the perfect resume!
 
-The CVfolio team
+The Brevy team
   `.trim();
 
   return await sendEmail({
     to,
-    subject: 'Welcome to CVfolio!',
+    subject: 'Welcome to Brevy!',
     html,
     text: textContent,
   });
@@ -190,11 +190,11 @@ The CVfolio team
 
 // Password reset email
 export async function sendPasswordResetEmail(to: string, resetToken: string): Promise<boolean> {
-  const resetUrl = `https://cvfolio.app/reset-password?token=${resetToken}`;
+  const resetUrl = `https://brevy.me/reset-password?token=${resetToken}`;
 
   const content = `
     <h1>Reset your password</h1>
-    <p>You requested to reset your password for CVfolio.</p>
+    <p>You requested to reset your password for Brevy.</p>
     <p>If this was you, click the button below:</p>
     <p style="text-align: center;">
       <a href="${resetUrl}" class="reset-link">Renew my password</a>
@@ -208,7 +208,7 @@ export async function sendPasswordResetEmail(to: string, resetToken: string): Pr
   const textContent = `
 Reset your password
 
-You requested to reset your password for CVfolio.
+You requested to reset your password for Brevy.
 
 If this was you, click the link below to renew your password:
 ${resetUrl}
@@ -220,7 +220,7 @@ If you didn't make this request, you can ignore this message.
 
   const result = await sendEmail({
     to,
-    subject: 'Reset your CVfolio password',
+    subject: 'Reset your Brevy password',
     html,
     text: textContent,
   });
@@ -253,7 +253,7 @@ export async function sendAccountDeletionEmail(to: string, firstName: string, su
   const content = `
     <h1>Account deletion</h1>
     <p>Hello ${firstName},</p>
-    <p>Your CVfolio account has been successfully deleted.</p>
+    <p>Your Brevy account has been successfully deleted.</p>
     ${subscriptionCancelled 
       ? '<p style="color: #dc2626; font-weight: 600;">Your premium subscription has been cancelled and you have lost access to premium features immediately.</p>' 
       : ''
@@ -267,7 +267,7 @@ export async function sendAccountDeletionEmail(to: string, firstName: string, su
   const textContent = `
 Hello ${firstName},
 
-Your CVfolio account has been successfully deleted.
+Your Brevy account has been successfully deleted.
 ${subscriptionCancelled ? '\nYour premium subscription has been cancelled and you have lost access to premium features immediately.' : ''}
 
 We hope to see you again on our platform someday.
@@ -278,7 +278,7 @@ Thank you for your trust.
   
   const result = await sendEmail({
     to,
-    subject: 'Account deletion - CVfolio',
+    subject: 'Account deletion - Brevy',
     html,
     text: textContent,
   });
@@ -301,9 +301,9 @@ export async function sendPremiumWelcomeEmail(to: string, firstName: string, nex
   }
   
   const content = `
-    <h1>✅ Your CVfolio Premium subscription is active!</h1>
+    <h1>✅ Your Brevy Premium subscription is active!</h1>
     <p>Hi ${firstName},</p>
-    <p>Thank you for subscribing to CVfolio Premium! 🎉</p>
+    <p>Thank you for subscribing to Brevy Premium! 🎉</p>
     
     <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
       <h3 style="margin-top: 0;">Your subscription details:</h3>
@@ -316,13 +316,13 @@ export async function sendPremiumWelcomeEmail(to: string, firstName: string, nex
     <p>You now have full access to all premium features. 🚀</p>
     
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://cvfolio.app/dashboard" class="button" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 600;">
+      <a href="https://brevy.me/dashboard" class="button" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 600;">
         👉 Go to your dashboard
       </a>
     </div>
     
-    <p>Thanks again for supporting CVfolio!</p>
-    <p>Best,<br>The CVfolio Team</p>
+    <p>Thanks again for supporting Brevy!</p>
+    <p>Best,<br>The Brevy Team</p>
   `;
 
   const html = getEmailTemplate(content);
@@ -330,7 +330,7 @@ export async function sendPremiumWelcomeEmail(to: string, firstName: string, nex
   const textContent = `
 Hi ${firstName},
 
-Thank you for subscribing to CVfolio Premium!
+Thank you for subscribing to Brevy Premium!
 
 Your subscription details:
 - Plan: Premium
@@ -340,17 +340,17 @@ Your subscription details:
 
 You now have full access to all premium features.
 
-Go to your dashboard: https://cvfolio.app/dashboard
+Go to your dashboard: https://brevy.me/dashboard
 
-Thanks again for supporting CVfolio!
+Thanks again for supporting Brevy!
 
 Best,
-The CVfolio Team
+The Brevy Team
   `.trim();
 
   const result = await sendEmail({
     to,
-    subject: '✅ Your CVfolio Premium subscription is active!',
+    subject: '✅ Your Brevy Premium subscription is active!',
     html,
     text: textContent,
   });
@@ -373,24 +373,24 @@ export async function sendSubscriptionCancellationEmail(to: string, firstName: s
   }
   
   const content = `
-    <h1>⚠️ Your CVfolio Premium subscription will end soon</h1>
+    <h1>⚠️ Your Brevy Premium subscription will end soon</h1>
     <p>Hi ${firstName},</p>
-    <p>We've received your request to cancel your CVfolio Premium subscription.<br>Here's what happens next:</p>
+    <p>We've received your request to cancel your Brevy Premium subscription.<br>Here's what happens next:</p>
     
     <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
       <p><strong>✅ Your premium features will remain available until ${subscriptionEndDate.toLocaleDateString()} (the end of your current billing period).</strong></p>
       
-      <p><strong>🆓 After that date, your account will automatically switch back to the free plan, and you'll still be able to use CVfolio with limited features.</strong></p>
+      <p><strong>🆓 After that date, your account will automatically switch back to the free plan, and you'll still be able to use Brevy with limited features.</strong></p>
     </div>
     
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://cvfolio.app/dashboard" class="button" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 600;">
+      <a href="https://brevy.me/dashboard" class="button" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 600;">
         👉 Go to your dashboard
       </a>
     </div>
     
     <p>We're sad to see you leave Premium, but you're always welcome back!</p>
-    <p>Best,<br>The CVfolio Team</p>
+    <p>Best,<br>The Brevy Team</p>
   `;
 
   const html = getEmailTemplate(content);
@@ -398,24 +398,24 @@ export async function sendSubscriptionCancellationEmail(to: string, firstName: s
   const textContent = `
 Hi ${firstName},
 
-We've received your request to cancel your CVfolio Premium subscription.
+We've received your request to cancel your Brevy Premium subscription.
 Here's what happens next:
 
 ✅ Your premium features will remain available until ${subscriptionEndDate.toLocaleDateString()} (the end of your current billing period).
 
-🆓 After that date, your account will automatically switch back to the free plan, and you'll still be able to use CVfolio with limited features.
+🆓 After that date, your account will automatically switch back to the free plan, and you'll still be able to use Brevy with limited features.
 
-Go to your dashboard: https://cvfolio.app/dashboard
+Go to your dashboard: https://brevy.me/dashboard
 
 We're sad to see you leave Premium, but you're always welcome back!
 
 Best,
-The CVfolio Team
+The Brevy Team
   `.trim();
 
   const result = await sendEmail({
     to,
-    subject: '⚠️ Your CVfolio Premium subscription will end soon',
+    subject: '⚠️ Your Brevy Premium subscription will end soon',
     html,
     text: textContent,
   });

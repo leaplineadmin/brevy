@@ -200,7 +200,7 @@ export async function generatePDFWithText(
           try {
             const isProd =
               typeof window !== "undefined" &&
-              window.location.hostname.endsWith("cvfolio.app");
+              window.location.hostname.endsWith("brevy.me");
             const base = isProd ? "https://cvfolio.onrender.com" : "";
             const proxyUrl = `${base}/api/image-proxy?url=${encodeURIComponent(
               photoUrl,
@@ -297,7 +297,7 @@ export async function generatePDFWithText(
 
     // CV Online URL (if published)
     if (subdomain) {
-      const cvUrl = `https://${subdomain}.cvfolio.app`;
+      const cvUrl = `https://${subdomain}.brevy.me`;
       doc.setFontSize(9);
       doc.setTextColor(color.r, color.g, color.b);
       

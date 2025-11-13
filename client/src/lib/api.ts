@@ -23,7 +23,7 @@ class ApiClient {
 
   constructor() {
     // Use full backend URL in production, relative URL in development
-    if (typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app')) {
+    if (typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me')) {
       this.baseURL = 'https://cvfolio.onrender.com/api';
     } else {
       this.baseURL = import.meta.env.VITE_API_URL || '/api';

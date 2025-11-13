@@ -180,7 +180,7 @@ export const PreviewArea: React.FC<PreviewAreaProps> = ({
 
     try {
       // Step 1: Create draft on server
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const draftResponse = await fetch(`${base}/api/cv-drafts`, {
         method: 'POST',

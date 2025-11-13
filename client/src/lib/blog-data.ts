@@ -74,8 +74,8 @@ export const blogArticles: BlogArticle[] = [
     image: article3Image,
     publishedTime: '2025-01-25T10:00:00Z',
     keywords: {
-      en: 'best resume tools online, free resume builder, resume software, resume website, resume comparison, Canva, Zety, CVfolio',
-      fr: 'meilleurs outils cv en ligne, créateur de cv gratuit, logiciel cv, site pour faire cv, comparatif cv, Canva, Zety, CVfolio',
+      en: 'best resume tools online, free resume builder, resume software, resume website, resume comparison, Canva, Zety, Brevy',
+      fr: 'meilleurs outils cv en ligne, créateur de cv gratuit, logiciel cv, site pour faire cv, comparatif cv, Canva, Zety, Brevy',
     },
   },
 ];

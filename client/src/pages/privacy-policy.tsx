@@ -94,8 +94,8 @@ export default function PrivacyPolicy() {
                 </p>
                 <p>
                   <strong>{language === "fr" ? "Contact" : "Contact"}:</strong>{" "}
-                  <a href="mailto:contact@cvfolio.app" className="text-blue-600 hover:text-blue-800">
-                    contact@cvfolio.app
+                  <a href="mailto:contact@brevy.me" className="text-blue-600 hover:text-blue-800">
+                    contact@brevy.me
                   </a>
                 </p>
               </section>
@@ -289,8 +289,8 @@ export default function PrivacyPolicy() {
                   {language === "fr"
                         ? "Pour toute question relative à la protection de vos données :"
                         : "For any questions regarding the protection of your data:"}{" "}
-                  <a href="mailto:contact@cvfolio.app" className="text-blue-600 hover:text-blue-800">
-                    contact@cvfolio.app
+                  <a href="mailto:contact@brevy.me" className="text-blue-600 hover:text-blue-800">
+                    contact@brevy.me
                   </a>
                 </p>
               </section>

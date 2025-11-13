@@ -145,7 +145,7 @@ export default function SubscriptionPage() {
             </div>
             <ul className="text-sm text-gray-600 space-y-1">
               <li>• All 6 professional templates</li>
-              <li>• Remove "Created with CVfolio" watermark</li>
+              <li>• Remove "Created with Brevy" watermark</li>
               <li>• Advanced color customization</li>
               <li>• Priority support</li>
               <li>• Unlimited PDF downloads</li>

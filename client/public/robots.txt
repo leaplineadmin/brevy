@@ -4,4 +4,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://cvfolio.app/sitemap.xml
+Sitemap: https://brevy.me/sitemap.xml

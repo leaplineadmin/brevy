@@ -45,7 +45,7 @@ export default function LegalNotice() {
               <p>
                 In accordance with Regulation (EU) 2016/679 (General Data Protection Regulation - GDPR) and Greek Law 4624/2019, 
                 you have the right to access, rectify, delete, and port your personal data. 
-                To exercise these rights, please contact us at: contact@cvfolio.app
+                To exercise these rights, please contact us at: contact@brevy.me
               </p>
             </section>
 
@@ -63,7 +63,7 @@ export default function LegalNotice() {
               <p>
                 While every effort is made to ensure the accuracy of the information on this website, 
                 errors or omissions may occur. The owner cannot be held responsible for any such inaccuracies. 
-                If you notice any error or malfunction, please report it via email at contact@cvfolio.app.
+                If you notice any error or malfunction, please report it via email at contact@brevy.me.
               </p>
             </section>
 

@@ -34,11 +34,11 @@ export const BlogPostingSchema: React.FC<BlogPostingSchemaProps> = ({
     "image": image,
     "author": {
       "@type": "Organization",
-      "name": "CVfolio",
+      "name": "Brevy",
     },
     "publisher": {
       "@type": "Organization",
-      "name": "CVfolio",
+      "name": "Brevy",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.brevy.app/logo-brevy.svg",

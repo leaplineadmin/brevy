@@ -23,7 +23,7 @@ export interface TemplateProps {
   hideLanguageLevels?: boolean;
   hideLinkedIn?: boolean;
   hideWebsite?: boolean;
-  showCVfolioLink?: boolean;
+  showBrevyLink?: boolean;
   isPreview?: boolean;
   hasSubscription?: boolean;
   isPublished?: boolean;

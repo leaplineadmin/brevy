@@ -24,7 +24,7 @@ export default function CVIframePreview() {
       // Skip the apiRequest helper and use fetch directly for more control
       // Add a cache-busting parameter to ensure fresh content
       const cacheBuster = `nocache=${Date.now()}`;
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/cv-preview?${cacheBuster}`, {
         method: 'POST',

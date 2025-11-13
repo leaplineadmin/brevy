@@ -10,7 +10,7 @@ interface CVUploaderProps {
 function getApiBase() {
   if (typeof window === 'undefined') return '';
   const host = window.location.hostname;
-  const isProd = host.endsWith('cvfolio.app');
+  const isProd = host.endsWith('brevy.me');
   return isProd ? 'https://cvfolio.onrender.com' : '';
 }
 

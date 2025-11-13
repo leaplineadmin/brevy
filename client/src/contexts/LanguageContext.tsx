@@ -68,7 +68,7 @@ export function LanguageProvider({ children, initialLanguage }: { children: Reac
       }
 
       // Update server-side cookie to keep SSR/api aligned
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       await fetch(`${base}/api/set-language`, {
         method: 'POST',

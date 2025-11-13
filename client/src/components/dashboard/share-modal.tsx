@@ -45,7 +45,7 @@ export function ShareModal({ isOpen, onClose, cvId, defaultSubdomain = "" }: Sha
     setValidationError("");
     
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/check-subdomain`, {
         method: 'POST',
@@ -99,7 +99,7 @@ export function ShareModal({ isOpen, onClose, cvId, defaultSubdomain = "" }: Sha
     if (!isAvailable || !subdomain) return;
     
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/set-subdomain`, {
         method: 'POST',
@@ -113,7 +113,7 @@ export function ShareModal({ isOpen, onClose, cvId, defaultSubdomain = "" }: Sha
       const data = await response.json();
       
       if (response.ok) {
-        const url = data.shareUrl || `https://${subdomain}.cvfolio.app`;
+        const url = data.shareUrl || `https://${subdomain}.brevy.me`;
         
         await navigator.clipboard.writeText(url);
         toast({
@@ -169,7 +169,7 @@ export function ShareModal({ isOpen, onClose, cvId, defaultSubdomain = "" }: Sha
                 className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-r-none"
               />
               <div className="px-3 py-2 bg-gray-50 border-l text-sm text-gray-600 rounded-r-md">
-                .cvfolio.app
+                .brevy.me
               </div>
             </div>
             

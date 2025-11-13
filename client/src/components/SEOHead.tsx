@@ -50,7 +50,7 @@ export const SEOHead = ({
       <meta name="title" content={seo.title} />
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
-      <meta name="author" content="CVfolio" />
+      <meta name="author" content="Brevy" />
       <meta name="robots" content="index, follow" />
       
       <link rel="canonical" href={seo.canonical} />
@@ -71,7 +71,7 @@ export const SEOHead = ({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="CVfolio" />
+      <meta property="og:site_name" content="Brevy" />
       <meta property="og:locale" content={seo.ogLocale} />
       {isArticle && articlePublishedTime && (
         <meta property="article:published_time" content={articlePublishedTime} />

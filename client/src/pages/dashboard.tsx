@@ -299,7 +299,7 @@ export default function Dashboard() {
           // CRITICAL FIX: Add error handling and retry logic for cross-platform compatibility
           
           // Étape 2: Appeler POST /api/cv-drafts/:id/convert (avec correlation ID)
-          const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+          const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
           const base = isProd ? 'https://cvfolio.onrender.com' : '';
           const response = await fetch(`${base}/api/cv-drafts/${draftId}/convert`, {
             method: 'POST',
@@ -495,7 +495,7 @@ export default function Dashboard() {
               
               while (retryCount < maxRetries && !success) {
                 try {
-                  const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+                  const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
                   const base = isProd ? 'https://cvfolio.onrender.com' : '';
                   const response = await fetch(`${base}/api/cvs`, {
                     method: 'POST',
@@ -529,7 +529,7 @@ export default function Dashboard() {
                       };
                       
                       
-                      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+                      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
                       const base = isProd ? 'https://cvfolio.onrender.com' : '';
                       const fallbackResponse = await fetch(`${base}/api/cvs`, {
                         method: 'POST',
@@ -635,7 +635,7 @@ export default function Dashboard() {
             };
             
             
-            const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+            const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
             const base = isProd ? 'https://cvfolio.onrender.com' : '';
             const response = await fetch(`${base}/api/cvs`, {
               method: 'POST',
@@ -710,7 +710,7 @@ export default function Dashboard() {
     setIsUnsubscribing(true);
 
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/unsubscribe`, {
         method: 'POST',
@@ -756,7 +756,7 @@ export default function Dashboard() {
 
     try {
       setIsCheckingPremium(true);
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       
       const response = await fetch(`${base}/api/fallback-premium-activation`, {
@@ -808,7 +808,7 @@ export default function Dashboard() {
     });
 
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const url = `${base}/api/account`;
 
@@ -851,7 +851,7 @@ export default function Dashboard() {
   // Function to delete a CV with smooth animation
   const handleDeleteCV = async (cvId: string) => {
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/cvs/${cvId}`, {
         method: 'DELETE',
@@ -1141,7 +1141,7 @@ export default function Dashboard() {
                 Create professional resumes in minutes with our modern and customizable templates.
               </p>
               <p className="mt-2 text-sm text-gray-500">
-                Need help? Please contact hello@cvfolio.app
+                Need help? Please contact hello@brevy.me
               </p>
             </div>
             
@@ -1210,7 +1210,7 @@ export default function Dashboard() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:contact@cvfolio.app" className="text-base text-gray-500 hover:text-gray-900">
+                  <a href="mailto:contact@brevy.me" className="text-base text-gray-500 hover:text-gray-900">
                     Contact
                   </a>
                 </li>
@@ -1225,7 +1225,7 @@ export default function Dashboard() {
           
           <div className="mt-8 border-t border-gray-200 pt-8">
             <p className="text-base text-gray-400 text-center">
-              © 2025 CVfolio. All rights reserved.
+              © 2025 Brevy. All rights reserved.
             </p>
           </div>
         </div>

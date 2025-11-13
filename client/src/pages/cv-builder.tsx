@@ -248,7 +248,7 @@ export default function CVBuilder() {
   // Fonction pour charger un CV depuis l'API
   const loadCVFromAPI = async (cvId: string) => {
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const response = await fetch(`${base}/api/cvs/${cvId}`, {
         credentials: 'include' // Important pour les cookies de session

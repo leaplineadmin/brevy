@@ -55,7 +55,7 @@ export function SubdomainConflictModal({
     setError('');
 
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       
       const response = await fetch(`${base}/api/check-subdomain`, {
@@ -140,7 +140,7 @@ export function SubdomainConflictModal({
                   {t('dashboard.subdomainConflict.suggested')}
                 </p>
                 <p className="text-sm text-blue-700">
-                  {suggestedSubdomain}.cvfolio.app
+                  {suggestedSubdomain}.brevy.me
                 </p>
               </div>
               <Button

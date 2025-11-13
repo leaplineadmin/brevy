@@ -35,7 +35,7 @@ export default function DataManagement() {
 
     setIsDownloading(true);
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
 
       const response = await fetch(`${base}/api/user/export-data`, {
@@ -54,7 +54,7 @@ export default function DataManagement() {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `cvfolio-data-${new Date().toISOString().split('T')[0]}.json`;
+      a.download = `brevy-data-${new Date().toISOString().split('T')[0]}.json`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -88,7 +88,7 @@ export default function DataManagement() {
 
     setIsDeleting(true);
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
 
       const response = await fetch(`${base}/api/user/delete-account`, {

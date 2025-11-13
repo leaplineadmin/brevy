@@ -17,7 +17,7 @@ export async function detectCountry(): Promise<string> {
 
   try {
     // Strategy 1: Call GeoIP API
-    const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+    const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
     const base = isProd ? 'https://cvfolio.onrender.com' : '';
     const response = await fetch(`${base}/api/geoip`);
     if (response.ok) {
@@ -176,7 +176,7 @@ export async function debugDetectCountry(): Promise<string> {
   
   
   try {
-    const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+    const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
     const base = isProd ? 'https://cvfolio.onrender.com' : '';
     const geoipUrl = `${base}/api/geoip`;
     

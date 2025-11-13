@@ -31,7 +31,7 @@
     },
     "studyFootnote": "* Qureos Study 2025",
     "footer": {
-      "rights": "All rights reserved - cvfolio.app",
+      "rights": "All rights reserved - brevy.me",
       "legal": "Legal Notice"
     }
   },
@@ -85,7 +85,7 @@
   "premium": {
     "banner": {
       "saveEditMessage": "You can save and edit this template as much as you like. To publish it, upgrade to Premium.",
-      "unlockMessage": "Unlock all templates and remove the \"Created with CVfolio\" tag with a Premium Subscription (€3.90/month)",
+      "unlockMessage": "Unlock all templates and remove the \"Created with Brevy\" tag with a Premium Subscription (€3.90/month)",
       "subscribeButton": "Subscribe to Premium"
     },
     "toasts": {
@@ -117,7 +117,7 @@
       "keepPremium": "Keep Premium"
     },
     "checkout": {
-      "title": "CVfolio Premium",
+      "title": "Brevy Premium",
       "price": "€3.90/month • Cancel anytime",
       "subscribeButton": "Subscribe to Premium",
       "processing": "Processing..."

@@ -9,9 +9,9 @@ export const StructuredData = ({ lang = 'en' }: StructuredDataProps) => {
     en: {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "CVfolio",
+      "name": "Brevy",
       "description": "Create professional, interactive resumes in minutes. No design skills required.",
-      "url": "https://cvfolio.app",
+      "url": "https://brevy.me",
       "inLanguage": "en-US",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web Browser",
@@ -22,15 +22,15 @@ export const StructuredData = ({ lang = 'en' }: StructuredDataProps) => {
       },
       "creator": {
         "@type": "Organization",
-        "name": "CVfolio"
+        "name": "Brevy"
       }
     },
     fr: {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "CVfolio",
+      "name": "Brevy",
       "description": "Créez des CV professionnels et interactifs en quelques minutes. Aucune compétence en design requise.",
-      "url": "https://cvfolio.app/fr",
+      "url": "https://brevy.me/fr",
       "inLanguage": "fr-FR",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Navigateur Web",
@@ -41,7 +41,7 @@ export const StructuredData = ({ lang = 'en' }: StructuredDataProps) => {
       },
       "creator": {
         "@type": "Organization",
-        "name": "CVfolio"
+        "name": "Brevy"
       }
     }
   };

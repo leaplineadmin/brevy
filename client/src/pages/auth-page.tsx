@@ -80,7 +80,7 @@ export default function AuthPage() {
   // Function to fetch draft data and pre-fill form
   const fetchDraftData = async (draftId: string) => {
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       
       const response = await fetch(`${base}/api/cv-drafts/${draftId}`, {

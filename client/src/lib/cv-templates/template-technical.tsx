@@ -23,7 +23,7 @@ export const TemplateTechnical: React.FC<TemplateProps> = ({
   hideLanguageLevels = false,
   hideLinkedIn = false,
   hideWebsite = false,
-  showCVfolioLink = false,
+  showBrevyLink = false,
   isPreview = false,
   hasSubscription = false,
   isPublished = false,
@@ -704,12 +704,12 @@ export const TemplateTechnical: React.FC<TemplateProps> = ({
         )}
       </div>
       
-      {/* Footer unifié avec PDF et CVfolio */}
+      {/* Footer unifié avec PDF et Brevy */}
       <CVFooter
         cvData={data}
         templateId="template-technical"
         mainColor={mainColor}
-        showCVfolioLink={true}
+        showBrevyLink={true}
         isPreview={isPreview}
         hasSubscription={hasSubscription}
         isPublished={isPublished}

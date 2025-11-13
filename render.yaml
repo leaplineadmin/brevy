@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: cvfolio-backend
+    name: brevy-backend
     env: node
     plan: free
     buildCommand: npm run build:render
@@ -40,6 +40,6 @@ services:
       - key: PRERENDER_TOKEN
         sync: false
       - key: FRONT_ORIGIN
-        value: https://www.cvfolio.app
+        value: https://www.brevy.app
       - key: GOOGLE_CALLBACK_URL
-        value: https://cvfolio.onrender.com/api/auth/google/callback
+        value: https://brevy.onrender.com/api/auth/google/callback

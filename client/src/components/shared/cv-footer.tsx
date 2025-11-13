@@ -10,7 +10,7 @@ interface CVFooterProps {
   cvData: any;
   templateId: string;
   mainColor: string;
-  showCVfolioLink?: boolean;
+  showBrevyLink?: boolean;
   isPreview?: boolean;
   className?: string;
   hasSubscription?: boolean;
@@ -22,7 +22,7 @@ const CVFooter = ({
   cvData,
   templateId,
   mainColor,
-  showCVfolioLink = true,
+  showBrevyLink = true,
   isPreview = false,
   className = "",
   hasSubscription = false,
@@ -125,10 +125,10 @@ const CVFooter = ({
             : "0.25rem 0.25rem 0.25rem 1.5rem",
       }}
     >
-      {/* Lien CVfolio - masqué en preview et pour les utilisateurs Premium */}
-      {!isPreview && showCVfolioLink && !hasSubscription && (
+      {/* Lien Brevy - masqué en preview et pour les utilisateurs Premium */}
+      {!isPreview && showBrevyLink && !hasSubscription && (
         <a
-          href="https://cvfolio.app"
+          href="https://brevy.me"
           className="text-white hover:text-white transition-colors hover:underline hover:underline-offset-2"
           style={
             {
@@ -139,7 +139,7 @@ const CVFooter = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Created with <b>CVfolio</b>
+          Created with <b>Brevy</b>
         </a>
       )}
 

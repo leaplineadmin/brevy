@@ -27,7 +27,7 @@ export const TemplateDatalover: React.FC<TemplateProps> = ({
   hideLanguageLevels = false,
   hideLinkedIn = false,
   hideWebsite = false,
-  showCVfolioLink = true,
+  showBrevyLink = true,
   isPreview = false,
   hasSubscription = false,
   isPublished = false,
@@ -851,12 +851,12 @@ export const TemplateDatalover: React.FC<TemplateProps> = ({
         )}
       </div>
 
-      {/* Footer unifié avec PDF et CVfolio */}
+      {/* Footer unifié avec PDF et Brevy */}
       <CVFooter
         cvData={data}
         templateId="template-datalover"
         mainColor={mainColor}
-        showCVfolioLink={true}
+        showBrevyLink={true}
         isPreview={isPreview}
         hasSubscription={hasSubscription}
         isPublished={isPublished}

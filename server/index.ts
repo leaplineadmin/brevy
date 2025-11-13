@@ -61,8 +61,8 @@ const allowedOrigins = [
   "http://127.0.0.1:5000",
   "http://localhost:10000",
   "http://127.0.0.1:10000",
-  "https://cvfolio.app",
-  "https://www.cvfolio.app",
+  "https://brevy.me",
+  "https://www.brevy.me",
   "https://cvfolio.onrender.com",
   "https://cvfolio-pr-4.onrender.com/",
 ];
@@ -115,7 +115,7 @@ if (prerenderToken && prerenderToken !== 'disabled') {
 app.use(prerender
   .set('prerenderToken', prerenderToken || 'disabled') // Use Prerender.io token if available, otherwise disabled
   .set('protocol', 'https') // Use HTTPS for pre-rendering
-  .set('host', 'www.cvfolio.app') // Set the host for pre-rendering (actual production domain)
+  .set('host', 'www.brevy.me') // Set the host for pre-rendering (actual production domain)
   .set('forwardHeaders', true) // Forward original headers to Prerender.io
   .set('waitFor', 5000) // Wait up to 5 seconds for window.prerenderReady to be true (increased for slower loads)
   .set('followRedirects', true) // Follow redirects during pre-rendering
@@ -578,7 +578,7 @@ app.use(async (req, res, next) => {
   let detectedSubdomain = null;
   
   // Méthode 1: Host header classique
-  if (host.includes('.cvfolio.app') && !host.startsWith('www.') && !host.includes('localhost')) {
+  if (host.includes('.brevy.me') && !host.startsWith('www.') && !host.includes('localhost')) {
     detectedSubdomain = host.split('.')[0];
 
   }

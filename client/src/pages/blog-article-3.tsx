@@ -25,11 +25,11 @@ Nous avons évalué chaque outil sur 5 critères essentiels :
 
 ## Le Classement des 7 Meilleurs Créateurs de CV en 2025
 
-### 1. CVfolio : Le Meilleur pour un CV Interactif et Moderne
+### 1. Brevy : Le Meilleur pour un CV Interactif et Moderne
 
 **Idéal pour :** Les professionnels qui veulent se démarquer avec un CV digital.
 
-CVfolio prend une approche résolument moderne en se spécialisant dans la création de **CV interactifs en ligne**. Plutôt que de simplement générer un PDF, il vous permet de créer une véritable page web personnelle, accessible via un lien unique. C'est l'outil parfait pour montrer, et pas seulement décrire, vos compétences.
+Brevy prend une approche résolument moderne en se spécialisant dans la création de **CV interactifs en ligne**. Plutôt que de simplement générer un PDF, il vous permet de créer une véritable page web personnelle, accessible via un lien unique. C'est l'outil parfait pour montrer, et pas seulement décrire, vos compétences.
 
 -   **Avantages :**
     -   **Interactivité :** À mi chemin entre le CV classique et le site web, avec des éléments de contact cliquables.
@@ -42,7 +42,7 @@ CVfolio prend une approche résolument moderne en se spécialisant dans la créa
 
 -   **Prix :** Gratuit. Abonnements premium pour débloquer des templates et créer plus de CVs.
 
-> **Notre avis :** Pour laisser une impression mémorable et moderne, **CVfolio** est sans conteste le choix le plus stratégique en 2025. [Créez votre CV interactif gratuitement](https://www.cvfolio.app/)
+> **Notre avis :** Pour laisser une impression mémorable et moderne, **Brevy** est sans conteste le choix le plus stratégique en 2025. [Créez votre CV interactif gratuitement](https://www.brevy.me/)
 
 ### 2. Canva : Le Meilleur pour la Créativité et la Flexibilité
 
@@ -149,7 +149,7 @@ Ne sous-estimez pas Google Docs ! Il propose quelques modèles de CV de base que
 
 | Outil | Idéal Pour | Facilité d'Utilisation | Designs | Interactivité | Prix |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 🏆 **CVfolio** | **CV Interactif & Moderne** | ★★★★★ | ★★★★★ | ★★★★★ | **Freemium** |
+| 🏆 **Brevy** | **CV Interactif & Moderne** | ★★★★★ | ★★★★★ | ★★★★★ | **Freemium** |
 | **Canva** | Créativité Totale | ★★★★☆ | ★★★★★ | ★☆☆☆☆ | Freemium |
 | **Zety** | Rapidité & Contenu | ★★★★★ | ★★★★☆ | ★☆☆☆☆ | Payant |
 | **CVDesignR** | Le 100% Gratuit | ★★★★☆ | ★★★☆☆ | ★☆☆☆☆ | **Gratuit** |
@@ -164,11 +164,11 @@ Le "meilleur" outil de création de CV est celui qui correspond à vos besoins, 
 -   Pour un **CV traditionnel gratuit et efficace**, **CVDesignR** est un excellent choix.
 -   Pour une **liberté créative maximale**, **Canva** est imbattable.
 -   Pour **créer un CV en 5 minutes avec de l'aide**, **Zety** est le plus rapide.
--   Mais pour **vous démarquer, prouver vos compétences et laisser une impression durable** aux recruteurs en 2025, la création d'un **CV interactif** est la stratégie la plus payante. Et pour cela, **CVfolio** se positionne comme la solution la plus innovante et la plus simple à utiliser.
+-   Mais pour **vous démarquer, prouver vos compétences et laisser une impression durable** aux recruteurs en 2025, la création d'un **CV interactif** est la stratégie la plus payante. Et pour cela, **Brevy** se positionne comme la solution la plus innovante et la plus simple à utiliser.
 
 Prêt à choisir l'outil qui vous fera décrocher votre prochain entretien ?
 
-[Testez CVfolio et créez un CV qui fait la différence, gratuitement !](https://www.cvfolio.app/)`,
+[Testez Brevy et créez un CV qui fait la différence, gratuitement !](https://www.brevy.me/)`,
   
   en: `# Top 7 Best Tools to Create a Resume Online in 2025 (Free and Paid)
 
@@ -188,11 +188,11 @@ We evaluated each tool on 5 essential criteria:
 
 ## The Ranking of the 7 Best Resume Builders in 2025
 
-### 1. CVfolio: The Best for an Interactive and Modern Resume
+### 1. Brevy: The Best for an Interactive and Modern Resume
 
 **Ideal for:** Professionals who want to stand out with a digital resume.
 
-CVfolio takes a decidedly modern approach by specializing in creating **interactive online resumes**. Rather than simply generating a PDF, it allows you to create a true personal web page, accessible via a unique link. It's the perfect tool to show, not just describe, your skills.
+Brevy takes a decidedly modern approach by specializing in creating **interactive online resumes**. Rather than simply generating a PDF, it allows you to create a true personal web page, accessible via a unique link. It's the perfect tool to show, not just describe, your skills.
 
 -   **Advantages:**
     -   **Interactivity:** Halfway between a classic resume and a website, with clickable contact elements.
@@ -205,7 +205,7 @@ CVfolio takes a decidedly modern approach by specializing in creating **interact
 
 -   **Price:** Free. Premium subscriptions to unlock templates and create more resumes.
 
-> **Our opinion:** To leave a memorable and modern impression, **CVfolio** is undoubtedly the most strategic choice in 2025. [Create your interactive resume for free](https://www.cvfolio.app/)
+> **Our opinion:** To leave a memorable and modern impression, **Brevy** is undoubtedly the most strategic choice in 2025. [Create your interactive resume for free](https://www.brevy.me/)
 
 ### 2. Canva: The Best for Creativity and Flexibility
 
@@ -312,7 +312,7 @@ Don't underestimate Google Docs! It offers a few basic resume templates that you
 
 | Tool | Ideal For | Ease of Use | Designs | Interactivity | Price |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 🏆 **CVfolio** | **Interactive & Modern Resume** | ★★★★★ | ★★★★★ | ★★★★★ | **Freemium** |
+| 🏆 **Brevy** | **Interactive & Modern Resume** | ★★★★★ | ★★★★★ | ★★★★★ | **Freemium** |
 | **Canva** | Total Creativity | ★★★★☆ | ★★★★★ | ★☆☆☆☆ | Freemium |
 | **Zety** | Speed & Content | ★★★★★ | ★★★★☆ | ★☆☆☆☆ | Paid |
 | **CVDesignR** | The 100% Free | ★★★★☆ | ★★★☆☆ | ★☆☆☆☆ | **Free** |
@@ -327,11 +327,11 @@ The "best" resume creation tool is the one that matches your needs, your sector,
 -   For a **free and effective traditional resume**, **CVDesignR** is an excellent choice.
 -   For **maximum creative freedom**, **Canva** is unbeatable.
 -   To **create a resume in 5 minutes with help**, **Zety** is the fastest.
--   But to **stand out, prove your skills, and leave a lasting impression** on recruiters in 2025, creating an **interactive resume** is the most profitable strategy. And for that, **CVfolio** positions itself as the most innovative and simplest solution to use.
+-   But to **stand out, prove your skills, and leave a lasting impression** on recruiters in 2025, creating an **interactive resume** is the most profitable strategy. And for that, **Brevy** positions itself as the most innovative and simplest solution to use.
 
 Ready to choose the tool that will land you your next interview?
 
-[Try CVfolio and create a resume that makes a difference, for free!](https://www.cvfolio.app/)`
+[Try Brevy and create a resume that makes a difference, for free!](https://www.brevy.me/)`
 };
 
 export default function BlogArticle3() {
@@ -345,7 +345,7 @@ export default function BlogArticle3() {
   const articleTitle = article?.title[language as 'en' | 'fr'] || article?.title.en || '';
   const articleDescription = article?.description[language as 'en' | 'fr'] || article?.description.en || '';
   const articleKeywords = article?.keywords?.[language as 'en' | 'fr'] || article?.keywords?.en || '';
-  const canonicalUrl = `https://www.cvfolio.app/blog/${article?.slug || 'top-7-best-resume-builder-tools-2025'}`;
+  const canonicalUrl = `https://www.brevy.me/blog/${article?.slug || 'top-7-best-resume-builder-tools-2025'}`;
 
   if (!article) {
     return null;
@@ -355,7 +355,7 @@ export default function BlogArticle3() {
     <>
       <SEOHead
         lang={language}
-        customTitle={`${articleTitle} | CVfolio`}
+        customTitle={`${articleTitle} | Brevy`}
         customDescription={articleDescription}
         customKeywords={articleKeywords}
         customCanonical={canonicalUrl}

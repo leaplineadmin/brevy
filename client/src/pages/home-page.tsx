@@ -216,7 +216,7 @@ export default function HomePage() {
       <footer className="bg-gray-100 border-t border-gray-200">
         <div className="mx-auto px-8 max-w-[1280px] py-6">
           <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 text-sm text-gray-600">
-            <span>{t('home.footer.rights') || 'All rights reserved - cvfolio.app'}</span>
+            <span>{t('home.footer.rights') || 'All rights reserved - brevy.me'}</span>
             <span className="hidden md:inline">•</span>
             <Link href="/privacy-policy">
               <span className="text-blue-600 hover:text-blue-800 cursor-pointer">
@@ -245,7 +245,7 @@ export default function HomePage() {
               <span className="text-blue-600 hover:text-blue-800 cursor-pointer">{t('home.footer.legal') || 'Legal Notice'}</span>
             </Link>
             <span className="hidden md:inline">•</span>
-            <a href="mailto:contact@cvfolio.app" className="text-blue-600 hover:text-blue-800 cursor-pointer">
+            <a href="mailto:contact@brevy.me" className="text-blue-600 hover:text-blue-800 cursor-pointer">
               Contact
             </a>
           </div>

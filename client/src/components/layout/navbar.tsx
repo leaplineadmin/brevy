@@ -199,7 +199,7 @@ export default function Navbar() {
 
     try {
       // Step 1: Create draft on server (per brief specification)
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       const draftResponse = await fetch(`${base}/api/cv-drafts`, {
         method: 'POST',
@@ -342,7 +342,7 @@ export default function Navbar() {
     } else {
       // Déconnexion utilisateur réel
       try {
-        const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+        const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
         const base = isProd ? 'https://cvfolio.onrender.com' : '';
         await fetch(`${base}/api/logout`, { 
           method: 'POST',
@@ -362,7 +362,7 @@ export default function Navbar() {
 
   const handleSaveToDatabase = async (cvState: any) => {
     try {
-      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('cvfolio.app');
+      const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const base = isProd ? 'https://cvfolio.onrender.com' : '';
       
       

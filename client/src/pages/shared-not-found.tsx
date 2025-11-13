@@ -5,7 +5,7 @@ export default function SharedNotFound() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full text-center">
         <div className="mb-8">
-          {/* CVfolio Logo */}
+          {/* Brevy Logo */}
           <div className="mx-auto mb-4 w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-xl">CV</span>
           </div>
@@ -30,7 +30,7 @@ export default function SharedNotFound() {
         </div>
         
         <div className="mt-8 text-xs text-gray-500">
-          <p>© 2025 CVfolio.app - Créateur de CV professionnel</p>
+          <p>© 2025 Brevy.app - Créateur de CV professionnel</p>
         </div>
       </div>
     </div>
