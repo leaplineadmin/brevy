@@ -5,7 +5,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 
 // Logo simple en texte pour éviter les problèmes de blocage d'images
 const LOGO_TEXT = `<div style="font-size: 24px; font-weight: bold; color: #FF6B35; text-align: center; margin-bottom: 20px;">
-  <span style="color: #FF6B35;">CV</span><span style="color: #111827;">folio</span>
+  <span style="color: #2563EB;">Bre</span><span style="color: #FF6B35;">vy</span>
 </div>`;
 
 // Template HTML avec logo pour les emails
