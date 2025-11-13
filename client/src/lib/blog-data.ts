@@ -33,7 +33,7 @@ export const blogArticles: BlogArticle[] = [
       en: 'Learn how to create a professional resume in 2025 with our complete step-by-step guide. Expert tips, free templates, and ATS optimization advice.',
       fr: 'Vous cherchez à créer un CV professionnel qui se démarque en 2025 ? Suivez notre guide complet étape par étape, découvrez des conseils d\'experts et accédez à des modèles gratuits pour décrocher l\'emploi de vos rêves.',
     },
-    image: 'https://www.cvfolio.app/assets/images/blog/article1.webp',
+    image: 'https://www.brevy.app/assets/images/blog/article1.webp',
     publishedTime: '2025-01-15T10:00:00Z',
     keywords: {
       en: 'how to create a resume, make a professional resume, create resume online, free resume template, resume 2025, resume guide, resume example',
@@ -50,7 +50,7 @@ export const blogArticles: BlogArticle[] = [
       en: 'Want to create a professional resume website without knowing how to code? Discover how to publish your own resume online in less than 10 minutes and get a unique link to share with recruiters.',
       fr: 'Vous voulez créer un site CV professionnel sans savoir coder ? Découvrez comment publier votre propre CV en ligne en moins de 10 minutes, et obtenez un lien unique à partager avec les recruteurs.',
     },
-    image: 'https://www.cvfolio.app/assets/images/blog/article2.webp',
+    image: 'https://www.brevy.app/assets/images/blog/article2.webp',
     publishedTime: '2025-01-20T10:00:00Z',
     keywords: {
       en: 'create resume website, resume website without coding, professional resume website, free online resume, online portfolio, personal website for resume',
@@ -67,7 +67,7 @@ export const blogArticles: BlogArticle[] = [
       en: 'Looking for the best tool to create your resume in 2025? We\'ve tested and compared the 7 best platforms (free and paid) to help you choose the perfect resume builder.',
       fr: 'À la recherche du meilleur outil pour créer votre CV en 2025 ? Nous avons testé et comparé les 7 meilleures plateformes (gratuites et payantes) pour vous aider à choisir le créateur de CV parfait.',
     },
-    image: 'https://www.cvfolio.app/assets/images/blog/article3.webp',
+    image: 'https://www.brevy.app/assets/images/blog/article3.webp',
     publishedTime: '2025-01-25T10:00:00Z',
     keywords: {
       en: 'best resume tools online, free resume builder, resume software, resume website, resume comparison, Canva, Zety, CVfolio',

@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/navbar";
 import { ArticleCard } from "@/components/shared/article-card";
 import { Helmet } from "react-helmet-async";
 import { getAllArticles } from "@/lib/blog-data";
-import cvfolioHomeDesc1 from "@/assets/cvfoliohomedesc_1.webp";
+import brevyHomeDesc1 from "@/assets/brevyhomedesc_1.webp";
 
 export default function Blog() {
   const { language } = useLanguage();
@@ -18,7 +18,7 @@ export default function Blog() {
     description: article.description[language as 'en' | 'fr'] || article.description.en,
     link: `/blog/${article.slug}`,
     date: article.publishedTime.split('T')[0], // Extract date from ISO string
-    imageUrl: article.image || cvfolioHomeDesc1,
+    imageUrl: article.image || brevyHomeDesc1,
   }));
 
   return (

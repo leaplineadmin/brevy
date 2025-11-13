@@ -10,10 +10,10 @@ import { useLanguageDetection } from "@/hooks/useLanguageDetection";
 import { Helmet } from "react-helmet-async";
 import { getAllArticles } from "@/lib/blog-data";
 import { ArticleCard } from "@/components/shared/article-card";
-import imgHeaderCvfolio from "@/assets/imgHeader-cvfolio.webp";
-import cvfolioHomeDesc1 from "@/assets/cvfoliohomedesc_1.webp";
-import cvfolioHomeDesc2 from "@/assets/cvfoliohomedesc_2.webp";
-import cvfolioHomeDesc3 from "@/assets/cvfoliohomedesc_3.webp";
+import imgHeaderBrevy from "@/assets/imgHeader-cvfolio.webp";
+import brevyHomeDesc1 from "@/assets/brevyhomedesc_1.webp";
+import brevyHomeDesc2 from "@/assets/brevyhomedesc_2.webp";
+import brevyHomeDesc3 from "@/assets/brevyhomedesc_3.webp";
 
 export default function HomePage() {
   const { isAuthenticated } = useAuth();
@@ -98,7 +98,7 @@ export default function HomePage() {
             {/* Right image - 3 columns */}
             <div className="col-span-3 max-md:order-1">
               <img
-                src={imgHeaderCvfolio}
+                src={imgHeaderBrevy}
                 alt="Person working on resume"
                 className="w-full object-cover object-center rounded-lg"
               />
@@ -112,7 +112,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg p-2 hover:shadow-xl transition-shadow duration-300">
               <div className="mb-2">
                 <img
-                  src={cvfolioHomeDesc2}
+                  src={brevyHomeDesc2}
                   alt="Style and color customization"
                   className="w-full h-auto rounded-lg"
                 />
@@ -128,7 +128,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg p-2 hover:shadow-xl transition-shadow duration-300">
               <div className="mb-2">
                 <img
-                  src={cvfolioHomeDesc3}
+                  src={brevyHomeDesc3}
                   alt="CV link sharing"
                   className="w-full h-auto rounded-lg"
                 />
@@ -144,7 +144,7 @@ export default function HomePage() {
             <div className="bg-white rounded-xl shadow-lg p-2 hover:shadow-xl transition-shadow duration-300">
               <div className="mb-2">
                 <img
-                  src={cvfolioHomeDesc1}
+                  src={brevyHomeDesc1}
                   alt="Interactive responsive CV"
                   className="w-full h-auto rounded-lg"
                 />
@@ -194,7 +194,7 @@ export default function HomePage() {
                       day: 'numeric',
                     }
                   )}
-                  imageUrl={article.image || cvfolioHomeDesc1}
+                  imageUrl={article.image || brevyHomeDesc1}
                 />
               ))}
           </div>

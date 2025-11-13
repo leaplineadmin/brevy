@@ -41,7 +41,7 @@ export const BlogPostingSchema: React.FC<BlogPostingSchemaProps> = ({
       "name": "CVfolio",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.cvfolio.app/logo-cvfolio.svg",
+        "url": "https://www.brevy.app/logo-brevy.svg",
       },
     },
     "datePublished": publishedTime.split('T')[0], // Format: YYYY-MM-DD
