@@ -1,0 +1,48 @@
+import { Request, Response, NextFunction } from 'express';
+import { logger } from '@shared/logger';
+
+export interface AppError extends Error {
+  statusCode?: number;
+  isOperational?: boolean;
+}
+
+export const errorHandler = (
+  error: AppError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const statusCode = error.statusCode || 500;
+  const message = error.message || 'Internal Server Error';
+
+  // Log error details
+  logger.error('API Error:', {
+    error: message,
+    stack: error.stack,
+    url: req.url,
+    method: req.method,
+    statusCode
+  });
+
+  // Don't leak error details in production
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  res.status(statusCode).json({
+    success: false,
+    message: isDevelopment ? message : 'Something went wrong',
+    ...(isDevelopment && { stack: error.stack })
+  });
+};
+
+export const notFoundHandler = (req: Request, res: Response) => {
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.originalUrl} not found`
+  });
+};
+
+export const asyncHandler = (fn: Function) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+};

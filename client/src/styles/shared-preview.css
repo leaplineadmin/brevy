@@ -1,0 +1,33 @@
+/* Styles spécifiques pour les CV partagés/publiés */
+.shared-preview .template-container,
+.shared-preview .template-container .resume,
+.shared-preview .template-container .resume-container {
+  min-height: 100vh !important;
+}
+
+/* Template Bento - Assurer que les variables CSS sont disponibles pour le background à points */
+.shared-preview .template-bento {
+  --darkColor: #0E1830;
+  --lightColor: #F0F0F0;
+  --midGrey: #888;
+  /* Fallback si color-mix n'est pas supporté */
+  --dot-bg: #f8f9fa;
+  --dot-color: var(--mainColor, #0048c2);
+  --dot-size: 1px;
+  --dot-space: 1.5rem;
+  
+  /* Assurer que le background à points est affiché */
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color) !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
+
+/* Fallback pour navigateurs qui supportent color-mix */
+@supports (background: color-mix(in srgb, red 5%, white)) {
+  .shared-preview .template-bento {
+    --dot-bg: color-mix(in srgb, var(--mainColor, #0048c2) 5%, #fff);
+  }
+}

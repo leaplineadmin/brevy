@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.cvfolio.app/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.cvfolio.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cvfolio.app/" />
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cvfolio.app/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cvfolio.app/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.cvfolio.app/fr/" />
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cvfolio.app/blog</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cvfolio.app/blog/how-to-create-professional-resume-2025</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cvfolio.app/blog/how-to-create-resume-website-10-minutes</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.cvfolio.app/blog/top-7-best-resume-builder-tools-2025</loc>
+    <lastmod>2025-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,438 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Palette officielle de l'application selon Styles.png */
+  --primary: #004ED4;
+  --primaryHover: #003694;
+  --primaryLight: #D9E7FF;
+  --primaryLightHover: #B7CAEB;
+  --secondary: #FF7D4E;
+  --secondaryHover: #C34D22;
+  --secondaryDark: #9B3821;
+  --secondaryDarkHover: #701B0E;
+  --secondaryLight: #FFE2D7;
+  --secondaryLightHover: #F5C1AE;
+  --tertiary: #F381B4;
+  --tertiaryHover: #BE4C8E;
+  --tertiaryDark: #952566;
+  --tertiaryDarkHover: #6D0D45;
+  --tertiaryLight: #F9D6E9;
+  --tertiaryLightHover: #F4B8D8;
+  --neutral: #0E2346;
+  --grey: #5D5E6B;
+  --midGrey: #C6C7D1;
+  --lightGrey: #E5E7EB;
+  --light: #f6f6f6;
+  --white: #FFFFFF;
+
+
+
+  /* Variables de layout */
+  --border-radius: 0.5rem;
+  --card-padding: 1.5rem;
+  --section-spacing: 1.5rem;
+  --input-height: 2.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply antialiased text-foreground font-sans;
+    background-color: var(--lightGrey);
+  }
+
+  .template-column {
+    background-color: var(--white) !important;
+  }
+
+  /* Styles pour les champs de saisie dans la première colonne */
+  .form-column input,
+  .form-column textarea,
+  .form-column select,
+  .form-column .select-trigger,
+  .form-column [data-radix-select-trigger],
+  /* S'assurer que les Select ont toujours un fond blanc et un alignement texte à gauche */
+  .select-trigger,
+  [data-radix-select-trigger] {
+    background-color: var(--white) !important;
+    text-align: left !important;
+  }
+
+  /* Assurer que le texte dans les selects est aligné à gauche */
+  [data-radix-select-value] {
+    text-align: left !important;
+  }
+
+  /* S'assurer que les menus déroulants ont un fond blanc */
+  .select-content,
+  [data-radix-select-content],
+  .select-viewport,
+  [data-radix-select-viewport],
+  /* Capture tous les éléments de l'UI des select */
+  [data-state="open"] .select-content,
+  [data-state="open"][data-radix-select-content],
+  [data-radix-select-item],
+  [data-radix-select-item-indicator],
+  [data-radix-select-separator],
+  [data-radix-select-group],
+  [data-radix-select-label],
+  [data-radix-select-item][data-highlighted],
+  .select-dropdown-menu,
+  .select-item {
+    background-color: var(--white) !important;
+  }
+
+  /* Style pour l'état focus des champs de saisie */
+  input:focus,
+  textarea:focus,
+  select:focus,
+  [data-radix-select-trigger]:focus,
+  [data-state="open"][data-radix-select-trigger] {
+    outline: none !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--primaryLight) !important;
+    ring-color: var(--primaryLight) !important;
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* S'assurer que les inputs à l'intérieur des composants shadcn ont aussi un fond blanc */
+  .form-column .input,
+  .form-column .textarea {
+    background-color: var(--white) !important;
+  }
+
+  /* Style pour les placeholders dans les formulaires */
+  input::placeholder,
+  input::-webkit-input-placeholder,
+  input::-moz-placeholder,
+  input:-ms-input-placeholder,
+  textarea::placeholder,
+  textarea::-webkit-input-placeholder,
+  textarea::-moz-placeholder,
+  textarea:-ms-input-placeholder,
+  select::placeholder,
+  select option.placeholder,
+  .placeholder,
+  .select-placeholder,
+  [data-placeholder],
+  /* Support pour les composants Radix Select */
+  [data-radix-select-value-placeholder],
+  .select-value[data-placeholder],
+  .select-trigger[data-placeholder],
+  [data-state="placeholder"],
+  .form-select-placeholder,
+  .shadcn-select-placeholder {
+    color: var(--midGrey) !important;
+    opacity: 1 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+
+  /* Style pour les options de sélection dans les Select */
+  .select-trigger .placeholder,
+  .select-value[data-placeholder] {
+    color: var(--midGrey) !important;
+  }
+
+  /* Assurer que tous les labels dans les formulaires ont la couleur grise */
+  label,
+  .form-label,
+  .form-item label,
+  .form-group label,
+  [data-shadcn-form-label] {
+    color: var(--grey) !important;
+  }
+
+
+
+
+}
+
+/* Les variables CSS sont déjà définies au début du fichier */
+
+@layer components {
+
+  /* Custom classes for CV builder */
+  .cv-section {
+    @apply border mb-6 bg-white overflow-hidden;
+    border-color: var(--lightGrey);
+    border-radius: var(--border-radius) !important;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .cv-section:hover {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.06);
+  }
+
+  .cv-section-header {
+    @apply flex items-center justify-between p-4 border-b;
+    border-color: var(--lightGrey);
+    background-color: #FBFBFB;
+  }
+
+  .cv-section-title {
+    @apply font-medium;
+    color: var(--neutral);
+    font: var(--font-subtitle);
+  }
+
+  /* Réduire la taille des pictos/cercles */
+  .cv-section .collapsible-trigger svg,
+  .cv-section-header svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Position de l'icône crayon */
+  .edit-icon-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  /* Style plus spécifique pour les sections CV dans la première colonne */
+  div[class*="col-span-3"].form-column .cv-section {
+    border-radius: var(--border-radius) !important;
+  }
+
+  .cv-input {
+    @apply w-full border focus:outline-none focus:ring-1 focus:ring-primary;
+    border-color: var(--lightGrey) !important;
+    color: var(--neutral);
+    height: var(--input-height);
+    border-radius: var(--border-radius);
+    padding: 0.625rem 0.75rem;
+    font: var(--font-body);
+    background-color: var(--white);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .cv-input:focus {
+    border-color: var(--primary);
+  }
+
+  .cv-input::placeholder {
+    color: var(--midGrey);
+  }
+
+  .cv-input:disabled {
+    background-color: var(--lightGrey);
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .cv-label {
+    @apply block mb-1 text-gray-700 font-medium;
+    font: var(--font-label);
+  }
+
+  .cv-button-primary {
+    @apply px-4 py-2 rounded-md transition-colors;
+    background-color: var(--primary);
+    color: var(--white);
+    font: var(--font-body);
+    border-radius: var(--border-radius);
+  }
+
+  .cv-button-primary:hover {
+    background-color: var(--primaryHover);
+  }
+
+  .cv-button-secondary {
+    @apply px-4 py-2 rounded-md hover:bg-opacity-80 transition-colors;
+    background-color: var(--lightBlue);
+    color: var(--primary);
+    font: var(--font-body);
+    border-radius: var(--border-radius);
+  }
+
+  .cv-button-add {
+    @apply flex items-center gap-1 transition-colors mt-2 px-3 rounded-md;
+    color: var(--primary);
+    font: var(--font-body);
+    height: 44px;
+    border: 1px solid var(--primaryLight);
+  }
+
+  .cv-button-add:hover {
+    color: var(--primaryHover);
+    background-color: var(--primaryLight);
+  }
+
+  /* S'assurer qu'il n'y a pas de doublons des boutons d'ajout */
+  .cv-button-add-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .cv-button-add-container .cv-button-add:first-child:not(:only-child) {
+    display: none;
+  }
+
+  .cv-global-switch {
+    @apply flex items-center mb-4 mt-1;
+  }
+
+  .cv-global-switch-label {
+    @apply ml-2 text-sm text-gray-500;
+  }
+
+  .cv-item-card {
+    @apply border rounded-md overflow-hidden bg-white;
+    border-color: var(--lightGrey);
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.02);
+  }
+
+  .cv-item-card:hover {
+    border-color: var(--midGrey);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.03);
+  }
+
+  .cv-item-header {
+    @apply flex justify-end items-center bg-white;
+    padding: .5rem .5rem 0 .5rem;
+  }
+
+  .cv-item-content {
+    @apply p-4;
+  }
+
+  .template-card {
+    @apply border p-3 rounded-md cursor-pointer flex flex-col items-center justify-center transition-all;
+  }
+
+  .template-card.active {
+    @apply border-2 shadow-md;
+    border-color: var(--primary);
+  }
+
+  .template-selector {
+    @apply flex space-x-6 justify-center mb-6;
+  }
+
+  /* Style pour gérer le hover des cartes de template */
+  .template-card-hover {
+    border-color: var(--lightGrey);
+    transition: border-color 0.2s ease;
+  }
+
+  .template-card-hover:hover {
+    border-color: var(--midGrey);
+  }
+
+  .template-card-selected {
+    border-color: var(--primary);
+  }
+
+  /* Note: Les styles pour .form-column sont déjà définis plus haut dans le fichier */
+
+  .template-column {
+    background-color: var(--white) !important;
+  }
+
+  /* Rich Text Editor Styles */
+  [contenteditable]:empty:before {
+    content: attr(data-placeholder);
+    color: #9CA3AF;
+    pointer-events: none;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  [contenteditable] ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  
+  [contenteditable] ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  
+  [contenteditable] li {
+    margin-bottom: 4px;
+  }
+  
+  [contenteditable] strong {
+    font-weight: bold;
+  }
+  
+  [contenteditable] em {
+    font-style: italic;
+  }
+  
+  [contenteditable] u {
+    text-decoration: underline;
+  }
+
+}
+
+/* Media query pour le titre du hero en mobile */
+@media (max-width: 560px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+}
+
+/* Template 2 - Responsive padding */
+.profile-infos.no-photo {
+  padding: 2rem !important;
+}
+
+@media (max-width: 768px) {
+  .profile-infos.no-photo {
+    padding: 1rem !important;
+  }
+}
+
+/* Template 5 - Skills progress bars styles */
+.skill-item {
+  margin-bottom: 0.5rem;
+}
+
+.skill-name-with-level {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.skills-bar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skills-bar span {
+  display: block;
+  height: 100%;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.skills-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-name-only {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}

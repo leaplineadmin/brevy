@@ -1,0 +1,548 @@
+/* =============== TEMPLATE 5 - WAVES =============== */
+
+.template-container {
+    container-type: inline-size;
+    container-name: template;
+}
+
+.template-datalover {
+    --mainColor: #008BC7;
+    --darkColor: #0E1830;
+    --separatorColor: rgba(255, 255, 255, 0.15);
+    --badgeColor: #fff;
+
+    width: 100%;
+    background-color: #000;
+    color: var(--white);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100%;
+    position: relative;
+
+    /* Global reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Header with Animation */
+    .waves-header {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background-color: color-mix(in srgb, var(--mainColor) 0.5%, #000);
+        z-index: 1;
+        overflow: hidden;
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: block;
+        }
+    }
+
+    /* Main Container */
+    .container {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: sticky;
+        top: 0;
+        flex: 1;
+        background-color: transparent;
+        padding: 40px;
+        z-index: 2;
+        align-self: flex-start;
+    }
+
+    .sidebar-inner {
+        position: relative;
+        transition: all 0.3s ease;
+
+        &.is-sticky .profile-pic {
+            margin-top: 0 !important;
+            width: 7rem !important;
+            height: 7rem !important;
+            transition: all 0.3s ease !important;
+        }
+    }
+
+    /* Profile */
+    .profile-pic {
+        width: 8rem;
+        height: 8rem;
+        background-color: #ccc;
+        border-radius: 50%;
+        margin-top: -6rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        border: 3px solid var(--mainColor);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .name {
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+
+    .role {
+        font-size: 1.125rem;
+        text-transform: uppercase;
+        color: var(--mainColor);
+        font-weight: 600;
+        opacity: 0.9;
+    }
+
+    .personal-location {
+        color: var(--midGrey);
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .summary {
+        font-size: 1.125rem;
+        font-style: italic;
+        color: var(--lightGrey);
+        margin: 2rem 0;
+    }
+
+    /* Contact */
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    .contact-item {
+        font-size: 16px;
+        color: color-mix(in srgb, var(--mainColor) 80%, white);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: .75rem;
+        gap: .75rem;
+        transition: all .2s ease-in-out;
+
+        .contact-item-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all .2s ease-in-out;
+        }
+
+        .link-arrow {
+            opacity: 0;
+            transition: all .2s ease-in-out;
+            width: 16px;
+            height: 0.75rem;
+            margin-top: 0.125rem;
+            fill: var(--mainColor);
+        }
+
+        &:hover {
+            gap: 0.75rem;
+
+            .link-arrow {
+                opacity: 1;
+            }
+        }
+    }
+
+    .contact-icon {
+        width: 2rem;
+        height: 2rem;
+        padding: .25rem;
+        border-radius: .25rem;
+        background-color: color-mix(in srgb, var(--mainColor) 20%, transparent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg path {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    /* Content Area */
+    .content {
+        flex: 2;
+        padding: 40px;
+        border-left: 1px solid var(--separatorColor);
+    }
+
+    .experience,
+    .education,
+    .certifications {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .section-title {
+        display: flex;
+        gap: .75rem;
+        font-size: 14px;
+        color: var(--midGrey);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--separatorColor);
+    }
+
+    /* Experience, Education & Certifications */
+    .experience-item,
+    .education-item,
+    .certification-item {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid transparent;
+        border-image: repeating-linear-gradient(to right, var(--separatorColor) 0 2px, transparent 2px 10px) 1;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .exp-left,
+    .edu-left,
+    .cert-left {
+        flex: 1 1 40%;
+        max-width: 300px;
+    }
+
+    .exp-right,
+    .edu-right {
+        flex: 2 1 60%;
+        padding-left: 40px;
+    }
+
+    .position {
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+
+    .exp-details,
+    .edu-details,
+    .cert-details {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--midGrey);
+    }
+
+    .placename {
+        text-transform: uppercase;
+        color: var(--mainColor);
+        font-weight: 600;
+    }
+
+    .dates {
+        font-style: italic;
+        opacity: 0.9;
+    }
+
+    .location {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-top: 0.25rem;
+    }
+
+    .description {
+        font-size: 14px;
+        color: #e0e0e0;
+
+        ul {
+            list-style: disc outside;
+            padding-left: 20px;
+            margin: 0;
+            font-size: 14px;
+            color: #e0e0e0;
+            line-height: 1.5;
+
+            li {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    /* Orginfo Layout */
+    .orginfo {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    /* Separator */
+    .separator {
+        height: 1px;
+        background-color: var(--separatorColor);
+        width: 100vw;
+        margin: 0;
+    }
+
+    /* Bottom Content - Languages + Skills */
+    .bottom-content {
+        display: flex;
+        margin: 0 auto 60px;
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .bottom-left {
+        flex: 1;
+        padding: 40px;
+    }
+
+    .bottom-right {
+        flex: 2;
+        padding: 40px;
+    }
+
+    .bottom-third {
+        flex: 1;
+        padding: 40px;
+    }
+
+    /* Languages */
+    .languages-list {
+        padding-top: 1.5rem;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+        }
+    }
+
+    .language-name {
+        font-weight: 500;
+    }
+
+    .language-level {
+        font-style: italic;
+        opacity: 0.8;
+    }
+
+    /* Skills */
+    .skills-container {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .skill-name {
+        display: inline-block;
+        background-color: color-mix(in srgb, var(--mainColor) 20%, transparent);
+        color: var(--badgeColor);
+        font-size: 13px;
+        padding: 4px 10px;
+        border-radius: .25rem;
+        margin: 0 0 .5rem 0;
+        width: fit-content;
+    }
+
+    .skill-item {}
+
+    .skill-name-with-level {
+        display: block;
+        font-size: 13px;
+        color: #e0e0e0;
+        margin-bottom: 0.5rem;
+    }
+
+    .skills-bar {
+        height: 6px;
+        background-color: rgba(224, 224, 224, 0.2);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: .5rem;
+
+        span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--mainColor) 40%, color-mix(in srgb, var(--mainColor) 60%, white));
+            border-radius: 3px;
+            animation: skillsBar 1.5s ease-out forwards;
+            transform-origin: left;
+        }
+    }
+
+    .skills-horizontal {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .skill-name-only {
+        display: inline-block;
+        background-color: color-mix(in srgb, var(--mainColor) 20%, transparent);
+        color: var(--badgeColor);
+        font-size: 13px;
+        padding: 4px 10px;
+        border-radius: .25rem;
+        margin: 0 0 .5rem 0;
+        width: fit-content;
+    }
+
+    .tools-section .section-title {
+        margin-top: 0.5rem !important;
+    }
+
+    /* Hobbies */
+    .hobbies-container {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .hobby-item {
+        display: inline-block;
+        background-color: color-mix(in srgb, var(--mainColor) 20%, transparent);
+        color: var(--badgeColor);
+        font-size: 13px;
+        padding: 4px 10px;
+        border-radius: .25rem;
+        margin: 0 0 .5rem 0;
+        width: fit-content;
+    }
+}
+
+/* Preview-specific styles */
+.shared-preview .template-datalover {
+    min-height: 100%;
+}
+
+.normal-preview .template-datalover {
+    min-height: 100%;
+}
+
+/* Responsive for mobile preview */
+.mobile-cv-layout .template-datalover .orginfo {
+    flex-direction: column !important;
+}
+
+/* Dynamic layout classes for bottom-container */
+.template-datalover .bottom-third {
+    flex: 0 0 33.333%;
+    padding: 40px;
+}
+
+/* Animation */
+@keyframes skillsBar {
+    from {
+        width: 0;
+    }
+}
+
+/* Responsive Design */
+
+/* Mobile (screen < 840px) */
+@container template (max-width: 840px) {
+    .template-datalover {
+        .container {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            position: relative;
+            padding: 24px;
+            border-bottom: 1px solid var(--separatorColor);
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 24px;
+            border-left: none;
+        }
+
+        .waves-header {
+            height: 140px;
+        }
+
+        .profile-pic {
+            width: 6rem;
+            height: 6rem;
+            margin-top: -70px;
+        }
+
+        .contact-info {
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .contact-item-link {
+            display: none !important;
+        }
+
+        .contact-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .experience-item,
+        .education-item {
+            flex-direction: column;
+        }
+
+        .exp-right,
+        .exp-left,
+        .edu-right,
+        .edu-left {
+            flex: none;
+        }
+
+        .exp-right,
+        .edu-right {
+            padding-left: 0;
+            margin-top: 12px;
+        }
+
+        .bottom-content {
+            flex-direction: column;
+        }
+
+        .bottom-left,
+        .bottom-right,
+        .bottom-third {
+            padding: 24px;
+            border-left: none;
+            width: 100%;
+        }
+
+        .orginfo {
+            flex-direction: column !important;
+        }
+
+        .languages-list li {
+            flex-direction: column;
+        }
+    }
+}

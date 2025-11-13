@@ -1,0 +1,1 @@
+// Fichier supprimé - iframe-resizer n'est plus utilisé

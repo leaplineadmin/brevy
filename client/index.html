@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <!-- Primary Meta Tags -->
+    <title>CVfolio - Create Interactive Resumes | Professional CV Builder</title>
+    <meta name="title" content="CVfolio - Create Interactive Resumes | Professional CV Builder" />
+    <meta name="description" content="Create professional, interactive resumes in minutes. No design skills required. Choose from multiple templates, customize colors, and share your CV with a unique link. Download as PDF." />
+    <meta name="keywords" content="CV builder, resume builder, interactive CV, professional resume, CV templates, online CV, digital resume, PDF CV" />
+    <meta name="author" content="CVfolio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cvfolio.app/" />
+    <meta property="og:title" content="CVfolio - Create Interactive Resumes | Professional CV Builder" />
+    <meta property="og:description" content="Create professional, interactive resumes in minutes. No design skills required. Choose from multiple templates, customize colors, and share your CV with a unique link." />
+    <meta property="og:image" content="https://cvfolio.app/assets/imgHeader-cvfolio.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="CVfolio" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://cvfolio.app/" />
+    <meta property="twitter:title" content="CVfolio - Create Interactive Resumes | Professional CV Builder" />
+    <meta property="twitter:description" content="Create professional, interactive resumes in minutes. No design skills required. Choose from multiple templates, customize colors, and share your CV with a unique link." />
+    <meta property="twitter:image" content="https://cvfolio.app/assets/imgHeader-cvfolio.webp" />
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+    <link rel="canonical" href="https://cvfolio.app/" />
+    
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://cvfolio.app/" />
+    <link rel="alternate" hreflang="fr" href="https://cvfolio.app/fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://cvfolio.app/" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CVfolio",
+      "description": "Create professional, interactive resumes in minutes. No design skills required.",
+      "url": "https://cvfolio.app",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "CVfolio"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.prerenderReady = false;
+    </script>
+    <script>
+      // Détection intelligente de la langue
+      (function() {
+        const path = window.location.pathname;
+        let lang = 'en';
+        
+        if (path.startsWith('/fr')) {
+          lang = 'fr';
+        } else {
+          const savedLang = localStorage.getItem('lang');
+          if (savedLang && ['en', 'fr'].includes(savedLang)) {
+            lang = savedLang;
+          } else {
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang && browserLang.startsWith('fr')) {
+              lang = 'fr';
+            }
+          }
+        }
+        
+        localStorage.setItem('lang', lang);
+        document.cookie = `lang=${lang}; max-age=31536000; path=/; SameSite=Lax`;
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

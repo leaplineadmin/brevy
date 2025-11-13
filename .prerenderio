@@ -1,0 +1,19 @@
+# Prerender.io configuration
+# Only prerender the homepage for SEO
+# Exclude all other pages to prevent JavaScript asset issues
+
+# Whitelist only the homepage
+whitelist:
+  - "^/$"
+  - "^/fr$"
+
+# Blacklist all other pages
+blacklist:
+  - "/auth"
+  - "/auth/*"
+  - "/cv-builder"
+  - "/cv-builder/*"
+  - "/dashboard"
+  - "/dashboard/*"
+  - "/api"
+  - "/api/*"

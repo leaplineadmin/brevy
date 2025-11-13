@@ -1,0 +1,541 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "cvBuilder": "Créateur de CV",
+    "myCvs": "Mes CVs"
+  },
+  "home": {
+    "hero": {
+      "title": "Démarquez-vous avec un CV interactif",
+      "subtitle": "Design intuitif, modèles personnalisables et export PDF de qualité",
+      "cta": "Commencer gratuitement",
+      "features": {
+        "professional": "Un CV numérique professionnel en quelques minutes",
+        "noSkills": "Aucune compétence en design ou en programmation requise.",
+        "pdf": "Une version PDF téléchargeable disponible.",
+        "impact": "Impact sur 73% des recruteurs*"
+      }
+    },
+    "cards": {
+      "chooseLayoutTitle": "Choisissez une mise en page",
+      "chooseLayoutDescription": "Sélectionnez un modèle, personnalisez les couleurs et ajoutez votre contenu en quelques clics.",
+      "publishTitle": "Publiez votre CV",
+      "publishDescription": "Générez et envoyez un lien unique et professionnel. Les mises à jour apparaissent instantanément.",
+      "viewAnywhereTitle": "Visualisez-le partout",
+      "viewAnywhereDescription": "Votre CV s'adapte à tout écran. Les recruteurs peuvent le lire sur tous les appareils."
+    },
+    "studyFootnote": "* Étude Qureos 2025",
+    "footer": {
+      "rights": "Tous droits réservés - cvfolio.app",
+      "legal": "Mentions légales"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Se connecter",
+      "email": "Adresse email",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signUp": "S'inscrire"
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "description": "Entrez votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+      "emailPlaceholder": "Votre adresse email",
+      "cancel": "Annuler",
+      "send": "Envoyer le lien"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "username": "Nom d'utilisateur",
+      "email": "Adresse email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "S'inscrire",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter"
+    },
+    "loading": "En cours...",
+    "or": "ou",
+    "signUpWithGoogle": "S'inscrire avec Google",
+    "continueWithGoogle": "Continuer avec Google",
+    "ui": {
+      "back": "Retour",
+      "saveYourCV": "Sauvegardez votre CV",
+      "editAndShare": "Modifiez et partagez votre CV à tout moment",
+      "createUnlimited": "Créez des CVs illimités",
+      "hidePassword": "Masquer le mot de passe",
+      "showPassword": "Afficher le mot de passe",
+      "or": "ou",
+      "loading": "En cours...",
+      "continueWithGoogle": "Continuer avec Google"
+    }
+  },
+  "authPage": {
+    "enterEmailPassword": "Entrez votre email et mot de passe pour vous connecter ou créer un nouveau compte",
+    "continueWithGoogleDescription": "Nous vous connecterons automatiquement ou créerons un nouveau compte."
+  },
+  "premium": {
+    "banner": {
+      "saveEditMessage": "Vous pouvez sauvegarder et modifier ce modèle autant que vous le souhaitez. Pour le publier, passez à Premium.",
+      "unlockMessage": "Débloquez tous les modèles et supprimez le tag \"Créé avec CVfolio\" avec un abonnement Premium (3,90€/mois)",
+      "subscribeButton": "S'abonner à Premium"
+    },
+    "toasts": {
+      "welcome": "Bienvenue sur Premium ! 🎉",
+      "welcomeDescription": "Votre abonnement est maintenant actif. Profitez de toutes les fonctionnalités premium !",
+      "welcomeCvSaved": "Bienvenue sur Premium !",
+      "welcomeCvSavedDescription": "Votre CV a été sauvegardé avec succès. Profitez de toutes les fonctionnalités premium !",
+      "subscriptionSuccessful": "Abonnement réussi",
+      "subscriptionSuccessfulDescription": "Bienvenue sur Premium ! Redirection vers le tableau de bord...",
+      "paymentSuccessful": "Paiement réussi !",
+      "paymentSuccessfulDescription": "Votre abonnement Premium est maintenant actif. Profitez de toutes les fonctionnalités premium !",
+      "premiumActivated": "Premium activé !",
+      "premiumActivatedDescription": "Votre abonnement Premium est maintenant actif. Profitez de toutes les fonctionnalités premium !",
+      "noActiveSubscription": "Aucun abonnement actif",
+      "noActiveSubscriptionDescription": "Aucun abonnement actif trouvé. Veuillez vous abonner à Premium.",
+      "alreadySubscribed": "Déjà abonné",
+      "alreadySubscribedDescription": "Vous avez déjà accès à Premium. Redirection vers le créateur de CV...",
+      "authenticationRequired": "Authentification requise",
+      "authenticationRequiredDescription": "Veuillez vous connecter pour vous abonner à Premium",
+      "subscriptionScheduled": "Abonnement programmé pour annulation",
+      "subscriptionScheduledDescription": "Vous conserverez l'accès Premium jusqu'à la fin de votre période de facturation actuelle."
+    },
+    "dashboard": {
+      "premiumBadge": "Premium",
+      "unsubscribeButton": "Se désabonner de Premium",
+      "cancelSubscriptionTitle": "Annuler votre abonnement Premium",
+      "cancelSubscriptionDescription": "Votre abonnement Premium sera annulé et vous perdrez immédiatement l'accès aux fonctionnalités premium.",
+      "premiumFeaturesActive": "Vous perdrez immédiatement l'accès aux fonctionnalités premium après vous être désabonné.",
+      "keepPremium": "Conserver Premium"
+    },
+    "checkout": {
+      "title": "CVfolio Premium",
+      "price": "3,90€/mois • Annuler à tout moment",
+      "subscribeButton": "S'abonner à Premium",
+      "processing": "Traitement..."
+    },
+    "subscription": {
+      "title": "Abonnement Premium",
+      "description": "Abonnez-vous à Premium pour 3,90€/mois et débloquez tous les modèles professionnels",
+      "planTitle": "Plan Premium",
+      "planPrice": "3,90€/mois"
+    }
+  },
+  "modals": {
+    "contactInfoRequired": "Informations de contact requises",
+    "missingInfo": "Certaines informations manquent",
+    "authenticationRequired": "Authentification requise",
+    "missingInfoDescription": "Vous n'avez pas saisi certaines informations de profil de base. Ajoutez-les quand vous serez prêt",
+    "ignoreAndSave": "Ignorer et sauvegarder",
+    "gotItComplete": "Compléter mon CV",
+    "contactPhoneMessage": "Ce lien n'est pas encore disponible. Veuillez d'abord saisir votre numéro de téléphone dans le formulaire",
+    "contactEmailMessage": "Ce lien n'est pas encore disponible. Veuillez d'abord saisir votre adresse email dans le formulaire",
+    "contactLinkedinMessage": "Ce lien n'est pas encore disponible. Veuillez d'abord saisir votre profil LinkedIn dans le formulaire",
+    "contactWebsiteMessage": "Ce lien n'est pas encore disponible. Veuillez d'abord saisir l'URL de votre site web dans le formulaire",
+    "contactDefaultMessage": "Ce lien n'est pas encore disponible. Veuillez saisir les informations dans le formulaire"
+  },
+  "toasts": {
+    "authenticationRequired": "Authentification requise",
+    "signInRequired": "Veuillez vous connecter pour continuer",
+    "accountCreated": "Compte créé avec succès",
+    "welcomeBack": "Bon retour",
+    "cvSaved": "CV sauvegardé avec succès",
+    "cvUpdated": "CV mis à jour avec succès",
+    "errorOccurred": "Une erreur s'est produite",
+    "signInToDownload": "Connectez-vous ou créez un compte pour télécharger le fichier PDF"
+  },
+  "navbar": {
+    "signIn": "Se connecter",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "createCv": "Créer mon CV",
+    "saveCv": "Sauvegarder le CV",
+    "updateCv": "Mettre à jour le CV"
+  },
+  "dashboard": {
+    "title": "Mes CV",
+    "subtitle": "Créez et gérez vos CV professionnels",
+    "createdOn": "Créé le",
+    "modifiedOn": "Modifié le",
+    "editAndPreview": "Éditer et prévisualiser",
+    "publish": "Publier",
+    "publishedAt": "Publié",
+    "viewOnlinePage": "Ouvir",
+    "copyUrl": "Copier l'URL",
+    "unpublish": "Dépublier",
+    "createNewResume": "Créer un nouveau CV",
+    "newResumeDescription": "Votre nouveau CV professionnel sera affiché ici",
+    "premiumFeature": "Fonctionnalité Premium",
+    "premiumFeatureDescription": "Les utilisateurs Free ne peuvent créer qu'un seul CV. Abonnez-vous à Premium pour créer des CVs illimités.",
+    "noResumesYet": "Aucun CV créé pour le moment",
+    "startCreating": "Commencez par créer votre premier CV professionnel",
+    "createFirstResume": "Créer mon premier CV"
+  },
+  "cvBuilder": {
+    "title": {
+      "untitled": "CV sans titre"
+    },
+    "controls": {
+      "mainColor": "Couleur principale",
+      "hideSkillLevels": "Masquer les niveaux"
+    },
+    "sections": {
+      "contactInfo": "Informations de contact",
+      "personalInfo": "Informations personnelles",
+      "summary": "Résumé",
+      "experience": "Expérience",
+      "education": "Formation",
+      "skills": "Compétences",
+      "languages": "Langues",
+      "tools": "Outils",
+      "certifications": "Certifications",
+      "hobbies": "Centres d'intérêt"
+    },
+    "personalInfo": {
+      "profilePhoto": "Photo de profil",
+      "addPhoto": "Ajouter une photo",
+      "hidePhoto": "Masquer la photo",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "jobTitle": "Titre du poste",
+      "country": "Pays",
+      "city": "Ville",
+      "email": "Email",
+      "phone": "Téléphone",
+      "linkedin": "LinkedIn",
+      "website": "Site web",
+      "hideCity": "Masquer la ville",
+      "hideLinkedin": "Masquer LinkedIn",
+      "hideWebsite": "Masquer le site web",
+      "placeholders": {
+        "firstName": "Entrez votre prénom",
+        "lastName": "Entrez votre nom",
+        "jobTitle": "Entrez votre titre de poste",
+        "country": "Sélectionnez votre pays",
+        "city": "Entrez votre ville",
+        "email": "Entrez votre adresse email",
+        "phone": "Entrez votre numéro de téléphone",
+        "linkedin": "Entrez l'URL de votre profil LinkedIn",
+        "website": "Entrez l'URL de votre site web"
+      }
+    },
+    "previewControls": {
+      "desktop": "Ordinateur",
+      "mobile": "Mobile",
+      "fullscreen": "Plein écran"
+    },
+    "templateSelector": {
+      "title": "Choisissez un modèle",
+      "description": "Sélectionnez le modèle qui correspond le mieux à votre style",
+      "drawerTitle": "Sélectionner un modèle",
+      "drawerDescription": "Choisissez le modèle qui correspond le mieux à votre style professionnel"
+    },
+    "cvUploader": {
+      "title": "Gagnez du temps !",
+      "description": "Uploadez votre CV existant et nous remplirons le formulaire automatiquement",
+      "buttonText": "Choisir un fichier (PDF ou Word)",
+      "analyzing": "Analyse en cours...",
+      "successMessage": "CV analysé avec succès ! Le formulaire a été rempli.",
+      "successTitle": "CV téléchargé",
+      "successDescription": "Nous avons extrait vos informations avec succès. Vérifiez le formulaire avant publication.",
+      "errorFileType": "Format non supporté. Utilisez un fichier PDF ou Word.",
+      "errorFileSize": "Le fichier est trop volumineux (max 5 MB).",
+      "errorConnection": "Impossible de se connecter au serveur. Vérifiez votre connexion.",
+      "errorAnalysis": "Une erreur est survenue. Veuillez réessayer.",
+      "errorTitle": "Échec du téléchargement",
+      "errorDescription": "Nous n'avons pas pu lire vos informations. Veuillez réessayer.",
+      "retryButton": "Télécharger un fichier (.pdf, .doc)"
+    },
+    "subdomainConflict": {
+      "title": "Nom d'utilisateur déjà pris",
+      "description": "Ce nom d'utilisateur existe déjà. Choisissez un autre nom pour votre URL personnalisée.",
+      "suggested": "Suggestion :",
+      "useSuggested": "Utiliser cette suggestion",
+      "customLabel": "Votre nom d'utilisateur personnalisé",
+      "placeholder": "votre-nom-utilisateur",
+      "available": "Disponible !",
+      "notAvailable": "Ce nom n'est pas disponible",
+      "checkError": "Erreur lors de la vérification",
+      "rules": "Utilisez uniquement des lettres, chiffres et tirets. Pas d'espaces ni de caractères spéciaux.",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    },
+    "templates": {
+      "experience": {
+        "present": "Actuellement"
+      },
+      "sections": {
+        "experience": "Expérience",
+        "education": "Formation",
+        "skills": "Compétences",
+        "languages": "Langues",
+        "tools": "Outils",
+        "certifications": "Certifications",
+        "hobbies": "Loisirs"
+      },
+      "fields": {
+        "jobTitle": "Intitulé du Poste",
+        "company": "Nom de l'Entreprise",
+        "location": "Ville, Pays",
+        "degree": "Diplôme obtenu",
+        "school": "Nom de l'école"
+      }
+    },
+    "experience": {
+      "position": "Poste",
+      "company": "Entreprise",
+      "location": "Lieu",
+      "from": "De",
+      "to": "À",
+      "current": "Actuel",
+      "description": "Description",
+      "add": "Ajouter une expérience",
+      "noExperience": "Aucune expérience ajoutée. Cliquez sur \"+\" pour inclure votre parcours professionnel.",
+      "placeholders": {
+        "position": "Entrez votre titre de poste",
+        "company": "Entrez le nom de l'entreprise",
+        "location": "Entrez le lieu de travail",
+        "description": "Décrivez vos responsabilités et réalisations"
+      }
+    },
+    "education": {
+      "degree": "Diplôme",
+      "school": "École",
+      "location": "Lieu",
+      "from": "De",
+      "to": "À",
+      "description": "Description",
+      "add": "Ajouter une formation",
+      "noEducation": "Aucune formation ajoutée. Cliquez sur \"+\" pour inclure votre parcours académique.",
+      "placeholders": {
+        "degree": "Entrez votre diplôme ou qualification",
+        "school": "Entrez le nom de l'école ou université",
+        "location": "Entrez le lieu de l'école",
+        "description": "Décrivez vos études et réalisations"
+      }
+    },
+    "skills": {
+      "add": "Ajouter une compétence",
+      "noSkills": "Aucune compétence ajoutée. Cliquez sur \"+\" pour inclure vos compétences.",
+      "placeholders": {
+        "name": "Entrez le nom de la compétence"
+      }
+    },
+    "tools": {
+      "add": "Ajouter un outil",
+      "noTools": "Aucun outil ajouté. Cliquez sur \"+\" pour inclure vos outils.",
+      "placeholders": {
+        "name": "Entrez le nom de l'outil"
+      }
+    },
+    "sections": {
+      "contactInfo": "Informations de contact",
+      "summary": "Résumé",
+      "experience": "Expérience",
+      "education": "Formation",
+      "skills": "Compétences",
+      "languages": "Langues",
+      "tools": "Outils",
+      "certifications": "Certifications",
+      "hobbies": "Loisirs",
+      "addSkill": "Ajouter une compétence",
+      "addCategory": "Ajouter une catégorie",
+      "addSection": "Ajouter la section {title}"
+    },
+    "personalInfo": {
+      "profilePhoto": "Photo de profil",
+      "addPhoto": "Ajouter une photo",
+      "hidePhoto": "Masquer la photo",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "jobTitle": "Titre du poste",
+      "country": "Pays",
+      "city": "Ville",
+      "hideCity": "Masquer la ville",
+      "email": "Email",
+      "phone": "Téléphone",
+      "linkedin": "LinkedIn",
+      "hideLinkedIn": "Masquer LinkedIn",
+      "website": "Site web",
+      "hideWebsite": "Masquer le site web",
+      "summary": "Résumé",
+      "placeholders": {
+        "firstName": "Entrez votre prénom",
+        "lastName": "Entrez votre nom",
+        "jobTitle": "Entrez votre titre de poste",
+        "country": "Entrez votre pays",
+        "city": "Entrez votre ville",
+        "email": "Entrez votre adresse email",
+        "linkedin": "Entrez votre profil LinkedIn",
+        "website": "Entrez l'URL de votre site web",
+        "summary": "Rédigez un bref résumé de votre parcours professionnel et de vos principales réalisations"
+      }
+    },
+    "title": {
+      "untitled": "CV sans titre",
+      "prompt": "Entrez le titre du CV"
+    },
+    "mobile": {
+      "myInfo": "Mes infos",
+      "preview": "Aperçu"
+    },
+    "previewControls": {
+      "fullscreen": "Plein écran",
+      "desktop": "Bureau",
+      "mobile": "Mobile"
+    }
+  },
+  "templates": {
+    "sections": {
+      "experience": "Expérience",
+      "education": "Formation",
+      "skills": "Compétences",
+      "languages": "Langues",
+      "tools": "Outils",
+      "certifications": "Certifications",
+      "hobbies": "Centres d'intérêt",
+      "addSkill": "Ajouter une compétence"
+    },
+    "fields": {
+      "degree": "Diplôme"
+    },
+    "languageLevels": {
+      "elementary": "Notions de base",
+      "limited": "Compétence professionnelle limitée",
+      "professional": "Compétence professionnelle complète",
+      "native": "Langue maternelle ou bilingue"
+    },
+    "skills": {
+      "publicSpeaking": "Communication",
+      "projectManagement": "Gestion de projet",
+      "hideSkillLevels": "Masquer le niveau",
+      "skill": "Compétence",
+      "skillLevel": "Niveau",
+      "novice": "Débutant",
+      "intermediate": "Intermédiaire",
+      "proficient": "Avancé",
+      "expert": "Expert"
+    },
+    "contacts": {
+      "viewLinkedin": "Voir le profil LinkedIn",
+      "viewWebsite": "Voir le site web",
+      "sendEmail": "Envoyer un email",
+      "callPhone": "Appeler"
+    },
+    "form": {
+      "language": "Langue",
+      "proficiency": "Niveau",
+      "addLanguage": "Ajouter une langue"
+    },
+    "months": {
+      "jan": "Janv.",
+      "feb": "Févr.",
+      "mar": "Mars",
+      "apr": "Avr.",
+      "may": "Mai",
+      "jun": "Juin",
+      "jul": "Juill.",
+      "aug": "Août",
+      "sep": "Sept.",
+      "oct": "Oct.",
+      "nov": "Nov.",
+      "dec": "Déc."
+    }
+  },
+  "ui": {
+    "loading": "Chargement...",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "remove": "Retirer",
+    "back": "Retour",
+    "next": "Suivant",
+    "close": "Fermer",
+    "continue": "Continuer",
+    "continueWithGoogle": "Continuer avec Google"
+  },
+  "validation": {
+    "invalidEmail": "Veuillez entrer une adresse email valide",
+    "invalidUrl": "Veuillez entrer une URL valide"
+  },
+  "gdpr": {
+    "cookies": {
+      "banner": {
+        "title": "Consentement aux cookies",
+        "description": "Nous utilisons des cookies pour améliorer votre expérience de navigation, analyser le trafic du site et personnaliser le contenu. En cliquant sur \"Tout accepter\", vous acceptez notre utilisation des cookies. Vous pouvez gérer vos préférences à tout moment.",
+        "acceptAll": "Tout accepter",
+        "rejectAll": "Tout refuser",
+        "customize": "Personnaliser",
+        "manageCookies": "Gestion des cookies",
+        "privacyPolicyLink": "Politique de Confidentialité"
+      },
+      "panel": {
+        "title": "Préférences de cookies",
+        "description": "Gérez vos préférences de cookies. Vous pouvez activer ou désactiver différents types de cookies ci-dessous.",
+        "essential": {
+          "title": "Cookies essentiels",
+          "description": "Ces cookies sont nécessaires au bon fonctionnement du site web. Ils ne peuvent pas être désactivés.",
+          "alwaysActive": "Toujours actif"
+        },
+        "analytics": {
+          "title": "Cookies d'analyse",
+          "description": "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site web en collectant et en rapportant des informations de manière anonyme."
+        },
+        "advertising": {
+          "title": "Cookies publicitaires",
+          "description": "Ces cookies sont utilisés pour diffuser des publicités et suivre les campagnes. Ils peuvent être utilisés par des réseaux publicitaires tiers."
+        },
+        "save": "Enregistrer les préférences",
+        "cancel": "Annuler"
+      }
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "lastUpdated": "Dernière mise à jour : janvier 2025"
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "lastUpdated": "Dernière mise à jour : janvier 2025"
+    },
+    "dataManagement": {
+      "title": "Mes Données Personnelles",
+      "description": "Gérez vos données personnelles et exercez vos droits en vertu du RGPD",
+      "exportData": {
+        "title": "Télécharger Mes Données",
+        "description": "Téléchargez une copie de toutes vos données personnelles au format JSON",
+        "button": "Télécharger Mes Données",
+        "downloading": "Préparation du téléchargement...",
+        "success": "Vos données ont été téléchargées avec succès"
+      },
+      "deleteAccount": {
+        "title": "Supprimer Mon Compte",
+        "description": "Supprimer définitivement votre compte et toutes les données associées. Cette action est irréversible.",
+        "button": "Supprimer Mon Compte",
+        "confirmTitle": "Confirmer la Suppression du Compte",
+        "confirmDescription": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible. Tous vos CVs, données et abonnement seront définitivement supprimés.",
+        "passwordRequired": "Veuillez entrer votre mot de passe pour confirmer la suppression",
+        "passwordPlaceholder": "Entrez votre mot de passe",
+        "deleting": "Suppression du compte...",
+        "success": "Votre compte a été supprimé avec succès"
+      }
+    },
+    "auth": {
+      "acceptTerms": "J'ai lu et j'accepte les",
+      "acceptPrivacy": "J'ai lu et je comprends la",
+      "termsOfService": "Conditions d'Utilisation",
+      "privacyPolicy": "Politique de Confidentialité",
+      "mustAccept": "Vous devez accepter les Conditions d'Utilisation et la Politique de Confidentialité pour créer un compte",
+      "googleAcceptText": "En continuant, vous acceptez notre"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "prerender",
+  "compatibility_date": "2025-01-11",
+  "assets": {
+    "directory": "./client/dist"
+  }
+}

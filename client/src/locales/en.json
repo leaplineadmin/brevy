@@ -1,0 +1,540 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "cvBuilder": "CV Builder",
+    "myCvs": "My CVs"
+  },
+  "home": {
+    "hero": {
+      "title": "Stand out with an interactive resume",
+      "subtitle": "Intuitive design, customizable templates and quality PDF export",
+      "cta": "Start for free",
+      "features": {
+        "professional": "A professional digital resume in minutes",
+        "noSkills": "No design or coding skills required.",
+        "pdf": "A downloadable PDF version available.",
+        "impact": "Impact on 73% of recruiters*"
+      }
+    },
+    "cards": {
+      "chooseLayoutTitle": "Choose a layout",
+      "chooseLayoutDescription": "Pick a template, customize the colors, and add your content in just a few clicks.",
+      "publishTitle": "Publish your resume",
+      "publishDescription": "Generate and send a unique and professional link. Updates appear instantly.",
+      "viewAnywhereTitle": "View it anywhere",
+      "viewAnywhereDescription": "Your resume adapts to any screen. Recruiters can read it on all devices."
+    },
+    "studyFootnote": "* Qureos Study 2025",
+    "footer": {
+      "rights": "All rights reserved - cvfolio.app",
+      "legal": "Legal Notice"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "email": "Email address",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "description": "Enter your email address and we'll send you a link to reset your password.",
+      "emailPlaceholder": "Your email address",
+      "cancel": "Cancel",
+      "send": "Send Link"
+    },
+    "register": {
+      "title": "Create Account",
+      "username": "Username",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "submit": "Sign up",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "loading": "Loading...",
+    "or": "or",
+    "signUpWithGoogle": "Sign up with Google",
+    "continueWithGoogle": "Continue with Google",
+    "ui": {
+      "back": "Back",
+      "saveYourCV": "Save your CV",
+      "editAndShare": "Edit and share your CV anytime",
+      "createUnlimited": "Create unlimited CVs",
+      "hidePassword": "Hide password",
+      "showPassword": "Show password",
+      "or": "or",
+      "loading": "Loading...",
+      "continueWithGoogle": "Continue with Google"
+    }
+  },
+  "authPage": {
+    "enterEmailPassword": "Enter your email and password to sign in or create a new account",
+    "continueWithGoogleDescription": "We'll automatically sign you in or create a new account."
+  },
+  "premium": {
+    "banner": {
+      "saveEditMessage": "You can save and edit this template as much as you like. To publish it, upgrade to Premium.",
+      "unlockMessage": "Unlock all templates and remove the \"Created with CVfolio\" tag with a Premium Subscription (€3.90/month)",
+      "subscribeButton": "Subscribe to Premium"
+    },
+    "toasts": {
+      "welcome": "Welcome to Premium! 🎉",
+      "welcomeDescription": "Your subscription is now active. Enjoy all premium features!",
+      "welcomeCvSaved": "Welcome to Premium!",
+      "welcomeCvSavedDescription": "Your CV has been saved successfully. Enjoy all premium features!",
+      "subscriptionSuccessful": "Subscription Successful",
+      "subscriptionSuccessfulDescription": "Welcome to Premium! Redirecting to dashboard...",
+      "paymentSuccessful": "Payment Successful!",
+      "paymentSuccessfulDescription": "Your Premium subscription is now active. Enjoy all premium features!",
+      "premiumActivated": "Premium Activated!",
+      "premiumActivatedDescription": "Your Premium subscription is now active. Enjoy all premium features!",
+      "noActiveSubscription": "No Active Subscription",
+      "noActiveSubscriptionDescription": "No active subscription found. Please subscribe to Premium.",
+      "alreadySubscribed": "Already subscribed",
+      "alreadySubscribedDescription": "You already have Premium access. Redirecting to CV builder...",
+      "authenticationRequired": "Authentication Required",
+      "authenticationRequiredDescription": "Please sign in to subscribe to Premium",
+      "subscriptionScheduled": "Subscription scheduled for cancellation",
+      "subscriptionScheduledDescription": "You will retain Premium access until the end of your current billing period."
+    },
+    "dashboard": {
+      "premiumBadge": "Premium",
+      "unsubscribeButton": "Unsubscribe to Premium",
+      "cancelSubscriptionTitle": "Cancel your Premium subscription",
+      "cancelSubscriptionDescription": "Your Premium subscription will be cancelled and you will lose access to premium features immediately.",
+      "premiumFeaturesActive": "You will lose access to premium features immediately after unsubscribing.",
+      "keepPremium": "Keep Premium"
+    },
+    "checkout": {
+      "title": "CVfolio Premium",
+      "price": "€3.90/month • Cancel anytime",
+      "subscribeButton": "Subscribe to Premium",
+      "processing": "Processing..."
+    },
+    "subscription": {
+      "title": "Premium Subscription",
+      "description": "Subscribe to Premium for €3.90/month and unlock all professional templates",
+      "planTitle": "Premium Plan",
+      "planPrice": "€3.90/month"
+    }
+  },
+  "modals": {
+    "contactInfoRequired": "Contact Information Required",
+    "missingInfo": "Some informations are missing",
+    "authenticationRequired": "Authentication required",
+    "missingInfoDescription": "You haven't entered some basic profile information. Add them when you're ready",
+    "ignoreAndSave": "Ignore and Save",
+    "gotItComplete": "I complete my CV",
+    "contactPhoneMessage": "This link is not available yet. Please enter first your phone number in the form",
+    "contactEmailMessage": "This link is not available yet. Please enter first your Email address in the form",
+    "contactLinkedinMessage": "This link is not available yet. Please enter first your LinkedIn profile in the form",
+    "contactWebsiteMessage": "This link is not available yet. Please enter first your Website url in the form",
+    "contactDefaultMessage": "This link is not available yet. Please enter the information in the form"
+  },
+  "toasts": {
+    "authenticationRequired": "Authentication required",
+    "signInRequired": "Please sign in to continue",
+    "accountCreated": "Account created successfully",
+    "welcomeBack": "Welcome back",
+    "cvSaved": "CV saved successfully",
+    "cvUpdated": "CV updated successfully",
+    "errorOccurred": "An error occurred",
+    "signInToDownload": "Sign in or create an account to download the PDF file"
+  },
+  "navbar": {
+    "signIn": "Sign In",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "createCv": "Create my resume",
+    "saveCv": "Save my Resume",
+    "updateCv": "Update CV"
+  },
+  "dashboard": {
+    "title": "My Resumes",
+    "subtitle": "Create and manage your professional resumes",
+    "createdOn": "Created on",
+    "modifiedOn": "Modified on",
+    "editAndPreview": "Edit and preview",
+    "publish": "Publish",
+    "publishedAt": "Published",
+    "viewOnlinePage": "Open",
+    "copyUrl": "Copy URL",
+    "unpublish": "Unpublish",
+    "createNewResume": "Create a new resume",
+    "newResumeDescription": "Your new professional CV will be displayed here",
+    "premiumFeature": "Premium Feature",
+    "premiumFeatureDescription": "Free users can only create one resume. Subscribe to Premium to create unlimited resumes.",
+    "noResumesYet": "No resumes created yet",
+    "startCreating": "Start by creating your first professional resume",
+    "createFirstResume": "Create my first resume"
+  },
+  "cvBuilder": {
+    "title": {
+      "untitled": "Untitled Resume"
+    },
+    "controls": {
+      "mainColor": "Main color",
+      "hideSkillLevels": "Hide skill levels"
+    },
+    "sections": {
+      "contactInfo": "Contact Information",
+      "personalInfo": "Personal Information",
+      "summary": "Summary",
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "languages": "Languages",
+      "tools": "Tools",
+      "certifications": "Certifications",
+      "hobbies": "Hobbies"
+    },
+    "personalInfo": {
+      "profilePhoto": "Profile Photo",
+      "addPhoto": "Add Photo",
+      "hidePhoto": "Hide Photo",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "jobTitle": "Job Title",
+      "country": "Country",
+      "city": "City",
+      "email": "Email",
+      "phone": "Phone",
+      "linkedin": "LinkedIn",
+      "website": "Website",
+      "hideCity": "Hide City",
+      "hideLinkedin": "Hide LinkedIn",
+      "hideWebsite": "Hide Website",
+      "placeholders": {
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "jobTitle": "Enter your job title",
+        "country": "Select your country",
+        "city": "Enter your city",
+        "email": "Enter your email address",
+        "phone": "Enter your phone number",
+        "linkedin": "Enter your LinkedIn profile URL",
+        "website": "Enter your website URL"
+      }
+    },
+    "previewControls": {
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "fullscreen": "Fullscreen"
+    },
+    "templateSelector": {
+      "title": "Choose a template",
+      "description": "Select the template that best fits your style",
+      "drawerTitle": "Select a template",
+      "drawerDescription": "Choose the template that best fits your professional style"
+    },
+    "cvUploader": {
+      "title": "Save time!",
+      "description": "Upload your existing resume and we'll fill the form automatically",
+      "buttonText": "Choose a file (PDF or Word)",
+      "analyzing": "Analysis in progress...",
+      "successMessage": "Resume analyzed successfully! The form has been filled.",
+      "successTitle": "Resume uploaded",
+      "successDescription": "We successfully extracted your informations. Review the form before publishing.",
+      "errorFileType": "Unsupported format. Use a PDF or Word file.",
+      "errorFileSize": "File is too large (max 5 MB).",
+      "errorConnection": "Unable to connect to server. Check your connection.",
+      "errorAnalysis": "An error occurred. Please try again.",
+      "errorTitle": "Upload failed",
+      "errorDescription": "We were not be able to read your informations. Please try again",
+      "retryButton": "Upload file (.pdf, .doc)"
+    },
+    "subdomainConflict": {
+      "title": "Username already taken",
+      "description": "This username already exists. Choose a different name for your custom URL.",
+      "suggested": "Suggestion:",
+      "useSuggested": "Use this suggestion",
+      "customLabel": "Your custom username",
+      "placeholder": "your-custom-username",
+      "available": "Available!",
+      "notAvailable": "This name is not available",
+      "checkError": "Error checking availability",
+      "rules": "Use only letters, numbers and hyphens. No spaces or special characters.",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "templates": {
+      "experience": {
+        "present": "Present"
+      },
+      "sections": {
+        "experience": "Experience",
+        "education": "Education",
+        "skills": "Skills",
+        "languages": "Languages",
+        "tools": "Tools",
+        "certifications": "Certifications",
+        "hobbies": "Hobbies"
+      },
+      "fields": {
+        "jobTitle": "Job Title",
+        "company": "Company Name",
+        "location": "City, Country",
+        "degree": "Degree",
+        "school": "School Name"
+      }
+    },
+    "experience": {
+      "position": "Position",
+      "company": "Company",
+      "location": "Location",
+      "from": "From",
+      "to": "To",
+      "current": "Current",
+      "description": "Description",
+      "add": "Add experience",
+      "noExperience": "No experience added. Click on \"+\" to include your professional background.",
+      "placeholders": {
+        "position": "Enter your job title",
+        "company": "Enter company name",
+        "location": "Enter job location",
+        "description": "Describe your responsibilities and achievements"
+      }
+    },
+    "education": {
+      "degree": "Degree",
+      "school": "School",
+      "location": "Location",
+      "from": "From",
+      "to": "To",
+      "description": "Description",
+      "add": "Add education",
+      "noEducation": "No education added. Click on \"+\" to include your academic background.",
+      "placeholders": {
+        "degree": "Enter your degree or qualification",
+        "school": "Enter school or university name",
+        "location": "Enter school location",
+        "description": "Describe your studies and achievements"
+      }
+    },
+    "skills": {
+      "add": "Add skill",
+      "noSkills": "No skills added. Click on \"+\" to include your skills.",
+      "placeholders": {
+        "name": "Enter skill name"
+      }
+    },
+    "tools": {
+      "add": "Add tool",
+      "noTools": "No tools added. Click on \"+\" to include your tools.",
+      "placeholders": {
+        "name": "Enter tool name"
+      }
+    },
+    "sections": {
+      "contactInfo": "Contact Information",
+      "summary": "Summary",
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "languages": "Languages",
+      "tools": "Tools",
+      "certifications": "Certifications",
+      "hobbies": "Hobbies",
+      "addSkill": "Add skill",
+      "addCategory": "Add category",
+      "addSection": "Add {title} section"
+    },
+    "personalInfo": {
+      "profilePhoto": "Profile Photo",
+      "addPhoto": "Add Photo",
+      "hidePhoto": "Hide photo",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "jobTitle": "Job Title",
+      "country": "Country",
+      "city": "City",
+      "hideCity": "Hide city",
+      "email": "Email",
+      "phone": "Phone",
+      "linkedin": "LinkedIn",
+      "hideLinkedIn": "Hide LinkedIn",
+      "website": "Website",
+      "hideWebsite": "Hide website",
+      "summary": "Summary",
+      "placeholders": {
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "jobTitle": "Enter your job title",
+        "country": "Enter your country",
+        "city": "Enter your city",
+        "email": "Enter your email address",
+        "linkedin": "Enter your LinkedIn profile",
+        "website": "Enter your website URL",
+        "summary": "Write a brief summary of your professional background and key achievements"
+      }
+    },
+    "title": {
+      "untitled": "Untitled Resume",
+      "prompt": "Enter resume title"
+    },
+    "mobile": {
+      "myInfo": "My Info",
+      "preview": "Preview"
+    },
+    "previewControls": {
+      "fullscreen": "Fullscreen",
+      "desktop": "Desktop",
+      "mobile": "Mobile"
+    }
+  },
+  "templates": {
+    "sections": {
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "languages": "Languages",
+      "tools": "Tools",
+      "certifications": "Certifications",
+      "hobbies": "Hobbies",
+      "addSkill": "Add a skill"
+    },
+    "fields": {
+      "degree": "Degree"
+    },
+    "languageLevels": {
+      "elementary": "Elementary Proficiency",
+      "limited": "Limited Working Proficiency",
+      "professional": "Full Professional Proficiency",
+      "native": "Native or Bilingual Proficiency"
+    },
+    "skills": {
+      "publicSpeaking": "Public speaking",
+      "projectManagement": "Project management",
+      "hideSkillLevels": "Hide skill levels",
+      "skill": "Skill",
+      "skillLevel": "Skill level",
+      "novice": "Novice",
+      "intermediate": "Intermediate",
+      "proficient": "Proficient",
+      "expert": "Expert"
+    },
+    "contacts": {
+      "viewLinkedin": "View LinkedIn profile",
+      "viewWebsite": "View website",
+      "sendEmail": "Send me an email",
+      "callPhone": "Call me"
+    },
+    "form": {
+      "language": "Language",
+      "proficiency": "Proficiency",
+      "addLanguage": "Add a language"
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    }
+  },
+  "ui": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "remove": "Remove",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "continue": "Continue"
+  },
+  "validation": {
+    "invalidEmail": "Please enter a valid email address",
+    "invalidUrl": "Please enter a valid URL"
+  },
+  "gdpr": {
+    "cookies": {
+      "banner": {
+        "title": "Cookie Consent",
+        "description": "We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking \"Accept All\", you consent to our use of cookies. You can manage your preferences at any time.",
+        "acceptAll": "Accept All",
+        "rejectAll": "Reject All",
+        "customize": "Customize",
+        "manageCookies": "Manage cookies",
+        "privacyPolicyLink": "Privacy Policy"
+      },
+      "panel": {
+        "title": "Cookie Preferences",
+        "description": "Manage your cookie preferences. You can enable or disable different types of cookies below.",
+        "essential": {
+          "title": "Essential Cookies",
+          "description": "These cookies are necessary for the website to function properly. They cannot be disabled.",
+          "alwaysActive": "Always active"
+        },
+        "analytics": {
+          "title": "Analytics Cookies",
+          "description": "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously."
+        },
+        "advertising": {
+          "title": "Advertising Cookies",
+          "description": "These cookies are used to deliver advertisements and track campaigns. They may be used by third-party advertising networks."
+        },
+        "save": "Save Preferences",
+        "cancel": "Cancel"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: January 2025"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: January 2025"
+    },
+    "dataManagement": {
+      "title": "My Personal Data",
+      "description": "Manage your personal data and exercise your rights under GDPR",
+      "exportData": {
+        "title": "Download My Data",
+        "description": "Download a copy of all your personal data in JSON format",
+        "button": "Download My Data",
+        "downloading": "Preparing download...",
+        "success": "Your data has been downloaded successfully"
+      },
+      "deleteAccount": {
+        "title": "Delete My Account",
+        "description": "Permanently delete your account and all associated data. This action cannot be undone.",
+        "button": "Delete My Account",
+        "confirmTitle": "Confirm Account Deletion",
+        "confirmDescription": "Are you sure you want to delete your account? This action is irreversible. All your CVs, data, and subscription will be permanently deleted.",
+        "passwordRequired": "Please enter your password to confirm deletion",
+        "passwordPlaceholder": "Enter your password",
+        "deleting": "Deleting account...",
+        "success": "Your account has been deleted successfully"
+      }
+    },
+    "auth": {
+      "acceptTerms": "I have read and accept the",
+      "acceptPrivacy": "I have read and understand the",
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "mustAccept": "You must accept the Terms of Service and Privacy Policy to create an account",
+      "googleAcceptText": "By continuing, you agree to our"
+    }
+  }
+}

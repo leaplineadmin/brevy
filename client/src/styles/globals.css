@@ -1,0 +1,371 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Clash Display Font Family */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Extralight_1755510224690.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Light_1755510224690.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Regular_1755510224691.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Medium_1755510224691.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Semibold_1755510224691.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-Bold_1755510224690.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variable danger pour messages d'erreur */
+:root {
+  --danger: rgb(220 38 38);
+}
+
+/* CSS pour les CV partagés publiquement - déplacé vers shared-preview.css */
+
+.title-hilight {
+  color: linear-gradient(to right,
+      var(--secondary),
+      var(--tertiaryDark));
+}
+
+
+/* Ensure the CV preview cannot be copied */
+.cv-preview {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* CVFooter: Masquer le footer des templates par défaut dans toutes les previews CV builder */
+.cv-footer-template {
+  display: none !important;
+}
+
+/* CVFooter: Afficher seulement dans fullscreen preview */
+.fullscreen-preview .cv-footer-template {
+  display: block !important;
+}
+
+/* CVFooter: Dans les CV publiés, seul le footer du template est affiché */
+.shared-preview .cv-footer-wrapper {
+  display: none !important;
+}
+
+.shared-preview .cv-footer-template {
+  display: block !important;
+}
+
+/* Prevent scroll issues in template viewport */
+.template-viewport {
+  overflow: hidden !important;
+}
+
+/* Force CV builder page to be contained within viewport - prevents any overflow scrolling */
+/* Updated: More flexible mobile handling */
+@media (min-width: 800px) {
+  body:has(.cv-builder-page) {
+    overflow: hidden !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+
+  html:has(.cv-builder-page) {
+    overflow: hidden !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+
+  #root:has(.cv-builder-page) {
+    overflow: hidden !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+}
+
+/* Mobile: Less restrictive, allow natural viewport handling */
+@media (max-width: 799px) {
+  body:has(.cv-builder-page) {
+    overflow-x: hidden !important;
+    position: relative;
+  }
+
+  html:has(.cv-builder-page) {
+    overflow-x: hidden !important;
+    position: relative;
+  }
+
+  #root:has(.cv-builder-page) {
+    overflow-x: hidden !important;
+    position: relative;
+    min-height: 100vh;
+  }
+}
+
+/* Desktop: Fixed viewport */
+@media (min-width: 800px) {
+  .cv-builder-page {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Mobile: Flexible height */
+@media (max-width: 799px) {
+  .cv-builder-page {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+}
+
+.cv-builder-page * {
+  box-sizing: border-box;
+}
+
+.cv-builder-grid {
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+
+
+.cv-builder-preview-column {
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Style de la carte de template sélectionnée */
+.template-card-selected {
+  border-color: var(--primary) !important;
+}
+
+/* Style des sections dans la colonne de formulaire */
+.cv-section {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--lightGrey);
+  border-radius: .5rem;
+}
+
+/* Fixes pour l'overflow sur mobile */
+@media (max-width: 799px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Ajustements pour les petits écrans en hauteur */
+  @media (max-height: 600px) {
+    .cv-section {
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+/* Typography Scale - Based on design system */
+.heading-large {
+  font-family: var(--font-roc-grotesk);
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.heading-medium {
+  font-family: var(--font-roc-grotesk);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.heading-small {
+  font-family: var(--font-roc-grotesk);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.subheading {
+  font-family: var(--font-teachers);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.subheading-small {
+  font-family: var(--font-teachers);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.paragraph {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Fixes pour le défilement des templates */
+.template-container {
+  overflow: visible !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+.resume-container {
+    min-height: 100%;
+}
+
+/* Supprimer tous les espaces en haut */
+body,
+html,
+.template-container,
+.cv-container,
+.resume,
+.resume-container {
+  margin-top: 0 !important;
+}
+
+.desktop-preview-content {
+  display: block !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: calc(100vh - 160px) !important;
+  padding-bottom: 0 !important;
+}
+
+/* Styles spécifiques pour forcer l'application des media queries dans la prévisualisation mobile */
+.mobile-preview-active .mobile-preview-content .resume {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-preview-active .mobile-preview-content .left-col {
+  display: contents;
+}
+
+.mobile-preview-active .mobile-preview-content .bloc1,
+.mobile-preview-active .mobile-preview-content .bloc2,
+.mobile-preview-active .mobile-preview-content .bloc3 {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.mobile-preview-active .mobile-preview-content .bloc1 {
+  order: 1;
+}
+
+.mobile-preview-active .mobile-preview-content .bloc3 {
+  order: 2;
+}
+
+.mobile-preview-active .mobile-preview-content .bloc2 {
+  order: 3;
+}
+
+.mobile-preview-active .mobile-preview-content .header-content {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mobile-preview-active .mobile-preview-content .name {
+  font-size: 2.5rem;
+}
+
+.mobile-preview-active .mobile-preview-content .profile-pic {
+  width: 120px;
+  height: 120px;
+  margin: 1.5rem 0 0;
+}
+
+.mobile-preview-active .mobile-preview-content .section-title {
+  font-size: 1.5rem;
+}
+
+/* Réduire la taille des éléments pour éviter les débordements */
+.mobile-preview-active .mobile-preview-content .contact-item {
+  font-size: 0.9rem;
+}
+
+.mobile-preview-active .mobile-preview-content .skills-container {
+  grid-template-columns: 1fr;
+}
+
+/* Optimiser les animations pour les performances */
+.mobile-preview-active .mobile-preview-content .bloc1,
+.mobile-preview-active .mobile-preview-content .bloc2,
+.mobile-preview-active .mobile-preview-content .bloc3 .section {
+  animation: none;
+  opacity: 1;
+}
+
+/* Option pour réduire ou masquer les gradients si nécessaire */
+.mobile-preview-active .mobile-preview-content .gradients {
+  opacity: 0.2;
+}
+
+/* Désactiver les hover effects dans le mockup mobile de façon ciblée */
+.mobile-viewport-no-hover {
+  /* Simulation d'un environnement tactile - pas de hover states */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Homepage CTA button responsive design */
+@media (max-width: 560px) {
+  .cta-button {
+    width: 100% !important;
+  }
+}
+

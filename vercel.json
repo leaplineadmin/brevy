@@ -1,0 +1,23 @@
+{
+  "buildCommand": "npm run build:front",
+  "outputDirectory": "client/dist",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://cvfolio.onrender.com/api/$1"
+    },
+    {
+      "source": "/api/auth/google",
+      "destination": "/api/google"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "build": {
+    "env": {
+      "VITE_BASE_URL": "/"
+    }
+  }
+}
