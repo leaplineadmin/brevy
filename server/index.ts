@@ -598,12 +598,12 @@ app.use(async (req, res, next) => {
       const cv = await storage.getCVBySubdomain(detectedSubdomain);
       
       if (cv && cv.isPublished) {
-
         // Si c'est déjà une route /shared/, continuer normalement
         if (path.startsWith('/shared/')) {
           return next();
         }
-        // Sinon rediriger vers /shared/
+        // Rediriger vers /shared/ pour que le frontend React gère l'affichage
+        // Le frontend détectera le sous-domaine depuis l'URL
         return res.redirect(`/shared/${detectedSubdomain}`);
       } else {
 
