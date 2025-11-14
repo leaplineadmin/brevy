@@ -1766,12 +1766,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Public route to view a CV by subdomain (API endpoint)
   app.get("/api/view-cv/:subdomain", async (req, res) => {
     try {
+      // Optimisation : cache headers pour améliorer les performances
+      res.set('Cache-Control', 'public, max-age=300'); // Cache 5 minutes
+      
       const cv = await storage.getCVBySubdomain(req.params.subdomain);
       if (!cv || !cv.isPublished) {
         return res.status(404).json({ message: "CV not found or not published" });
       }
 
-      // Get user info for the CV
+      // Get user info for the CV (optimisé : seulement les champs nécessaires)
       const user = await storage.getUser(cv.userId);
       
       return res.json({

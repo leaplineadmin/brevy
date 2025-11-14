@@ -42,28 +42,47 @@ export function SharedCV() {
         throw new Error("URL non valide pour un CV partagé.");
       }
       
-      const response = await fetch(`/api/view-cv/${subdomain}`, {
-        headers: {
-          'Accept': 'application/json',
-        },
-      });
+      // Optimisation : requête avec cache et timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000); // Timeout de 8s
       
-      if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error("Ce CV n'existe pas ou n'est plus disponible.");
+      try {
+        const response = await fetch(`/api/view-cv/${subdomain}`, {
+          signal: controller.signal,
+          headers: {
+            'Accept': 'application/json',
+          },
+          cache: 'default', // Utiliser le cache du navigateur
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error("Ce CV n'existe pas ou n'est plus disponible.");
+          }
+          throw new Error("Erreur lors du chargement du CV.");
         }
-        throw new Error("Erreur lors du chargement du CV.");
+        
+        return response.json();
+      } catch (err: any) {
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') {
+          throw new Error("Le chargement a pris trop de temps.");
+        }
+        throw err;
       }
-      
-      return response.json();
     },
     enabled: !!subdomain,
-    staleTime: 5 * 60 * 1000, // Cache pendant 5 minutes
+    staleTime: 10 * 60 * 1000, // Cache pendant 10 minutes
+    gcTime: 30 * 60 * 1000, // Garder en cache 30 minutes
     retry: 1, // Une seule tentative en cas d'erreur
     refetchOnWindowFocus: false, // Ne pas recharger au focus
+    refetchOnMount: false, // Ne pas recharger si déjà en cache
   });
 
-  if (loading) {
+  // Afficher un loader minimal et rapide pendant le chargement initial
+  if (loading && !cv) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <LoaderCircle className="w-6 h-6 animate-spin text-blue-600" />

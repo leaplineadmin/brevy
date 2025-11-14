@@ -5,12 +5,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { HelmetProvider } from "react-helmet-async";
 import { useEffect, Suspense, lazy } from "react";
 import { LoadingSpinner } from "@/components/shared/loading-spinner";
+import { LoaderCircle } from "lucide-react";
 
 // Import critical pages synchronously (no loader)
 import HomePage from "@/pages/home-page";
 import CVBuilder from "@/pages/cv-builder";
 import AuthPage from "@/pages/auth-page";
 import Dashboard from "@/pages/dashboard";
+import { SharedCV } from "@/pages/shared-cv"; // Import synchronously to avoid double loader
 
 // Lazy load less critical pages
 const NotFound = lazy(() => import("@/pages/not-found"));
@@ -21,7 +23,6 @@ const TermsOfService = lazy(() => import("@/pages/terms-of-service"));
 const DataManagement = lazy(() => import("@/pages/data-management"));
 const ResetPassword = lazy(() => import("@/pages/reset-password"));
 const PasswordResetConfirmation = lazy(() => import("@/pages/password-reset-confirmation"));
-const SharedCV = lazy(() => import("@/pages/shared-cv").then(module => ({ default: module.SharedCV })));
 const SharedNotFound = lazy(() => import("@/pages/shared-not-found"));
 const SubscriptionPage = lazy(() => import("@/pages/subscription-page"));
 const Checkout = lazy(() => import("@/pages/checkout"));
@@ -131,9 +132,7 @@ function Router() {
         </Suspense>
       </Route>
       <Route path="/cv/:subdomain">
-        <Suspense fallback={<LoadingSpinner size="lg" text="Loading..." className="min-h-screen" />}>
-          <SharedCV />
-        </Suspense>
+        <SharedCV />
       </Route>
       <Route path="/cv/not-found">
         <Suspense fallback={<LoadingSpinner size="lg" text="Loading..." className="min-h-screen" />}>
