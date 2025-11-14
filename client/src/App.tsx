@@ -130,12 +130,12 @@ function Router() {
           <PaymentSuccess />
         </Suspense>
       </Route>
-      <Route path="/shared/:subdomain">
+      <Route path="/cv/:subdomain">
         <Suspense fallback={<LoadingSpinner size="lg" text="Loading..." className="min-h-screen" />}>
           <SharedCV />
         </Suspense>
       </Route>
-      <Route path="/shared/not-found">
+      <Route path="/cv/not-found">
         <Suspense fallback={<LoadingSpinner size="lg" text="Loading..." className="min-h-screen" />}>
           <SharedNotFound />
         </Suspense>

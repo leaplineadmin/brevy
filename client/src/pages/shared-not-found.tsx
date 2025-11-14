@@ -7,7 +7,7 @@ export default function SharedNotFound() {
       <Helmet>
         <title>CV Not Found | Brevy</title>
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://brevy.me/shared/not-found" />
+        <link rel="canonical" href="https://brevy.me/cv/not-found" />
       </Helmet>
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full text-center">

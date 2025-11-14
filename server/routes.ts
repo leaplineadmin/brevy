@@ -1453,10 +1453,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const baseUrl = isProd ? 'https://brevy.me' : 'http://localhost:10000';
       
       return res.json({
-        message: `CV published successfully! Your resume is now available at ${baseUrl}/shared/${cleanedSubdomain}`,
+        message: `CV published successfully! Your resume is now available at ${baseUrl}/cv/${cleanedSubdomain}`,
         subdomain: cleanedSubdomain,
-        shareUrl: `${baseUrl}/shared/${cleanedSubdomain}`,
-        url: `${baseUrl}/shared/${cleanedSubdomain}`
+        shareUrl: `${baseUrl}/cv/${cleanedSubdomain}`,
+        url: `${baseUrl}/cv/${cleanedSubdomain}`
       });
 
     } catch (error: any) {
@@ -1593,12 +1593,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json({ 
         success: true, 
         subdomain: finalSubdomain,
-        shareUrl: `${baseUrl}/shared/${finalSubdomain}`,
+        shareUrl: `${baseUrl}/cv/${finalSubdomain}`,
         isPublished: true,
         publishedAt: updatedCV.publishedAt,
         message: counter > 1 
-          ? `CV publié avec succès ! Lien : ${baseUrl}/shared/${finalSubdomain}`
-          : `CV publié avec succès ! Lien : ${baseUrl}/shared/${finalSubdomain}`
+          ? `CV publié avec succès ! Lien : ${baseUrl}/cv/${finalSubdomain}`
+          : `CV publié avec succès ! Lien : ${baseUrl}/cv/${finalSubdomain}`
       });
     } catch (error: any) {
       return res.status(500).json({ message: "Erreur lors de la publication du CV" });
@@ -1794,13 +1794,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const cv = await storage.getCVBySubdomain(req.params.subdomain);
       if (!cv || !cv.isPublished) {
-        return res.redirect('/shared/not-found');
+        return res.redirect('/cv/not-found');
       }
 
-      // Redirect to the shared CV page
-      res.redirect(`/shared/${req.params.subdomain}`);
+      // Redirect to the CV page
+      res.redirect(`/cv/${req.params.subdomain}`);
     } catch (error: any) {
-      res.redirect('/shared/not-found');
+      res.redirect('/cv/not-found');
     }
   });
 

@@ -32,7 +32,7 @@ interface CVData {
 
 export function SharedCV() {
   const [, setLocation] = useLocation();
-  const [match, params] = useRoute('/shared/:subdomain');
+  const [match, params] = useRoute('/cv/:subdomain');
   const [cv, setCv] = useState<CVData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

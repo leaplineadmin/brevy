@@ -171,7 +171,7 @@ app.use(prerender
       url === '/' || 
       url === '/fr' || 
       url === '/fr/' || 
-      url.startsWith('/shared/') ||
+      url.startsWith('/cv/') ||
       url.startsWith('/articles/') ||  // Example: /articles/my-article-title
       url === '/blog' ||                // Blog listing page
       url.startsWith('/blog/');         // Example: /blog/article-1
@@ -583,8 +583,8 @@ app.use(async (req, res, next) => {
 
   }
   
-  // Méthode 2: URL path analysis (/shared/subdomain)
-  if (!detectedSubdomain && path.startsWith('/shared/') && path !== '/shared/not-found') {
+  // Méthode 2: URL path analysis (/cv/subdomain)
+  if (!detectedSubdomain && path.startsWith('/cv/') && path !== '/cv/not-found') {
     detectedSubdomain = path.split('/')[2];
 
   }
@@ -598,19 +598,19 @@ app.use(async (req, res, next) => {
       const cv = await storage.getCVBySubdomain(detectedSubdomain);
       
       if (cv && cv.isPublished) {
-        // Si c'est déjà une route /shared/, continuer normalement
-        if (path.startsWith('/shared/')) {
+        // Si c'est déjà une route /cv/, continuer normalement
+        if (path.startsWith('/cv/')) {
           return next();
         }
-        // Rediriger vers /shared/ pour que le frontend React gère l'affichage
+        // Rediriger vers /cv/ pour que le frontend React gère l'affichage
         // Le frontend détectera le sous-domaine depuis l'URL
-        return res.redirect(`/shared/${detectedSubdomain}`);
+        return res.redirect(`/cv/${detectedSubdomain}`);
       } else {
 
-        return res.redirect('/shared/not-found');
+        return res.redirect('/cv/not-found');
       }
     } catch (error) {
-      return res.redirect('/shared/not-found');
+      return res.redirect('/cv/not-found');
     }
   }
   

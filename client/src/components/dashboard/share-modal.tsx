@@ -115,7 +115,7 @@ export function ShareModal({ isOpen, onClose, cvId, defaultSubdomain = "" }: Sha
       if (response.ok) {
         const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
         const baseUrl = isLocalhost ? 'http://localhost:10000' : 'https://brevy.me';
-        const url = data.shareUrl || `${baseUrl}/shared/${subdomain}`;
+        const url = data.shareUrl || `${baseUrl}/cv/${subdomain}`;
         
         await navigator.clipboard.writeText(url);
         toast({
@@ -171,7 +171,7 @@ export function ShareModal({ isOpen, onClose, cvId, defaultSubdomain = "" }: Sha
                 className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-r-none"
               />
               <div className="px-3 py-2 bg-gray-50 border-l text-sm text-gray-600 rounded-r-md">
-                /shared/
+                /cv/
               </div>
             </div>
             

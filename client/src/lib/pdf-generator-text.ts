@@ -299,7 +299,7 @@ export async function generatePDFWithText(
     if (subdomain) {
       const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('brevy.me');
       const baseUrl = isProd ? 'https://brevy.me' : 'http://localhost:10000';
-      const cvUrl = `${baseUrl}/shared/${subdomain}`;
+      const cvUrl = `${baseUrl}/cv/${subdomain}`;
       doc.setFontSize(9);
       doc.setTextColor(color.r, color.g, color.b);
       

@@ -184,7 +184,7 @@ export function PublishButton({
   const copyUrl = async () => {
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const baseUrl = isLocalhost ? 'http://localhost:10000' : 'https://brevy.me';
-    const url = `${baseUrl}/shared/${subdomain}`;
+    const url = `${baseUrl}/cv/${subdomain}`;
     
     try {
       await navigator.clipboard.writeText(url);
@@ -205,7 +205,7 @@ export function PublishButton({
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const url = isLocalhost 
       ? `/dev/${subdomain}`
-      : `/shared/${subdomain}`;
+      : `/cv/${subdomain}`;
     
     window.open(url, '_blank');
   };
@@ -264,7 +264,7 @@ export function PublishButton({
         
         <div className="flex gap-1 mb-2 bg-white border border-green-300 rounded-lg p-1">
           <Input 
-            value={`brevy.me/shared/${subdomain}`}
+            value={`brevy.me/cv/${subdomain}`}
             readOnly
             className="text-xs h-8 bg-transparent border-0 flex-1"
           />
