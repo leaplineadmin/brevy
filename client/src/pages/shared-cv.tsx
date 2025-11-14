@@ -35,7 +35,7 @@ export function SharedCV() {
   const subdomain = params?.subdomain;
 
   // Utiliser React Query pour optimiser le chargement avec cache
-  const { data: cv, isLoading: loading, error: queryError } = useQuery<CVData>({
+  const { data: cv, isLoading: loading, isFetching, error: queryError } = useQuery<CVData>({
     queryKey: [`/api/view-cv/${subdomain}`],
     queryFn: async () => {
       if (!subdomain) {
@@ -78,11 +78,12 @@ export function SharedCV() {
     gcTime: 30 * 60 * 1000, // Garder en cache 30 minutes
     retry: 1, // Une seule tentative en cas d'erreur
     refetchOnWindowFocus: false, // Ne pas recharger au focus
-    refetchOnMount: false, // Ne pas recharger si déjà en cache
+    refetchOnMount: true, // Recharger au montage pour s'assurer d'avoir les données
   });
 
   // Afficher un loader minimal et rapide pendant le chargement initial
-  if (loading && !cv) {
+  // Utiliser isLoading OU isFetching pour être sûr que les données sont en cours de chargement
+  if (loading || (isFetching && !cv)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <LoaderCircle className="w-6 h-6 animate-spin text-blue-600" />
@@ -90,16 +91,35 @@ export function SharedCV() {
     );
   }
 
-  if (queryError || !cv) {
+  // Gérer les erreurs en premier
+  if (queryError) {
     const errorMessage = queryError instanceof Error 
       ? queryError.message 
-      : "Ce CV n'existe pas ou n'est plus disponible.";
+      : "Erreur lors du chargement du CV.";
     
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center max-w-md mx-auto p-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">CV non trouvé</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Erreur</h1>
           <p className="text-gray-600 mb-6">{errorMessage}</p>
+          <a
+            href="/"
+            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Retour à l'accueil
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas de données après le chargement, afficher une erreur
+  if (!cv) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center max-w-md mx-auto p-6">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">CV non trouvé</h1>
+          <p className="text-gray-600 mb-6">Ce CV n'existe pas ou n'est plus disponible.</p>
           <a
             href="/"
             className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -128,6 +148,24 @@ export function SharedCV() {
   } else {
     cvDataToUse = cv.data?.cvData || cv.data || {};
     displaySettings = cv.data?.displaySettings || cv.displaySettings || {};
+  }
+
+  // S'assurer que cv existe avant de continuer (sécurité supplémentaire)
+  if (!cv) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center max-w-md mx-auto p-6">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">CV non trouvé</h1>
+          <p className="text-gray-600 mb-6">Ce CV n'existe pas ou n'est plus disponible.</p>
+          <a
+            href="/"
+            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Retour à l'accueil
+          </a>
+        </div>
+      </div>
+    );
   }
 
   // Obtenir le composant de template réel
@@ -236,20 +274,17 @@ export function SharedCV() {
   };
 
   // Create a wrapper component that sets the language context
-  const SharedCVWithLanguage = () => {
-    const savedLanguage = cv?.publishedLanguage || cv?.language || 'en';
-    
-    return (
-      <LanguageProvider initialLanguage={savedLanguage as 'en' | 'fr'}>
-        <div className="min-h-screen bg-white">
-          {/* Rendu direct du template sans wrapper, comme en mode fullscreen */}
-          <div className="shared-preview relative">
-            {renderCV()}
-          </div>
+  // À ce point, cv est garanti d'exister grâce à la vérification précédente
+  const savedLanguage = cv.publishedLanguage || cv.language || 'en';
+  
+  return (
+    <LanguageProvider initialLanguage={savedLanguage as 'en' | 'fr'}>
+      <div className="min-h-screen bg-white">
+        {/* Rendu direct du template sans wrapper, comme en mode fullscreen */}
+        <div className="shared-preview relative">
+          {renderCV()}
         </div>
-      </LanguageProvider>
-    );
-  };
-
-  return <SharedCVWithLanguage />;
+      </div>
+    </LanguageProvider>
+  );
 }
