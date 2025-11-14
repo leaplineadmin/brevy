@@ -5,6 +5,7 @@ import { getTemplate } from "@/lib/cv-templates";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import "@/styles/shared-preview.css";
 import { hasActivePremiumAccess } from "@/utils/premium-check";
+import { Suspense } from "react";
 
 interface CVData {
   id: string;
@@ -83,6 +84,7 @@ export function SharedCV() {
 
   // Afficher un loader minimal et rapide pendant le chargement initial
   // Utiliser isLoading OU isFetching pour être sûr que les données sont en cours de chargement
+  // Ne pas afficher le loader si on a déjà des données en cache
   if (loading || (isFetching && !cv)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
@@ -254,21 +256,25 @@ export function SharedCV() {
           '--dot-color': cv.mainColor 
         } as React.CSSProperties}
       >
-        <TemplateComponent
-          data={cvDataToUse}
-          mainColor={cv.mainColor}
-          hidePhoto={displaySettings.hidePhoto || false}
-          hideCity={displaySettings.hideCity || false}
-          hideSkillLevels={displaySettings.hideSkillLevels || false}
-          hideToolLevels={displaySettings.hideToolLevels || false}
-          hideLanguageLevels={displaySettings.hideLanguageLevels || false}
-          hideLinkedIn={displaySettings.hideLinkedIn || false}
-          hideWebsite={displaySettings.hideWebsite || false}
-          hasSubscription={hasActivePremiumAccess(cv.user)}
-          isPublished={true}
-        />
-        
-
+        <Suspense fallback={
+          <div className="min-h-screen flex items-center justify-center bg-white">
+            <LoaderCircle className="w-6 h-6 animate-spin text-blue-600" />
+          </div>
+        }>
+          <TemplateComponent
+            data={cvDataToUse}
+            mainColor={cv.mainColor}
+            hidePhoto={displaySettings.hidePhoto || false}
+            hideCity={displaySettings.hideCity || false}
+            hideSkillLevels={displaySettings.hideSkillLevels || false}
+            hideToolLevels={displaySettings.hideToolLevels || false}
+            hideLanguageLevels={displaySettings.hideLanguageLevels || false}
+            hideLinkedIn={displaySettings.hideLinkedIn || false}
+            hideWebsite={displaySettings.hideWebsite || false}
+            hasSubscription={hasActivePremiumAccess(cv.user)}
+            isPublished={true}
+          />
+        </Suspense>
       </div>
     );
   };
