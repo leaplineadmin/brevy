@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useLocation, useRoute } from "wouter";
+import { useRoute } from "wouter";
 import { LoaderCircle } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import { getTemplate } from "@/lib/cv-templates";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import "@/styles/shared-preview.css";
@@ -31,83 +31,62 @@ interface CVData {
 }
 
 export function SharedCV() {
-  const [, setLocation] = useLocation();
   const [match, params] = useRoute('/cv/:subdomain');
-  const [cv, setCv] = useState<CVData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const subdomain = params?.subdomain;
 
-  useEffect(() => {
-    const fetchSharedCV = async () => {
-      const subdomain = params?.subdomain;
-      
-
-      
+  // Utiliser React Query pour optimiser le chargement avec cache
+  const { data: cv, isLoading: loading, error: queryError } = useQuery<CVData>({
+    queryKey: [`/api/view-cv/${subdomain}`],
+    queryFn: async () => {
       if (!subdomain) {
-        setError("URL non valide pour un CV partagé.");
-        setLoading(false);
-        return;
-      }
-        
-      try {
-
-        const response = await fetch(`/api/view-cv/${subdomain}`);
-
-        
-        if (response.ok) {
-          const cvData = await response.json();
-          setCv(cvData);
-        } else if (response.status === 404) {
-
-          setError("Ce CV n'existe pas ou n'est plus disponible.");
-        } else {
-
-          setError("Erreur lors du chargement du CV.");
-        }
-      } catch (err) {
-
-        setError("Erreur de connexion. Veuillez réessayer.");
+        throw new Error("URL non valide pour un CV partagé.");
       }
       
-      setLoading(false);
-    };
-
-    fetchSharedCV();
-  }, [params?.subdomain]);
+      const response = await fetch(`/api/view-cv/${subdomain}`, {
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("Ce CV n'existe pas ou n'est plus disponible.");
+        }
+        throw new Error("Erreur lors du chargement du CV.");
+      }
+      
+      return response.json();
+    },
+    enabled: !!subdomain,
+    staleTime: 5 * 60 * 1000, // Cache pendant 5 minutes
+    retry: 1, // Une seule tentative en cas d'erreur
+    refetchOnWindowFocus: false, // Ne pas recharger au focus
+  });
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <LoaderCircle className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
-          <p className="text-gray-600">Chargement du CV...</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <LoaderCircle className="w-6 h-6 animate-spin text-blue-600" />
       </div>
     );
   }
 
-  if (error) {
+  if (queryError || !cv) {
+    const errorMessage = queryError instanceof Error 
+      ? queryError.message 
+      : "Ce CV n'existe pas ou n'est plus disponible.";
+    
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center max-w-md mx-auto p-6">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">CV non trouvé</h1>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <button
-            onClick={() => setLocation('/')}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          <p className="text-gray-600 mb-6">{errorMessage}</p>
+          <a
+            href="/"
+            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Retour à l'accueil
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!cv) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <p className="text-gray-600">Aucun CV trouvé.</p>
+          </a>
         </div>
       </div>
     );
