@@ -67,7 +67,7 @@ Prêt ? Chronomètre en main !
 **Minute 9-10 : Publication !**
 
 6.  Cliquez sur le bouton **"Publier"**. Félicitations, votre site CV est en ligne !
-7.  Vous obtenez votre URL unique (ex: \`votre-nom.brevy.me\`) que vous pouvez immédiatement partager.
+7.  Vous obtenez votre URL unique (ex: \`brevy.me/shared/votre-nom\`) que vous pouvez immédiatement partager.
 8.  Rendez-vous à l'adresse et cliquez sur **"Exporter en PDF"** pour télécharger la version compatible ATS à joindre à vos candidatures.
 
 ## FAQ : Vos Questions sur la Création de Site CV
@@ -160,7 +160,7 @@ Ready? Timer in hand!
 **Minute 9-10: Publish!**
 
 6.  Click the **"Publish"** button. Congratulations, your resume website is online!
-7.  You get your unique URL (e.g., \`your-name.brevy.me\`) that you can immediately share.
+7.  You get your unique URL (e.g., \`brevy.me/shared/your-name\`) that you can immediately share.
 8.  Go to the address and click **"Export to PDF"** to download the ATS-compatible version to attach to your applications.
 
 ## FAQ: Your Questions About Creating a Resume Website

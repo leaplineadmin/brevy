@@ -182,7 +182,9 @@ export function PublishButton({
   };
 
   const copyUrl = async () => {
-    const url = `https://${subdomain}.brevy.me`;
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const baseUrl = isLocalhost ? 'http://localhost:10000' : 'https://brevy.me';
+    const url = `${baseUrl}/shared/${subdomain}`;
     
     try {
       await navigator.clipboard.writeText(url);
@@ -200,11 +202,10 @@ export function PublishButton({
   };
 
   const openCV = () => {
-    // Utiliser HTTPS pour la production avec Cloudflare SSL
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const url = isLocalhost 
       ? `/dev/${subdomain}`
-      : `https://${subdomain}.brevy.me`;
+      : `/shared/${subdomain}`;
     
     window.open(url, '_blank');
   };
@@ -263,7 +264,7 @@ export function PublishButton({
         
         <div className="flex gap-1 mb-2 bg-white border border-green-300 rounded-lg p-1">
           <Input 
-            value={`${subdomain}.brevy.me`}
+            value={`brevy.me/shared/${subdomain}`}
             readOnly
             className="text-xs h-8 bg-transparent border-0 flex-1"
           />
