@@ -31,9 +31,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         )}
         <div className="cardContent p-6 flex-1 flex flex-col">
-          {date && (
-            <p className="text-sm text-gray-500 mb-2">{date}</p>
-          )}
           <h3 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">
             {title}
           </h3>
