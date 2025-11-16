@@ -2,6 +2,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/navbar";
 import { useLanguage } from "@/contexts/LanguageContext";
+import frTranslations from "@/locales/fr.json";
+import enTranslations from "@/locales/en.json";
 import { Check } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { SEOHead } from "@/components/SEOHead";
@@ -18,8 +20,12 @@ import brevyHomeDesc3 from "@/assets/brevyhomedesc_3.webp";
 export default function HomePage() {
   const { isAuthenticated } = useAuth();
   const isUserLoggedIn = isAuthenticated;
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const currentLang = useLanguageDetection();
+  
+  // Get FAQ items directly from translations
+  const translations = language === 'fr' ? frTranslations : enTranslations;
+  const faqItems = translations?.home?.faq?.items || [];
 
   return (
     <>
@@ -228,7 +234,7 @@ export default function HomePage() {
           </div>
           
           <div className="max-w-4xl mx-auto space-y-6">
-            {(t('home.faq.items', { returnObjects: true }) as any[])?.map((item: any, index: number) => (
+            {Array.isArray(faqItems) && faqItems.map((item: any, index: number) => (
               <div 
                 key={index} 
                 className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
