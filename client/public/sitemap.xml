@@ -6,7 +6,7 @@
     <loc>https://brevy.me/</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/fr/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/" />
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
     <loc>https://brevy.me/fr/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/fr/" />
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -24,7 +24,7 @@
     <loc>https://brevy.me/blog</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/blog" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/blog" />
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -60,7 +60,7 @@
     <loc>https://brevy.me/privacy-policy</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/privacy-policy" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/privacy-policy" />
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -69,7 +69,7 @@
     <loc>https://brevy.me/terms-of-service</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/terms-of-service" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/terms-of-service" />
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -78,7 +78,7 @@
     <loc>https://brevy.me/legal-notice</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://brevy.me/legal-notice" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://brevy.me/legal-notice" />
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
