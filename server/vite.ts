@@ -106,25 +106,33 @@ export function serveStatic(app: Express) {
 
   // Serve static files with explicit MIME type handling
   app.use(express.static(distPath, {
+    maxAge: '1y', // Cache for 1 year
+    etag: true,
+    lastModified: true,
     setHeaders: (res, filePath) => {
-      console.log('🔍 Serving file:', filePath);
-      
-      // Force correct MIME types for JavaScript files
+      // Force correct MIME types and cache headers for all file types
       if (filePath.endsWith('.js') || filePath.endsWith('.mjs')) {
         res.setHeader('Content-Type', 'application/javascript');
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
-        console.log('✅ Set JS MIME type for:', filePath);
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       } else if (filePath.endsWith('.css')) {
         res.setHeader('Content-Type', 'text/css');
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
-        console.log('✅ Set CSS MIME type for:', filePath);
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       } else if (filePath.endsWith('.html')) {
         res.setHeader('Content-Type', 'text/html');
         res.setHeader('Cache-Control', 'no-cache');
-        console.log('✅ Set HTML MIME type for:', filePath);
       } else if (filePath.endsWith('.json')) {
         res.setHeader('Content-Type', 'application/json');
-        console.log('✅ Set JSON MIME type for:', filePath);
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+      } else if (filePath.match(/\.(webp|png|jpg|jpeg|gif|svg|ico)$/i)) {
+        // Images: aggressive caching
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        if (filePath.endsWith('.webp')) {
+          res.setHeader('Content-Type', 'image/webp');
+        } else if (filePath.endsWith('.svg')) {
+          res.setHeader('Content-Type', 'image/svg+xml');
+        } else if (filePath.endsWith('.ico')) {
+          res.setHeader('Content-Type', 'image/x-icon');
+        }
       }
     }
   }));
