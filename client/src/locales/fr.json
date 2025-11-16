@@ -33,6 +33,48 @@
     "footer": {
       "rights": "Tous droits réservés - brevy.me",
       "legal": "Mentions légales"
+    },
+    "faq": {
+      "title": "Questions fréquemment posées",
+      "subtitle": "Tout ce que vous devez savoir sur Brevy.me",
+      "items": [
+        {
+          "question": "Les PDF créés avec Brevy.me sont-ils compatibles ATS ?",
+          "answer": "Oui. Tous les PDF générés par Brevy.me sont entièrement compatibles avec les systèmes ATS (Applicant Tracking Systems). Le contenu est structuré en texte clair, sans mises en forme complexes ni éléments qui bloquent la lecture (images derrière le texte, colonnes invisibles, etc.). Les recruteurs peuvent donc analyser facilement votre candidature."
+        },
+        {
+          "question": "Que se passe-t-il avec mon CV si j'arrête d'utiliser Brevy.me ou si je change d'abonnement ?",
+          "answer": "Vous gardez votre PDF. Téléchargez-le à tout moment avant de vous désabonner, et il vous appartient définitivement. Votre url, par contre, ne sera plus active, et votre CV en ligne ne sera plus consultable."
+        },
+        {
+          "question": "Les CV en ligne Brevy.me sont-ils responsive ?",
+          "answer": "Oui. Les pages web générées par Brevy.me s'adaptent automatiquement aux ordinateurs, mobiles et tablettes. Les recruteurs peuvent consulter votre CV depuis n'importe quel dispositif."
+        },
+        {
+          "question": "Puis-je personnaliser le design de mon CV ?",
+          "answer": "Bien sûr. Vous pouvez choisir parmi plusieurs templates modernes, ajuster les couleurs, la mise en page, etc. De nouvelles mises en page sont régulièrement ajoutées."
+        },
+        {
+          "question": "Puis-je mettre à jour mon CV en ligne après l'avoir publié ?",
+          "answer": "Oui. Chaque modification est instantanément reflétée sur votre page web, sans avoir à republier ou à partager à nouveau le lien."
+        },
+        {
+          "question": "Comment partager mon CV Brevy.me ?",
+          "answer": "Vous obtenez un lien unique, court et professionnel (brevy.me/cv/nom-prénom). Vous pouvez l'ajouter à : vos candidatures, votre signature email, LinkedIn, vos cartes de visite, votre portfolio."
+        },
+        {
+          "question": "Proposez-vous une version gratuite ?",
+          "answer": "Oui. Une version gratuite est disponible, permettant de créer un CV en ligne moderne. Le plan premium vous permet de publier plusieurs CV en ligne, et vous offre un plus large choix de templates."
+        },
+        {
+          "question": "Les données que je fournis à Brevy.me sont-elles sécurisées ?",
+          "answer": "Absolument. Les données sont stockées de manière sécurisée, jamais revendues, et vous pouvez les supprimer à tout moment."
+        },
+        {
+          "question": "Combien de temps mon CV reste-t-il en ligne ?",
+          "answer": "Autant que vous le souhaitez. Votre page web reste active tant que votre compte existe, et vous pouvez la désactiver ou la supprimer à tout moment."
+        }
+      ]
     }
   },
   "auth": {

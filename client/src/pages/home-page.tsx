@@ -215,6 +215,34 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="p-4 md:py-16" id="faq">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#1a1a2e] mb-4">
+              {t('home.faq.title')}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t('home.faq.subtitle')}
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto space-y-6">
+            {(t('home.faq.items', { returnObjects: true }) as any[])?.map((item: any, index: number) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+              >
+                <h3 className="text-xl font-bold text-[#1a1a2e] mb-3">
+                  {item.question}
+                </h3>
+                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       {/* Footer */}
