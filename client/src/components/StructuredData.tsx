@@ -42,6 +42,8 @@ export const StructuredData = ({ lang = 'en' }: StructuredDataProps) => {
         "@type": "WebSite",
         "name": "Brevy",
         "url": "https://brevy.me",
+        "image": "https://brevy.me/assets/ogImage-brevy.webp",
+        "description": "Create interactive resumes in minutes. Export ATS-friendly PDFs.",
         "inLanguage": "en-US",
         "potentialAction": {
           "@type": "SearchAction",
@@ -75,6 +77,8 @@ export const StructuredData = ({ lang = 'en' }: StructuredDataProps) => {
         "@type": "WebSite",
         "name": "Brevy",
         "url": "https://brevy.me",
+        "image": "https://brevy.me/assets/ogImage-brevy.webp",
+        "description": "Créez des CV interactifs en quelques minutes. Exportez des PDF compatibles ATS.",
         "inLanguage": "fr-FR",
         "potentialAction": {
           "@type": "SearchAction",
