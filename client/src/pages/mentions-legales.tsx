@@ -22,7 +22,7 @@ export default function LegalNotice() {
                 <strong>Leapline.io</strong><br />
                 Καραϊσκάκη 28 Αθήνα<br />
                 Ατομική Επιχείρηση<br />    
-                <strong>Contact:</strong> hello@leapline.io
+                <strong>Contact:</strong> contact@brevy.me
               </p>
             </section>
 
