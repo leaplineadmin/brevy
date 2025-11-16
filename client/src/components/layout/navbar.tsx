@@ -423,7 +423,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity min-h-[44px] min-w-[44px] justify-center">
               <img src={logoBrevy} alt="Brevy" className="h-8 w-auto" />
             </Link>
           </div>
@@ -434,7 +434,7 @@ export default function Navbar() {
             <div className="relative" ref={languageDropdownRef}>
               <button
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-                className="flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors text-sm"
+                className="flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors text-sm min-h-[44px] min-w-[44px]"
                 aria-label="Select language"
               >
                 <span className="text-sm font-medium">{language === 'fr' ? 'FR' : 'ENG'}</span>
@@ -574,7 +574,7 @@ export default function Navbar() {
               <>
                 {/* Non-authenticated User - CHECK PREMIUM TEMPLATE HERE TOO */}
                 <Link href="/auth?mode=signin">
-                  <Button size="sm" variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 flex items-center gap-2">
+                  <Button size="sm" variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 flex items-center gap-2 min-h-[44px]">
                     {/* Icône utilisateur personnalisée */}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                       <path d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z" fill="currentColor"/>

@@ -41,7 +41,7 @@ export default function Blog() {
       <div className="min-h-screen bg-light">
         <Navbar />
 
-        <div className="mx-auto px-8 max-w-[1280px] py-12">
+        <main className="mx-auto px-8 max-w-[1280px] py-12">
           <h1 className="text-4xl font-bold text-[#1a1a2e] mb-8 text-center">
             {language === "fr" ? "Nos articles" : "Our Articles"}
           </h1>
@@ -65,7 +65,7 @@ export default function Blog() {
               />
             ))}
           </div>
-        </div>
+        </main>
       </div>
     </>
   );

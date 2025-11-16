@@ -49,7 +49,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Main container */}
-      <div className="mx-auto px-8 max-w-[1280px]">
+      <main className="mx-auto px-8 max-w-[1280px]">
         {/* Hero Section */}
         <section className="p-4 md:py-12">
           <div className="grid grid-cols-6 gap-8 items-center max-md:grid-cols-1 max-md:gap-4">
@@ -127,7 +127,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="cardContent p-6">
-                <h3 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">{t('home.cards.chooseLayoutTitle') || 'Choose a layout'}</h3>
+                <h2 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">{t('home.cards.chooseLayoutTitle') || 'Choose a layout'}</h2>
                 <p className="text-gray-600 text-center leading-relaxed">
                   {t('home.cards.chooseLayoutDescription') || 'Pick a template, customize the colors, and add your content in just a few clicks.'}
                 </p>
@@ -144,7 +144,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="cardContent p-6">
-                <h3 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">{t('home.cards.publishTitle') || 'Publish your resume'}</h3>
+                <h2 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">{t('home.cards.publishTitle') || 'Publish your resume'}</h2>
                 <p className="text-gray-600 text-center leading-relaxed">
                   {t('home.cards.publishDescription') || 'Generate and send a unique and professional link. Updates appear instantly.'}
                 </p>
@@ -161,7 +161,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="cardContent p-6">
-                <h3 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">{t('home.cards.viewAnywhereTitle') || 'View it anywhere'}</h3>
+                <h2 className="text-xl font-bold text-[#1a1a2e] text-center mb-2">{t('home.cards.viewAnywhereTitle') || 'View it anywhere'}</h2>
                 <p className="text-gray-600 text-center leading-relaxed">
                   {t('home.cards.viewAnywhereDescription') || 'Your resume adapts to any screen. Recruiters can read it on all devices.'}
                 </p>
@@ -214,7 +214,7 @@ export default function HomePage() {
             <Link href="/blog">
               <Button
                 variant="outline"
-                className="text-blue-600 border-blue-600 hover:bg-blue-50"
+                className="text-blue-600 border-blue-600 hover:bg-blue-50 min-h-[44px]"
               >
                 {currentLang === 'fr' ? 'Voir tous les articles' : 'View all articles'}
               </Button>
@@ -239,9 +239,9 @@ export default function HomePage() {
                 key={index} 
                 className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
               >
-                <h3 className="text-xl font-bold text-[#1a1a2e] mb-3">
+                <h2 className="text-xl font-bold text-[#1a1a2e] mb-3">
                   {item.question}
-                </h3>
+                </h2>
                 <p className="text-gray-600 leading-relaxed whitespace-pre-line">
                   {item.answer}
                 </p>
@@ -249,7 +249,7 @@ export default function HomePage() {
             ))}
           </div>
         </section>
-      </div>
+      </main>
 
       {/* Footer */}
       <footer className="bg-gray-100 border-t border-gray-200">
@@ -258,13 +258,13 @@ export default function HomePage() {
             <span>{t('home.footer.rights') || 'All rights reserved - brevy.me'}</span>
             <span className="hidden md:inline">•</span>
             <Link href="/privacy-policy">
-              <span className="text-blue-600 hover:text-blue-800 cursor-pointer">
+              <span className="text-blue-600 hover:text-blue-800 cursor-pointer inline-block min-h-[44px] min-w-[44px] flex items-center justify-center">
                 {t('gdpr.cookies.banner.privacyPolicyLink') || 'Privacy Policy'}
               </span>
             </Link>
             <span className="hidden md:inline">•</span>
             <Link href="/terms-of-service">
-              <span className="text-blue-600 hover:text-blue-800 cursor-pointer">
+              <span className="text-blue-600 hover:text-blue-800 cursor-pointer inline-block min-h-[44px] min-w-[44px] flex items-center justify-center">
                 {t('gdpr.auth.termsOfService') || 'Terms of Service'}
               </span>
             </Link>
@@ -275,16 +275,16 @@ export default function HomePage() {
                   (window as any).openCookiePanel();
                 }
               }}
-              className="text-blue-600 hover:text-blue-800 cursor-pointer"
+              className="text-blue-600 hover:text-blue-800 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
               {t('gdpr.cookies.banner.manageCookies') || 'Manage cookies'}
             </button>
             <span className="hidden md:inline">•</span>
             <Link href="/legal-notice">
-              <span className="text-blue-600 hover:text-blue-800 cursor-pointer">{t('home.footer.legal') || 'Legal Notice'}</span>
+              <span className="text-blue-600 hover:text-blue-800 cursor-pointer inline-block min-h-[44px] min-w-[44px] flex items-center justify-center">{t('home.footer.legal') || 'Legal Notice'}</span>
             </Link>
             <span className="hidden md:inline">•</span>
-            <a href="mailto:contact@brevy.me" className="text-blue-600 hover:text-blue-800 cursor-pointer">
+            <a href="mailto:contact@brevy.me" className="text-blue-600 hover:text-blue-800 cursor-pointer inline-block min-h-[44px] min-w-[44px] flex items-center justify-center">
               Contact
             </a>
           </div>
