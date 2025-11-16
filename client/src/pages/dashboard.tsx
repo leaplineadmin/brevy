@@ -1144,7 +1144,7 @@ export default function Dashboard() {
                 Create professional resumes in minutes with our modern and customizable templates.
               </p>
               <p className="mt-2 text-sm text-gray-500">
-                Need help? Please contact hello@brevy.me
+                Need help? Please contact contact@brevy.me
               </p>
             </div>
             
