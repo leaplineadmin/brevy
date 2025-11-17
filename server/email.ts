@@ -398,10 +398,10 @@ export async function sendSubscriptionCancellationEmail(to: string, firstName: s
   const textContent = `
 Hi ${firstName},
 
-We've received your request to cancel your Brevy Premium subscription.
+We've received your request to cancel your Brevy Pro subscription.
 Here's what happens next:
 
-✅ Your premium features will remain available until ${subscriptionEndDate.toLocaleDateString()} (the end of your current billing period).
+✅ Your Pro features will remain available until ${subscriptionEndDate.toLocaleDateString()} (the end of your current billing period).
 
 🆓 After that date, your account will automatically switch back to the free plan, and you'll still be able to use Brevy with limited features.
 

@@ -542,7 +542,7 @@ export default function Dashboard() {
                       if (fallbackResponse.ok) {
                         toast({
                           title: "CV saved with free template!",
-                          description: "Your CV was saved using the Classic template. Upgrade to Premium to access all templates.",
+                          description: "Your CV was saved using the Classic template. Upgrade to Pro to access all templates.",
                         });
                         success = true;
                         window.location.reload();
