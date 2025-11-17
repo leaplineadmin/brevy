@@ -64,7 +64,7 @@
         },
         {
           "question": "Do you offer a free version?",
-          "answer": "Yes. A free version is available, allowing you to create a modern online CV. The premium plan allows you to publish multiple CVs online and offers you a wider choice of templates."
+          "answer": "Yes. A free version is available, allowing you to create a modern online CV. The Pro plan allows you to publish multiple CVs online and offers you a wider choice of templates."
         },
         {
           "question": "Is the data I provide to Brevy.me secure?",
@@ -126,48 +126,48 @@
   },
   "premium": {
     "banner": {
-      "saveEditMessage": "You can save and edit this template as much as you like. To publish it, upgrade to Premium.",
-      "unlockMessage": "Unlock all templates and remove the \"Created with Brevy\" tag with a Premium Subscription (€3.90/month)",
-      "subscribeButton": "Subscribe to Premium"
+      "saveEditMessage": "You can save and edit this template as much as you like. To publish it, upgrade to Pro.",
+      "unlockMessage": "Unlock all templates and remove the \"Created with Brevy\" tag with a Pro Subscription (€3.90/month)",
+      "subscribeButton": "Subscribe to Pro"
     },
     "toasts": {
-      "welcome": "Welcome to Premium! 🎉",
-      "welcomeDescription": "Your subscription is now active. Enjoy all premium features!",
-      "welcomeCvSaved": "Welcome to Premium!",
-      "welcomeCvSavedDescription": "Your CV has been saved successfully. Enjoy all premium features!",
+      "welcome": "Welcome to Pro! 🎉",
+      "welcomeDescription": "Your subscription is now active. Enjoy all Pro features!",
+      "welcomeCvSaved": "Welcome to Pro!",
+      "welcomeCvSavedDescription": "Your CV has been saved successfully. Enjoy all Pro features!",
       "subscriptionSuccessful": "Subscription Successful",
-      "subscriptionSuccessfulDescription": "Welcome to Premium! Redirecting to dashboard...",
+      "subscriptionSuccessfulDescription": "Welcome to Pro! Redirecting to dashboard...",
       "paymentSuccessful": "Payment Successful!",
-      "paymentSuccessfulDescription": "Your Premium subscription is now active. Enjoy all premium features!",
-      "premiumActivated": "Premium Activated!",
-      "premiumActivatedDescription": "Your Premium subscription is now active. Enjoy all premium features!",
+      "paymentSuccessfulDescription": "Your Pro subscription is now active. Enjoy all Pro features!",
+      "premiumActivated": "Pro Activated!",
+      "premiumActivatedDescription": "Your Pro subscription is now active. Enjoy all Pro features!",
       "noActiveSubscription": "No Active Subscription",
-      "noActiveSubscriptionDescription": "No active subscription found. Please subscribe to Premium.",
+      "noActiveSubscriptionDescription": "No active subscription found. Please subscribe to Pro.",
       "alreadySubscribed": "Already subscribed",
-      "alreadySubscribedDescription": "You already have Premium access. Redirecting to CV builder...",
+      "alreadySubscribedDescription": "You already have Pro access. Redirecting to CV builder...",
       "authenticationRequired": "Authentication Required",
-      "authenticationRequiredDescription": "Please sign in to subscribe to Premium",
+      "authenticationRequiredDescription": "Please sign in to subscribe to Pro",
       "subscriptionScheduled": "Subscription scheduled for cancellation",
-      "subscriptionScheduledDescription": "You will retain Premium access until the end of your current billing period."
+      "subscriptionScheduledDescription": "You will retain Pro access until the end of your current billing period."
     },
     "dashboard": {
-      "premiumBadge": "Premium",
-      "unsubscribeButton": "Unsubscribe to Premium",
-      "cancelSubscriptionTitle": "Cancel your Premium subscription",
-      "cancelSubscriptionDescription": "Your Premium subscription will be cancelled and you will lose access to premium features immediately.",
-      "premiumFeaturesActive": "You will lose access to premium features immediately after unsubscribing.",
-      "keepPremium": "Keep Premium"
+      "premiumBadge": "Pro",
+      "unsubscribeButton": "Unsubscribe to Pro",
+      "cancelSubscriptionTitle": "Cancel your Pro subscription",
+      "cancelSubscriptionDescription": "Your Pro subscription will be cancelled and you will lose access to Pro features immediately.",
+      "premiumFeaturesActive": "You will lose access to Pro features immediately after unsubscribing.",
+      "keepPremium": "Keep Pro"
     },
     "checkout": {
-      "title": "Brevy Premium",
+      "title": "Brevy Pro",
       "price": "€3.90/month • Cancel anytime",
-      "subscribeButton": "Subscribe to Premium",
+      "subscribeButton": "Subscribe to Pro",
       "processing": "Processing..."
     },
     "subscription": {
-      "title": "Premium Subscription",
-      "description": "Subscribe to Premium for €3.90/month and unlock all professional templates",
-      "planTitle": "Premium Plan",
+      "title": "Pro Subscription",
+      "description": "Subscribe to Pro for €3.90/month and unlock all professional templates",
+      "planTitle": "Pro Plan",
       "planPrice": "€3.90/month"
     }
   },
@@ -215,8 +215,8 @@
     "unpublish": "Unpublish",
     "createNewResume": "Create a new resume",
     "newResumeDescription": "Your new professional CV will be displayed here",
-    "premiumFeature": "Premium Feature",
-    "premiumFeatureDescription": "Free users can only create one resume. Subscribe to Premium to create unlimited resumes.",
+    "premiumFeature": "Pro Feature",
+    "premiumFeatureDescription": "Free users can only create one resume. Subscribe to Pro to create unlimited resumes.",
     "noResumesYet": "No resumes created yet",
     "startCreating": "Start by creating your first professional resume",
     "createFirstResume": "Create my first resume"

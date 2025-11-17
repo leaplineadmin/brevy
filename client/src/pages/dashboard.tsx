@@ -519,7 +519,7 @@ export default function Dashboard() {
                     // Handle premium template restriction
                     const errorData = await response.json();
                     
-                    if (errorData.message?.includes('Premium subscription')) {
+                    if (errorData.message?.includes('Pro subscription') || errorData.message?.includes('Premium subscription')) {
                       // Try to save with a free template instead
                       const freeTemplate = 'template-classic';
                       const fallbackPayload = {
@@ -976,11 +976,11 @@ export default function Dashboard() {
               <div className="flex items-center gap-2">
                 <Crown className="h-5 w-5 text-orange-600" />
                 <span className="text-gray-800 font-medium">
-                  Your Premium access expires in {daysUntilExpiry} days
+                  Your Pro access expires in {daysUntilExpiry} days
                 </span>
               </div>
               <div className="text-sm text-gray-600">
-                You'll keep access until then, but consider renewing to continue using premium features.
+                You'll keep access until then, but consider renewing to continue using Pro features.
               </div>
             </div>
           </div>
@@ -1245,7 +1245,7 @@ export default function Dashboard() {
               </p>
               <div className="bg-red-50 p-4 rounded-lg">
                 <p className="font-medium text-red-900">
-                  ⚠️ You will lose access to premium features immediately
+                  ⚠️ You will lose access to Pro features immediately
                 </p>
                 <p className="text-sm text-red-700 mt-1">
                   Your account will switch to the free plan right after unsubscribing.
@@ -1280,7 +1280,7 @@ export default function Dashboard() {
               </p>
               {user?.hasActiveSubscription && (
                 <p className="text-orange-600 font-medium">
-                  Your premium subscription will also be cancelled and you will not be charged again.
+                  Your Pro subscription will also be cancelled and you will not be charged again.
                 </p>
               )}
               <p>

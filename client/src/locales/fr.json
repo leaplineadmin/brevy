@@ -64,7 +64,7 @@
         },
         {
           "question": "Proposez-vous une version gratuite ?",
-          "answer": "Oui. Une version gratuite est disponible, permettant de créer un CV en ligne moderne. Le plan premium vous permet de publier plusieurs CV en ligne, et vous offre un plus large choix de templates."
+          "answer": "Oui. Une version gratuite est disponible, permettant de créer un CV en ligne moderne. Le plan Pro vous permet de publier plusieurs CV en ligne, et vous offre un plus large choix de templates."
         },
         {
           "question": "Les données que je fournis à Brevy.me sont-elles sécurisées ?",
@@ -126,48 +126,48 @@
   },
   "premium": {
     "banner": {
-      "saveEditMessage": "Vous pouvez sauvegarder et modifier ce modèle autant que vous le souhaitez. Pour le publier, passez à Premium.",
-      "unlockMessage": "Débloquez tous les modèles et supprimez le tag \"Créé avec Brevy\" avec un abonnement Premium (3,90€/mois)",
-      "subscribeButton": "S'abonner à Premium"
+      "saveEditMessage": "Vous pouvez sauvegarder et modifier ce modèle autant que vous le souhaitez. Pour le publier, passez à Pro.",
+      "unlockMessage": "Débloquez tous les modèles et supprimez le tag \"Créé avec Brevy\" avec un abonnement Pro (3,90€/mois)",
+      "subscribeButton": "S'abonner à Pro"
     },
     "toasts": {
-      "welcome": "Bienvenue sur Premium ! 🎉",
-      "welcomeDescription": "Votre abonnement est maintenant actif. Profitez de toutes les fonctionnalités premium !",
-      "welcomeCvSaved": "Bienvenue sur Premium !",
-      "welcomeCvSavedDescription": "Votre CV a été sauvegardé avec succès. Profitez de toutes les fonctionnalités premium !",
+      "welcome": "Bienvenue sur Pro ! 🎉",
+      "welcomeDescription": "Votre abonnement est maintenant actif. Profitez de toutes les fonctionnalités Pro !",
+      "welcomeCvSaved": "Bienvenue sur Pro !",
+      "welcomeCvSavedDescription": "Votre CV a été sauvegardé avec succès. Profitez de toutes les fonctionnalités Pro !",
       "subscriptionSuccessful": "Abonnement réussi",
-      "subscriptionSuccessfulDescription": "Bienvenue sur Premium ! Redirection vers le tableau de bord...",
+      "subscriptionSuccessfulDescription": "Bienvenue sur Pro ! Redirection vers le tableau de bord...",
       "paymentSuccessful": "Paiement réussi !",
-      "paymentSuccessfulDescription": "Votre abonnement Premium est maintenant actif. Profitez de toutes les fonctionnalités premium !",
-      "premiumActivated": "Premium activé !",
-      "premiumActivatedDescription": "Votre abonnement Premium est maintenant actif. Profitez de toutes les fonctionnalités premium !",
+      "paymentSuccessfulDescription": "Votre abonnement Pro est maintenant actif. Profitez de toutes les fonctionnalités Pro !",
+      "premiumActivated": "Pro activé !",
+      "premiumActivatedDescription": "Votre abonnement Pro est maintenant actif. Profitez de toutes les fonctionnalités Pro !",
       "noActiveSubscription": "Aucun abonnement actif",
-      "noActiveSubscriptionDescription": "Aucun abonnement actif trouvé. Veuillez vous abonner à Premium.",
+      "noActiveSubscriptionDescription": "Aucun abonnement actif trouvé. Veuillez vous abonner à Pro.",
       "alreadySubscribed": "Déjà abonné",
-      "alreadySubscribedDescription": "Vous avez déjà accès à Premium. Redirection vers le créateur de CV...",
+      "alreadySubscribedDescription": "Vous avez déjà accès à Pro. Redirection vers le créateur de CV...",
       "authenticationRequired": "Authentification requise",
-      "authenticationRequiredDescription": "Veuillez vous connecter pour vous abonner à Premium",
+      "authenticationRequiredDescription": "Veuillez vous connecter pour vous abonner à Pro",
       "subscriptionScheduled": "Abonnement programmé pour annulation",
-      "subscriptionScheduledDescription": "Vous conserverez l'accès Premium jusqu'à la fin de votre période de facturation actuelle."
+      "subscriptionScheduledDescription": "Vous conserverez l'accès Pro jusqu'à la fin de votre période de facturation actuelle."
     },
     "dashboard": {
-      "premiumBadge": "Premium",
-      "unsubscribeButton": "Se désabonner de Premium",
-      "cancelSubscriptionTitle": "Annuler votre abonnement Premium",
-      "cancelSubscriptionDescription": "Votre abonnement Premium sera annulé et vous perdrez immédiatement l'accès aux fonctionnalités premium.",
-      "premiumFeaturesActive": "Vous perdrez immédiatement l'accès aux fonctionnalités premium après vous être désabonné.",
-      "keepPremium": "Conserver Premium"
+      "premiumBadge": "Pro",
+      "unsubscribeButton": "Se désabonner de Pro",
+      "cancelSubscriptionTitle": "Annuler votre abonnement Pro",
+      "cancelSubscriptionDescription": "Votre abonnement Pro sera annulé et vous perdrez immédiatement l'accès aux fonctionnalités Pro.",
+      "premiumFeaturesActive": "Vous perdrez immédiatement l'accès aux fonctionnalités Pro après vous être désabonné.",
+      "keepPremium": "Conserver Pro"
     },
     "checkout": {
-      "title": "Brevy Premium",
+      "title": "Brevy Pro",
       "price": "3,90€/mois • Annuler à tout moment",
-      "subscribeButton": "S'abonner à Premium",
+      "subscribeButton": "S'abonner à Pro",
       "processing": "Traitement..."
     },
     "subscription": {
-      "title": "Abonnement Premium",
-      "description": "Abonnez-vous à Premium pour 3,90€/mois et débloquez tous les modèles professionnels",
-      "planTitle": "Plan Premium",
+      "title": "Abonnement Pro",
+      "description": "Abonnez-vous à Pro pour 3,90€/mois et débloquez tous les modèles professionnels",
+      "planTitle": "Plan Pro",
       "planPrice": "3,90€/mois"
     }
   },
@@ -215,8 +215,8 @@
     "unpublish": "Dépublier",
     "createNewResume": "Créer un nouveau CV",
     "newResumeDescription": "Votre nouveau CV professionnel sera affiché ici",
-    "premiumFeature": "Fonctionnalité Premium",
-    "premiumFeatureDescription": "Les utilisateurs Free ne peuvent créer qu'un seul CV. Abonnez-vous à Premium pour créer des CVs illimités.",
+    "premiumFeature": "Fonctionnalité Pro",
+    "premiumFeatureDescription": "Les utilisateurs Free ne peuvent créer qu'un seul CV. Abonnez-vous à Pro pour créer des CVs illimités.",
     "noResumesYet": "Aucun CV créé pour le moment",
     "startCreating": "Commencez par créer votre premier CV professionnel",
     "createFirstResume": "Créer mon premier CV"

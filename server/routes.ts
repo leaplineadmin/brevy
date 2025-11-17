@@ -2141,9 +2141,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       z-index: 9900;
     }
     
-    /* Premium upgrade message */
+    /* Pro upgrade message */
     .cv-container:after {
-      content: "Premium Upgrade Required for Export and Editing";
+      content: "Pro Upgrade Required for Export and Editing";
       position: fixed;
       bottom: 10px;
       left: 0;
@@ -2242,7 +2242,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       watermark.style.color = 'rgba(0,0,0,0.3)';
       watermark.style.zIndex = '9999';
       watermark.style.pointerEvents = 'none';
-      watermark.innerHTML = 'Aperçu uniquement - Version Premium requise pour exporter';
+      watermark.innerHTML = 'Aperçu uniquement - Version Pro requise pour exporter';
       document.body.appendChild(watermark);
       
       // Premium subscription suggestion handled via UI
@@ -2449,9 +2449,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       z-index: 9900;
     }
     
-    /* Premium upgrade message */
+    /* Pro upgrade message */
     .cv-container:after {
-      content: "Premium Upgrade Required for Export and Editing";
+      content: "Pro Upgrade Required for Export and Editing";
       position: fixed;
       bottom: 10px;
       left: 0;
@@ -2559,7 +2559,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       watermark.style.color = 'rgba(0,0,0,0.3)';
       watermark.style.zIndex = '9999';
       watermark.style.pointerEvents = 'none';
-      watermark.innerHTML = 'Aperçu uniquement - Version Premium requise pour exporter';
+      watermark.innerHTML = 'Aperçu uniquement - Version Pro requise pour exporter';
       document.body.appendChild(watermark);
       
       // Premium subscription suggestion handled via UI
@@ -3099,9 +3099,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // List all products
       const products = await stripe.products.list({ limit: 100 });
       
-      // Find Brevy Premium products
+      // Find Brevy Pro products
       const brevyProducts = products.data.filter(product => 
-        product.name === 'Brevy Premium'
+        product.name === 'Brevy Pro' || product.name === 'Brevy Premium'
       );
 
 

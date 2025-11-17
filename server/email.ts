@@ -255,7 +255,7 @@ export async function sendAccountDeletionEmail(to: string, firstName: string, su
     <p>Hello ${firstName},</p>
     <p>Your Brevy account has been successfully deleted.</p>
     ${subscriptionCancelled 
-      ? '<p style="color: #dc2626; font-weight: 600;">Your premium subscription has been cancelled and you have lost access to premium features immediately.</p>' 
+      ? '<p style="color: #dc2626; font-weight: 600;">Your Pro subscription has been cancelled and you have lost access to Pro features immediately.</p>' 
       : ''
     }
     <p>We hope to see you again on our platform someday.</p>
@@ -268,7 +268,7 @@ export async function sendAccountDeletionEmail(to: string, firstName: string, su
 Hello ${firstName},
 
 Your Brevy account has been successfully deleted.
-${subscriptionCancelled ? '\nYour premium subscription has been cancelled and you have lost access to premium features immediately.' : ''}
+${subscriptionCancelled ? '\nYour Pro subscription has been cancelled and you have lost access to Pro features immediately.' : ''}
 
 We hope to see you again on our platform someday.
 
@@ -301,19 +301,19 @@ export async function sendPremiumWelcomeEmail(to: string, firstName: string, nex
   }
   
   const content = `
-    <h1>✅ Your Brevy Premium subscription is active!</h1>
+    <h1>✅ Your Brevy Pro subscription is active!</h1>
     <p>Hi ${firstName},</p>
-    <p>Thank you for subscribing to Brevy Premium! 🎉</p>
+    <p>Thank you for subscribing to Brevy Pro! 🎉</p>
     
     <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
       <h3 style="margin-top: 0;">Your subscription details:</h3>
-      <p><strong>Plan:</strong> Premium</p>
+      <p><strong>Plan:</strong> Pro</p>
       <p><strong>Price:</strong> €3.90 / month</p>
       <p><strong>Status:</strong> Active</p>
       <p><strong>Next payment:</strong> ${nextInvoiceDate.toLocaleDateString()}</p>
     </div>
     
-    <p>You now have full access to all premium features. 🚀</p>
+    <p>You now have full access to all Pro features. 🚀</p>
     
     <div style="text-align: center; margin: 30px 0;">
       <a href="https://brevy.me/dashboard" class="button" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 600;">
@@ -330,15 +330,15 @@ export async function sendPremiumWelcomeEmail(to: string, firstName: string, nex
   const textContent = `
 Hi ${firstName},
 
-Thank you for subscribing to Brevy Premium!
+Thank you for subscribing to Brevy Pro!
 
 Your subscription details:
-- Plan: Premium
+- Plan: Pro
 - Price: €3.90 / month  
 - Status: Active
 - Next payment: ${nextInvoiceDate.toLocaleDateString()}
 
-You now have full access to all premium features.
+You now have full access to all Pro features.
 
 Go to your dashboard: https://brevy.me/dashboard
 
@@ -350,7 +350,7 @@ The Brevy Team
 
   const result = await sendEmail({
     to,
-    subject: '✅ Your Brevy Premium subscription is active!',
+    subject: '✅ Your Brevy Pro subscription is active!',
     html,
     text: textContent,
   });
@@ -373,12 +373,12 @@ export async function sendSubscriptionCancellationEmail(to: string, firstName: s
   }
   
   const content = `
-    <h1>⚠️ Your Brevy Premium subscription will end soon</h1>
+    <h1>⚠️ Your Brevy Pro subscription will end soon</h1>
     <p>Hi ${firstName},</p>
-    <p>We've received your request to cancel your Brevy Premium subscription.<br>Here's what happens next:</p>
+    <p>We've received your request to cancel your Brevy Pro subscription.<br>Here's what happens next:</p>
     
     <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-      <p><strong>✅ Your premium features will remain available until ${subscriptionEndDate.toLocaleDateString()} (the end of your current billing period).</strong></p>
+      <p><strong>✅ Your Pro features will remain available until ${subscriptionEndDate.toLocaleDateString()} (the end of your current billing period).</strong></p>
       
       <p><strong>🆓 After that date, your account will automatically switch back to the free plan, and you'll still be able to use Brevy with limited features.</strong></p>
     </div>
@@ -389,7 +389,7 @@ export async function sendSubscriptionCancellationEmail(to: string, firstName: s
       </a>
     </div>
     
-    <p>We're sad to see you leave Premium, but you're always welcome back!</p>
+    <p>We're sad to see you leave Pro, but you're always welcome back!</p>
     <p>Best,<br>The Brevy Team</p>
   `;
 
@@ -407,7 +407,7 @@ Here's what happens next:
 
 Go to your dashboard: https://brevy.me/dashboard
 
-We're sad to see you leave Premium, but you're always welcome back!
+We're sad to see you leave Pro, but you're always welcome back!
 
 Best,
 The Brevy Team
@@ -415,7 +415,7 @@ The Brevy Team
 
   const result = await sendEmail({
     to,
-    subject: '⚠️ Your Brevy Premium subscription will end soon',
+    subject: '⚠️ Your Brevy Pro subscription will end soon',
     html,
     text: textContent,
   });
