@@ -7,8 +7,8 @@
 :root {
   /* Palette officielle de l'application selon Styles.png */
   --primary: #004ED4;
-  --primaryHover: #003694;
-  --secondaryHover: #D9E7FF;
+  --primaryHover: #0043b8;
+  --secondaryHover: #eaf2ff;
   --tertiary: #F381B4;
   --tertiaryHover: #BE4C8E;
   --tertiaryDark: #952566;
