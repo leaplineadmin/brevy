@@ -29,6 +29,7 @@ const Checkout = lazy(() => import("@/pages/checkout"));
 const PaymentSuccess = lazy(() => import("@/pages/payment-success"));
 const Blog = lazy(() => import("@/pages/blog"));
 const BlogArticle = lazy(() => import("@/pages/blog-article"));
+const DesignComponents = lazy(() => import("@/pages/design-components"));
 
 import { CVProvider } from "@/hooks/use-cv-data";
 import { AuthProvider } from "@/hooks/use-auth";
@@ -147,6 +148,11 @@ function Router() {
       <Route path="/blog">
         <Suspense fallback={<LoadingSpinner size="lg" text="Loading..." className="min-h-screen" />}>
           <Blog />
+        </Suspense>
+      </Route>
+      <Route path="/design/components">
+        <Suspense fallback={<LoadingSpinner size="lg" text="Loading..." className="min-h-screen" />}>
+          <DesignComponents />
         </Suspense>
       </Route>
       <Route>
