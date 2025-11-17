@@ -419,7 +419,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white border-b border-gray-200 w-full">
-      <div className="w-full py-4" style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+      <div className="w-full p-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
