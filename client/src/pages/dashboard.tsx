@@ -1162,7 +1162,11 @@ export default function Dashboard() {
                       <div className="flex w-full flex-col gap-2 md:w-64">
                         {hasPremiumAccess ? (
                           <>
-                            <Button onClick={() => setShowUnsubscribeModal(true)}>
+                            <Button
+                              variant="default"
+                              onClick={() => setShowUnsubscribeModal(true)}
+                              className="bg-gray-900 text-white hover:bg-gray-800"
+                            >
                               {t('dashboard.settings.subscription.manageCta')}
                             </Button>
                             <Button
@@ -1464,14 +1468,6 @@ export default function Dashboard() {
             <div>
               <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Legal</h4>
               <ul className="mt-4 space-y-4">
-                <li>
-                  <button
-                    onClick={() => setShowDeleteAccountModal(true)}
-                    className="text-base text-gray-500 hover:text-gray-700 text-left"
-                  >
-                    Delete my account
-                  </button>
-                </li>
                 <li>
                   <a href="/privacy-policy" className="text-base text-gray-500 hover:text-gray-900">
                     {t('gdpr.cookies.banner.privacyPolicyLink') || 'Privacy Policy'}
