@@ -1050,7 +1050,7 @@ export default function Dashboard() {
         />
       </Helmet>
       <div className="min-h-screen bg-gray-50 flex flex-col">
-        <div className="flex flex-1">
+        <div className="flex flex-1 min-h-screen">
           <aside className="hidden w-64 flex-col border-r border-gray-200 bg-white md:flex">
             <div className="px-6 pt-6">
               <Link href="/" className="inline-flex items-center gap-2">
@@ -1464,22 +1464,12 @@ export default function Dashboard() {
             <div>
               <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Legal</h4>
               <ul className="mt-4 space-y-4">
-                {user?.hasActiveSubscription && (
-                  <li>
-                    <button
-                      onClick={() => setShowUnsubscribeModal(true)}
-                      className="text-base text-gray-500 hover:text-gray-700 text-left"
-                    >
-                      {t('premium.dashboard.unsubscribeButton')}
-                    </button>
-                  </li>
-                )}
                 <li>
                   <button
                     onClick={() => setShowDeleteAccountModal(true)}
                     className="text-base text-gray-500 hover:text-gray-700 text-left"
                   >
-                    {user?.hasActiveSubscription ? 'Unsubscribe & Delete my account' : 'Delete my account'}
+                    Delete my account
                   </button>
                 </li>
                 <li>
@@ -1507,16 +1497,6 @@ export default function Dashboard() {
                 <li>
                   <a href="/legal-notice" className="text-base text-gray-500 hover:text-gray-900">
                     Legal Notice
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:contact@brevy.me" className="text-base text-gray-500 hover:text-gray-900">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="/data-management" className="text-base text-gray-500 hover:text-gray-900">
-                    {t('gdpr.dataManagement.title') || 'My Personal Data'}
                   </a>
                 </li>
               </ul>
