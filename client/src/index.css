@@ -8,8 +8,7 @@
   /* Palette officielle de l'application selon Styles.png */
   --primary: #004ED4;
   --primaryHover: #003694;
-  --secondary: #D9E7FF;
-  --secondaryLightHover: #B7CAEB;
+  --secondaryHover: #D9E7FF;
   --tertiary: #F381B4;
   --tertiaryHover: #BE4C8E;
   --tertiaryDark: #952566;
@@ -91,8 +90,8 @@
   [data-state="open"][data-radix-select-trigger] {
     outline: none !important;
     border-color: var(--primary) !important;
-    box-shadow: 0 0 0 2px var(--secondary) !important;
-    ring-color: var(--secondary) !important;
+    box-shadow: 0 0 0 2px var(--secondaryHover) !important;
+    ring-color: var(--secondaryHover) !important;
     transition: all 0.2s ease-in-out;
   }
 
@@ -253,12 +252,12 @@
     color: var(--primary);
     font: var(--font-body);
     height: 44px;
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--secondaryHover);
   }
 
   .cv-button-add:hover {
     color: var(--primaryHover);
-    background-color: var(--secondary);
+    background-color: var(--secondaryHover);
   }
 
   /* S'assurer qu'il n'y a pas de doublons des boutons d'ajout */
