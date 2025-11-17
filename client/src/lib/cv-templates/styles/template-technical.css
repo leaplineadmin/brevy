@@ -5,7 +5,7 @@
 
 .template-technical {
     --darkColor: #1A1A1A;
-    --secondaryDark: #2A2A2A;
+    --templateDark: #2A2A2A;
     --lightText: #F0F0F0;
     --greyText: #AAAAAA;
     --borderColor: #444444;
@@ -51,7 +51,7 @@
         flex-direction: column;
         gap: 2rem;
         width: 25%;
-        background-color: var(--secondaryDark);
+        background-color: var(--templateDark);
         padding: 2.5rem;
         position: sticky;
         top: 0;
@@ -467,7 +467,7 @@
     }
 
     .timeline-content {
-        background-color: var(--secondaryDark);
+        background-color: var(--templateDark);
         padding: 20px;
         border-radius: 8px;
         border: 1px solid var(--borderColor);
@@ -648,7 +648,7 @@
 
         /* Style mobile secondary info container */
         .secondary-info-mobile {
-            background-color: var(--secondaryDark);
+            background-color: var(--templateDark);
             padding: 1.5rem;
             margin: 0;
             order: 3;

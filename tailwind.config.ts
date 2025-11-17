@@ -21,17 +21,9 @@ export default {
         brand: {
           primary: "#004ED4",      // Primary
           primaryHover: "#003694", // PrimaryHover
-          primaryLight: "#D9E7FF", // PrimaryLight
-          primaryLightHover: "#B7CAEB", // PrimaryLightHover
         },
         lightBlue: "#E0E7FF",
-        secondary: "var(--secondary)",
-        secondaryHover: "var(--secondaryHover)", 
-        secondaryDark: "var(--secondaryDark)",
         danger: "var(--danger)",
-        secondaryDarkHover: "var(--secondaryDarkHover)",
-        secondaryLight: "var(--secondaryLight)",
-        secondaryLightHover: "var(--secondaryLightHover)",
         tertiary: "var(--tertiary)",
         tertiaryHover: "var(--tertiaryHover)",
         tertiaryLight: "var(--tertiaryLight)",

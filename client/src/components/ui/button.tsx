@@ -9,17 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "text-white [&_svg]:text-white",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border bg-transparent hover:bg-[var(--secondaryLightHover)] [&_svg]:text-[var(--primary)]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border border-[var(--primary)] text-[var(--primary)] bg-transparent hover:bg-[var(--secondaryLightHover)] [&_svg]:text-[var(--primary)]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        primaryLight: "bg-brand-primaryLight text-brand-primary border-none hover:bg-brand-primaryLightHover",
-        brandPrimary: "bg-brand-primary text-white hover:bg-brand-primaryHover",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -44,9 +42,15 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+    
+    // Apply background colors for default variant using CSS variables
+    const defaultStyles = variant === "default" 
+      ? "bg-[var(--primary)] hover:bg-[var(--primaryHover)]"
+      : ""
+    
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size }), defaultStyles, className)}
         ref={ref}
         {...props}
       />

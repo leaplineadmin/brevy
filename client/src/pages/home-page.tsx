@@ -88,7 +88,8 @@ export default function HomePage() {
 
               <Link href="/cv-builder">
                 <Button
-                  className="bg-blue-600 hover:bg-blue-700 text-white rounded-md cta-button"
+                  variant="default"
+                  className="rounded-md cta-button"
                   style={{
                     height: "3.5rem",
                     width: "16rem",
@@ -213,8 +214,8 @@ export default function HomePage() {
           <div className="text-center mt-8">
             <Link href="/blog">
               <Button
-                variant="outline"
-                className="text-blue-600 border-blue-600 hover:bg-blue-50 min-h-[44px]"
+                variant="secondary"
+                className="min-h-[44px]"
               >
                 {currentLang === 'fr' ? 'Voir tous les articles' : 'View all articles'}
               </Button>

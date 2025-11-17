@@ -64,7 +64,7 @@
 
 .title-hilight {
   color: linear-gradient(to right,
-      var(--secondary),
+      var(--primary),
       var(--tertiaryDark));
 }
 
