@@ -219,7 +219,56 @@
     "premiumFeatureDescription": "Les utilisateurs Free ne peuvent créer qu'un seul CV. Abonnez-vous à Pro pour créer des CVs illimités.",
     "noResumesYet": "Aucun CV créé pour le moment",
     "startCreating": "Commencez par créer votre premier CV professionnel",
-    "createFirstResume": "Créer mon premier CV"
+    "createFirstResume": "Créer mon premier CV",
+    "sidebar": {
+      "myResumes": "Mes CV",
+      "settings": "Paramètres",
+      "proTitle": "Passe en Pro",
+      "proDescription": "Crée autant de CV que tu veux et débloque l'IA.",
+      "proButton": "Essayer Brevy Pro",
+      "helpTitle": "Besoin d'aide ?",
+      "helpDescription": "Notre équipe répond à chaque email sous 24h.",
+      "helpCta": "contact@brevy.me",
+      "logout": "Se déconnecter"
+    },
+    "resumesUpgradeTitle": "Crée des CV illimités",
+    "resumesUpgradeDescription": "Passe en Brevy Pro pour publier plusieurs CV, débloquer les templates premium et l'IA Apply.",
+    "resumesUpgradeButton": "Essayer Brevy Pro",
+    "resumesEmptyTitle": "Aucun CV pour l'instant",
+    "resumesEmptyDescription": "Commence par créer ton premier CV professionnel.",
+    "card": {
+      "published": "Publié",
+      "draft": "Brouillon"
+    },
+    "settings": {
+      "title": "Paramètres",
+      "subtitle": "Gère ton abonnement, tes préférences et tes données.",
+      "subscription": {
+        "title": "Abonnement",
+        "description": "Choisis l'offre qui correspond à ta recherche d'emploi.",
+        "proPlan": "Brevy Pro",
+        "proPlanDescription": "CV illimités, templates premium et fonctions IA.",
+        "freePlan": "Brevy Free",
+        "freePlanDescription": "1 CV publié et accès au template Classique.",
+        "manageCta": "Gérer mon abonnement",
+        "refreshCta": "Actualiser le statut",
+        "refreshLoading": "Actualisation...",
+        "upgradeCta": "Passer en Pro",
+        "expiringSoon": "Ton accès Pro expire dans {{days}} jours",
+        "expiringDescription": "Renouvelle l'abonnement pour garder toutes les fonctionnalités."
+      },
+      "language": {
+        "title": "Langue",
+        "description": "Choisis la langue de ton tableau de bord."
+      },
+      "data": {
+        "title": "Vie privée & données",
+        "description": "Gère tes demandes RGPD, télécharge ou supprime tes données.",
+        "helper": "Accède à la page dédiée pour télécharger ou gérer tes données.",
+        "openData": "Gérer mes données",
+        "delete": "Supprimer mon compte"
+      }
+    }
   },
   "cvBuilder": {
     "title": {

@@ -219,7 +219,56 @@
     "premiumFeatureDescription": "Free users can only create one resume. Subscribe to Pro to create unlimited resumes.",
     "noResumesYet": "No resumes created yet",
     "startCreating": "Start by creating your first professional resume",
-    "createFirstResume": "Create my first resume"
+    "createFirstResume": "Create my first resume",
+    "sidebar": {
+      "myResumes": "My Resumes",
+      "settings": "Settings",
+      "proTitle": "Become a Pro",
+      "proDescription": "Create unlimited resumes and unlock AI upgrades.",
+      "proButton": "Try Brevy Pro",
+      "helpTitle": "Need help?",
+      "helpDescription": "Our team answers every email within 24 hours.",
+      "helpCta": "contact@brevy.me",
+      "logout": "Log out"
+    },
+    "resumesUpgradeTitle": "Create unlimited resumes",
+    "resumesUpgradeDescription": "Upgrade to Brevy Pro to publish multiple resumes, unlock premium templates and AI Apply.",
+    "resumesUpgradeButton": "Try Brevy Pro",
+    "resumesEmptyTitle": "No resume yet",
+    "resumesEmptyDescription": "Start by creating your first professional resume.",
+    "card": {
+      "published": "Published",
+      "draft": "Draft"
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "Manage your subscription, preferences and data.",
+      "subscription": {
+        "title": "Subscription",
+        "description": "Choose the plan that matches your job search.",
+        "proPlan": "Brevy Pro",
+        "proPlanDescription": "Unlimited resumes, premium templates and AI features.",
+        "freePlan": "Brevy Free",
+        "freePlanDescription": "1 published resume and access to the Classic template.",
+        "manageCta": "Manage subscription",
+        "refreshCta": "Refresh status",
+        "refreshLoading": "Refreshing...",
+        "upgradeCta": "Upgrade to Pro",
+        "expiringSoon": "Your Pro access expires in {{days}} days",
+        "expiringDescription": "Keep access by keeping your subscription active."
+      },
+      "language": {
+        "title": "Language",
+        "description": "Choose the language for your dashboard."
+      },
+      "data": {
+        "title": "Privacy & Data",
+        "description": "Manage GDPR requests, download or delete your data.",
+        "helper": "Go to the dedicated GDPR page to download or manage your data.",
+        "openData": "Manage my data",
+        "delete": "Delete my account"
+      }
+    }
   },
   "cvBuilder": {
     "title": {

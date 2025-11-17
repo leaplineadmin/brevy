@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-// Use static logo
 import { Link, useLocation } from "wouter";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { useCorrelationId } from "@/hooks/useCorrelationId";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,15 +19,27 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Edit, ExternalLink, Plus, LogOut, Trash2, Crown, Sparkles } from "lucide-react";
+import {
+  Edit,
+  ExternalLink,
+  Plus,
+  LogOut as LogOutIcon,
+  Crown,
+  Sparkles,
+  LayoutDashboard,
+  Settings as SettingsIcon,
+  HelpCircle,
+  Mail,
+  Languages,
+} from "lucide-react";
 import { DeleteButton } from "@/components/shared/delete-button";
-import { CVPreviewThumbnail } from "@/components/dashboard/cv-preview-thumbnail";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { hasActivePremiumAccess, getDaysUntilPremiumExpiry, isPremiumExpiringSoon } from "@/utils/premium-check";
-import Navbar from "@/components/layout/navbar";
 import { PublishButton } from "@/components/dashboard/publish-button";
 import logoBrevy from "@/assets/logo-brevy.svg";
+import { performLogout } from "@/lib/logout";
+import { cn } from "@/lib/utils";
 
 // Import thumbnails
 import template1Thumb from "@/assets/template1-thumb.png";
@@ -83,13 +95,18 @@ interface DashboardCV {
 }
 
 export default function Dashboard() {
-  const { user, isLoading, refreshUser } = useAuth();
+  const { user, isLoading, refreshUser, clearAllSessions } = useAuth();
   const { toast } = useToast();
-  const { t, language } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const correlationId = useCorrelationId();
   const queryClient = useQueryClient();
-  const [, setLocation] = useLocation();
-  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
+  const [location, setLocation] = useLocation();
+  const getSectionFromSearch = () => {
+    if (typeof window === 'undefined') return 'resumes';
+    const params = new URLSearchParams(window.location.search);
+    return params.get('section') === 'settings' ? 'settings' : 'resumes';
+  };
+  const [activeSection, setActiveSection] = useState<'resumes' | 'settings'>(getSectionFromSearch);
   const [localCvs, setLocalCvs] = useState<DashboardCV[]>([]);
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
@@ -115,6 +132,10 @@ export default function Dashboard() {
       setLocalCvs(cvs as DashboardCV[]);
     }
   }, [cvs]);
+
+  useEffect(() => {
+    setActiveSection(getSectionFromSearch());
+  }, [location]);
 
   // Payment polling logic - runs only once when payment params are detected
   useEffect(() => {
@@ -682,12 +703,6 @@ export default function Dashboard() {
     return dateB.getTime() - dateA.getTime();
   });
 
-  const handleSubscribe = () => {
-    setShowSubscriptionModal(true);
-  };
-
-
-
   // Function to handle publication changes
   const handlePublishChange = (cvId: string, published: boolean, subdomain?: string, language?: string) => {
     setLocalCvs(prevCvs => 
@@ -895,6 +910,105 @@ export default function Dashboard() {
     }
   };
 
+  const handleSectionChange = (section: 'resumes' | 'settings') => {
+    setActiveSection(section);
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (section === 'settings') {
+        params.set('section', 'settings');
+      } else {
+        params.delete('section');
+      }
+      const newSearch = params.toString();
+      const newPath = `${window.location.pathname}${newSearch ? `?${newSearch}` : ''}`;
+      setLocation(newPath, { replace: true });
+    }
+  };
+
+  const handleUpgradeClick = async () => {
+    try {
+      const { getPaymentLinkUrl } = await import('../lib/stripe');
+      window.location.href = getPaymentLinkUrl({ returnTo: 'dashboard' });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Unable to open checkout. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleLogout = async () => {
+    await performLogout(clearAllSessions);
+  };
+
+  const sidebarItems = [
+    { id: 'resumes' as const, label: t('dashboard.sidebar.myResumes'), icon: LayoutDashboard },
+    { id: 'settings' as const, label: t('dashboard.sidebar.settings'), icon: SettingsIcon },
+  ];
+
+  const userDisplayName = user
+    ? [user.firstName, user.lastName].filter(Boolean).join(' ').trim() || user.email || 'User'
+    : 'User';
+
+  const userInitials = user
+    ? `${(user.firstName || user.email || 'U')[0] || 'U'}${user.lastName?.[0] || ''}`
+    : 'U';
+
+  const isFreeUserWithCv = !hasPremiumAccess && localCvs.length > 0;
+  const canCreateNewCv = !isFreeUserWithCv;
+  const isSettingsView = activeSection === 'settings';
+
+  const renderProUpsellCard = () => {
+    if (hasPremiumAccess) {
+      return null;
+    }
+    return (
+      <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-4 text-left">
+        <p className="text-sm font-semibold text-amber-900">{t('dashboard.sidebar.proTitle')}</p>
+        <p className="mt-1 text-sm text-amber-800">{t('dashboard.sidebar.proDescription')}</p>
+        <Button
+          onClick={handleUpgradeClick}
+          className="mt-4 w-full bg-[#8b4a25] hover:bg-[#6f3719]"
+        >
+          <Sparkles className="h-4 w-4" />
+          {t('dashboard.sidebar.proButton')}
+        </Button>
+      </div>
+    );
+  };
+
+  const renderHelpCard = () => (
+    <div className="rounded-2xl border border-gray-200 bg-white p-4 text-left">
+      <div className="flex items-start gap-3">
+        <div className="rounded-full bg-blue-50 p-2 text-blue-600">
+          <HelpCircle className="h-5 w-5" />
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-gray-900">{t('dashboard.sidebar.helpTitle')}</p>
+          <p className="text-sm text-gray-500">{t('dashboard.sidebar.helpDescription')}</p>
+          <a
+            href="mailto:contact@brevy.me"
+            className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:underline"
+          >
+            <Mail className="h-4 w-4" />
+            {t('dashboard.sidebar.helpCta')}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderLogoutButton = () => (
+    <button
+      onClick={handleLogout}
+      className="flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+    >
+      <LogOutIcon className="h-4 w-4" />
+      {t('dashboard.sidebar.logout')}
+    </button>
+  );
+
   // Check authentication - redirect if not logged in
   const isAuthenticated = !!user;
 
@@ -935,205 +1049,388 @@ export default function Dashboard() {
           }}
         />
       </Helmet>
-      <div className="min-h-screen bg-gray-50">
-        {/* Use global navbar */}
-        <Navbar />
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="flex flex-1">
+          <aside className="hidden w-64 flex-col border-r border-gray-200 bg-white md:flex">
+            <div className="px-6 pt-6">
+              <Link href="/" className="inline-flex items-center gap-2">
+                <img src={logoBrevy} alt="Brevy" className="h-8 w-auto" />
+              </Link>
+            </div>
+            <nav className="mt-8 flex-1 space-y-2 px-4">
+              {sidebarItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleSectionChange(item.id)}
+                    className={cn(
+                      "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition",
+                      isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-50"
+                    )}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
+            <div className="space-y-4 px-4 py-6">
+              {renderProUpsellCard()}
+              {renderHelpCard()}
+              {renderLogoutButton()}
+            </div>
+          </aside>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" style={{ minHeight: '70vh' }}>
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
-            <div className="flex items-center gap-2">
-              {user && (
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">
-                    {user?.firstName || 'User'}
-                  </span>
-                  {hasPremiumAccess ? (
-                    <span className="px-2 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white shadow-md border border-yellow-300">
-                      <Crown className="w-3 h-3 inline mr-1" />
+          <div className="flex flex-1 flex-col">
+            <header className="flex items-center justify-end border-b border-gray-200 bg-white px-4 py-4 sm:px-8">
+              <div className="flex items-center gap-4">
+                <div className="text-right">
+                  <p className="text-sm font-semibold text-gray-900">{userDisplayName}</p>
+                  {hasPremiumAccess && (
+                    <Badge className="mt-1 inline-flex items-center gap-1 border-0 bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                      <Crown className="h-3 w-3" />
                       {t('premium.dashboard.premiumBadge')}
-                    </span>
+                    </Badge>
+                  )}
+                </div>
+                <Avatar className="h-10 w-10">
+                  <AvatarImage src={user?.profileImageUrl || ''} alt={userDisplayName} />
+                  <AvatarFallback>{userInitials.toUpperCase()}</AvatarFallback>
+                </Avatar>
+              </div>
+            </header>
+
+            <div className="border-b border-gray-200 bg-white px-4 py-3 md:hidden">
+              <div className="flex flex-wrap gap-2">
+                {sidebarItems.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleSectionChange(item.id)}
+                      className={cn(
+                        "flex-1 rounded-full px-3 py-2 text-sm font-medium",
+                        isActive ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600"
+                      )}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="space-y-4 border-b border-gray-200 bg-gray-50 px-4 py-4 md:hidden">
+              {renderProUpsellCard()}
+              {renderHelpCard()}
+              {renderLogoutButton()}
+            </div>
+
+            <main className="flex-1 overflow-y-auto px-4 py-8 sm:px-8">
+              {isSettingsView ? (
+                <div className="space-y-8">
+                  <div className="space-y-2">
+                    <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.settings.title')}</h1>
+                    <p className="text-gray-500">{t('dashboard.settings.subtitle')}</p>
+                  </div>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{t('dashboard.settings.subscription.title')}</CardTitle>
+                      <CardDescription>{t('dashboard.settings.subscription.description')}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                      <div className="space-y-2">
+                        <p className="text-lg font-semibold text-gray-900">
+                          {hasPremiumAccess
+                            ? t('dashboard.settings.subscription.proPlan')
+                            : t('dashboard.settings.subscription.freePlan')}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {hasPremiumAccess
+                            ? t('dashboard.settings.subscription.proPlanDescription')
+                            : t('dashboard.settings.subscription.freePlanDescription')}
+                        </p>
+                        {hasPremiumAccess && isExpiringSoon && (
+                          <p className="text-sm font-medium text-orange-600">
+                            {t('dashboard.settings.subscription.expiringSoon', { days: daysUntilExpiry })}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex w-full flex-col gap-2 md:w-64">
+                        {hasPremiumAccess ? (
+                          <>
+                            <Button onClick={() => setShowUnsubscribeModal(true)}>
+                              {t('dashboard.settings.subscription.manageCta')}
+                            </Button>
+                            <Button
+                              variant="outline"
+                              onClick={handleFallbackPremiumActivation}
+                              disabled={isCheckingPremium}
+                            >
+                              {isCheckingPremium
+                                ? t('dashboard.settings.subscription.refreshLoading')
+                                : t('dashboard.settings.subscription.refreshCta')}
+                            </Button>
+                          </>
+                        ) : (
+                          <Button
+                            className="bg-[#8b4a25] hover:bg-[#6f3719]"
+                            onClick={handleUpgradeClick}
+                          >
+                            <Sparkles className="h-4 w-4" />
+                            {t('dashboard.settings.subscription.upgradeCta')}
+                          </Button>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Languages className="h-4 w-4 text-gray-400" />
+                        {t('dashboard.settings.language.title')}
+                      </CardTitle>
+                      <CardDescription>{t('dashboard.settings.language.description')}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-wrap gap-2">
+                      {(['en', 'fr'] as const).map((code) => (
+                        <Button
+                          key={code}
+                          variant={language === code ? 'default' : 'outline'}
+                          onClick={() => setLanguage(code)}
+                          className={cn(
+                            language === code
+                              ? 'bg-gray-900 text-white hover:bg-gray-800'
+                              : 'text-gray-600'
+                          )}
+                        >
+                          {code === 'en' ? 'ENG' : 'FR'}
+                        </Button>
+                      ))}
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{t('dashboard.settings.data.title')}</CardTitle>
+                      <CardDescription>{t('dashboard.settings.data.description')}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="text-sm text-gray-500">
+                        {t('dashboard.settings.data.helper')}
+                      </p>
+                      <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+                        <Link href="/data-management">
+                          <Button variant="outline" className="w-full sm:w-auto">
+                            {t('dashboard.settings.data.openData')}
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="destructive"
+                          className="w-full sm:w-auto"
+                          onClick={() => setShowDeleteAccountModal(true)}
+                        >
+                          {t('dashboard.settings.data.delete')}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ) : (
+                <div className="space-y-8">
+                  <div className="space-y-2">
+                    <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
+                    <p className="text-gray-500">{t('dashboard.subtitle')}</p>
+                  </div>
+
+                  {!hasPremiumAccess ? (
+                    <div className="rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-6">
+                      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                        <div>
+                          <p className="text-base font-semibold text-amber-900">{t('dashboard.resumesUpgradeTitle')}</p>
+                          <p className="text-sm text-amber-800">{t('dashboard.resumesUpgradeDescription')}</p>
+                        </div>
+                        <Button className="bg-[#8b4a25] hover:bg-[#6f3719]" onClick={handleUpgradeClick}>
+                          <Sparkles className="h-4 w-4" />
+                          {t('dashboard.resumesUpgradeButton')}
+                        </Button>
+                      </div>
+                    </div>
                   ) : (
-                    <span className="px-2 py-1 text-xs font-semibold rounded-full bg-gray-200 text-gray-700">
-                      Free
-                    </span>
+                    hasPremiumAccess && isExpiringSoon && (
+                      <div className="rounded-2xl border border-orange-200 bg-orange-50 p-6">
+                        <div className="flex items-center gap-2">
+                          <Crown className="h-5 w-5 text-orange-600" />
+                          <p className="text-sm font-semibold text-orange-900">
+                            {t('dashboard.settings.subscription.expiringSoon', { days: daysUntilExpiry })}
+                          </p>
+                        </div>
+                        <p className="mt-2 text-sm text-gray-600">
+                          {t('dashboard.settings.subscription.expiringDescription')}
+                        </p>
+                      </div>
+                    )
+                  )}
+
+                  {displayCvs.length === 0 ? (
+                    <Card className="border border-dashed border-gray-200 bg-white">
+                      <CardContent className="flex flex-col items-center gap-4 p-10 text-center">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                          <LayoutDashboard className="h-8 w-8" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-gray-900">
+                          {t('dashboard.resumesEmptyTitle')}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                          {t('dashboard.resumesEmptyDescription')}
+                        </p>
+                        {canCreateNewCv && (
+                          <Link href="/cv-builder">
+                            <Button className="w-full">
+                              <Plus className="h-4 w-4" />
+                              {t('dashboard.createNewResume')}
+                            </Button>
+                          </Link>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <div className="grid gap-6 xl:grid-cols-2">
+                      {displayCvs.map((cv: DashboardCV) => (
+                        <Card key={cv.id} className="relative border border-gray-200 bg-white shadow-sm">
+                          <div className="absolute right-3 top-3">
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <div>
+                                  <DeleteButton onClick={() => {}} />
+                                </div>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>
+                                    Are you sure you want to delete "{cv.title || "This resume"}"?
+                                  </AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    This action cannot be undone. This resume will be permanently deleted from your dashboard.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
+                                  <AlertDialogAction
+                                    onClick={() => handleDeleteCV(cv.id)}
+                                    className="bg-red-600 hover:bg-red-700"
+                                  >
+                                    {t('ui.delete')}
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </div>
+
+                          <CardContent className="space-y-4 p-5">
+                            <div className="flex items-start gap-4">
+                              <div className="h-16 w-16 overflow-hidden rounded-lg bg-gray-100">
+                                <CVTemplateImage templateId={cv.templateId} />
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <h3 className="text-lg font-semibold text-gray-900">
+                                    {cv.title || t("cvBuilder.title.untitled")}
+                                  </h3>
+                                  <Badge
+                                    variant="outline"
+                                    className={cn(
+                                      "border-0 px-2 py-0.5 text-xs",
+                                      cv.isPublished
+                                        ? "bg-green-100 text-green-700"
+                                        : "bg-gray-100 text-gray-600"
+                                    )}
+                                  >
+                                    {cv.isPublished ? t('dashboard.card.published') : t('dashboard.card.draft')}
+                                  </Badge>
+                                </div>
+                                <p className="text-sm text-gray-500">
+                                  {formatDisplayDate(cv.createdAt, cv.updatedAt)}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="space-y-3">
+                              <Link href={`/cv-builder?cv=${cv.id}`}>
+                                <Button
+                                  variant="outline"
+                                  className="w-full justify-center border-gray-200 text-blue-600 hover:bg-blue-50"
+                                  data-testid={`button-edit-${cv.id}`}
+                                >
+                                  <Edit className="h-4 w-4" />
+                                  {t('dashboard.editAndPreview')}
+                                </Button>
+                              </Link>
+                              <PublishButton
+                                cvId={cv.id}
+                                isPublished={cv.isPublished || false}
+                                subdomain={cv.subdomain || ''}
+                                publishedLanguage={cv.publishedLanguage || language}
+                                isLocked={cv.isPremiumLocked || false}
+                                onPublishChange={(published, subdomain, lang) =>
+                                  handlePublishChange(cv.id, published, subdomain, lang)
+                                }
+                              />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+
+                      <Card
+                        className={cn(
+                          "border-2 border-dashed bg-white",
+                          canCreateNewCv ? "border-gray-300" : "border-gray-200 bg-gray-50"
+                        )}
+                      >
+                        <CardContent className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+                          {canCreateNewCv ? (
+                            <Link href="/cv-builder" className="flex h-full w-full flex-col items-center justify-center gap-3">
+                              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600">
+                                <Plus className="h-6 w-6 text-white" />
+                              </div>
+                              <h3 className="text-lg font-semibold text-gray-900">{t('dashboard.createNewResume')}</h3>
+                              <p className="text-sm text-gray-500">{t('dashboard.newResumeDescription')}</p>
+                            </Link>
+                          ) : (
+                            <div className="space-y-3">
+                              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-200">
+                                <Crown className="h-5 w-5 text-gray-600" />
+                              </div>
+                              <p className="text-base font-semibold text-gray-900">
+                                {t('dashboard.resumesUpgradeTitle')}
+                              </p>
+                              <p className="text-sm text-gray-500">
+                                {t('dashboard.resumesUpgradeDescription')}
+                              </p>
+                              <Button
+                                className="w-full bg-[#8b4a25] hover:bg-[#6f3719]"
+                                onClick={handleUpgradeClick}
+                              >
+                                <Sparkles className="h-4 w-4" />
+                                {t('dashboard.resumesUpgradeButton')}
+                              </Button>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </div>
                   )}
                 </div>
               )}
-            </div>
+            </main>
           </div>
-          <p className="text-gray-600">
-{t('dashboard.subtitle')}
-          </p>
         </div>
 
-        {/* Premium Expiration Banner for users with expiring access */}
-        {user && hasPremiumAccess && isExpiringSoon && (
-          <div className="mb-8">
-            <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-4 flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <Crown className="h-5 w-5 text-orange-600" />
-                <span className="text-gray-800 font-medium">
-                  Your Pro access expires in {daysUntilExpiry} days
-                </span>
-              </div>
-              <div className="text-sm text-gray-600">
-                You'll keep access until then, but consider renewing to continue using Pro features.
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Premium Banner for free users */}
-        {user && !hasPremiumAccess && (
-          <div className="mb-8">
-            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-4 flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <Crown className="h-5 w-5 text-yellow-600" />
-                <span className="text-gray-800">
-                  {t('premium.banner.unlockMessage')}
-                </span>
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  onClick={async () => {
-                    const { getPaymentLinkUrl } = await import('../lib/stripe');
-                    window.location.href = getPaymentLinkUrl({ returnTo: 'dashboard' });
-                  }}
-                  className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white"
-                >
-                  <Sparkles className="w-4 h-4 mr-1" />
-                  {t('premium.banner.subscribeButton')}
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* CV Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Existing CVs */}
-          {displayCvs.map((cv: DashboardCV) => (
-            <Card key={cv.id} className="relative group hover:shadow-lg transition-all duration-300 ease-in-out border border-gray-200 hover:border-gray-300">
-              {/* Delete icon in top right - uses same DeleteButton as CV builder */}
-              <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <div>
-                      <DeleteButton onClick={() => {}} />
-                    </div>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure you want to delete "{cv.title || "This resume"}"?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This resume will be permanently deleted from your dashboard.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={() => handleDeleteCV(cv.id)}
-                        className="bg-red-600 hover:bg-red-700"
-                      >
-                        Delete
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
-              </div>
-
-              <CardContent className="p-3">
-                {/* Header with thumbnail and title/date */}
-                <div className="flex items-start gap-3 mb-3">
-                  {/* CV Preview Thumbnail */}
-                  <div className="w-16 h-16 flex-shrink-0">
-                    <CVTemplateImage templateId={cv.templateId} />
-                  </div>
-                  
-                  {/* Title and Date */}
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">
-                      {cv.title || t("cvBuilder.title.untitled")}
-                    </h3>
-                    <p className="text-xs text-gray-500">
-                      {formatDisplayDate(cv.createdAt, cv.updatedAt)}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div className="space-y-1">
-                  <Link href={`/cv-builder?cv=${cv.id}`}>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="w-full justify-start text-blue-600 border-blue-200 hover:bg-blue-50 h-8"
-                      data-testid={`button-edit-${cv.id}`}
-                    >
-                      <Edit className="w-4 h-4 mr-2" />
-                      {t('dashboard.editAndPreview')}
-                    </Button>
-                  </Link>
-                  
-                  <PublishButton
-                    cvId={cv.id}
-                    isPublished={cv.isPublished || false}
-                    subdomain={cv.subdomain || ''}
-                    publishedLanguage={cv.publishedLanguage || language}
-                    isLocked={cv.isPremiumLocked || false}
-                    onPublishChange={(published, subdomain, language) => handlePublishChange(cv.id, published, subdomain, language)}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-
-          {/* Create New CV Card */}
-          {(() => {
-            const isFreeUserWithCV = !hasPremiumAccess && localCvs.length > 0;
-            const isDisabled = isFreeUserWithCV;
-            
-            return (
-              <Card className={`border-2 border-dashed transition-colors ${
-                isDisabled 
-                  ? 'border-gray-200 bg-gray-50 cursor-not-allowed' 
-                  : 'border-gray-300 hover:border-blue-400 hover:bg-blue-50'
-              }`}>
-                <CardContent className="p-6 h-full flex flex-col items-center justify-center text-center">
-                  {isDisabled ? (
-                    <div className="w-full h-full flex flex-col items-center justify-center">
-                      <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mb-4">
-                        <Crown className="w-6 h-6 text-gray-500" />
-                      </div>
-                      <h3 className="font-semibold text-gray-500 mb-2">{t('dashboard.premiumFeature')}</h3>
-                      <p className="text-sm text-gray-400">
-                        {t('dashboard.premiumFeatureDescription')}
-                      </p>
-                    </div>
-                  ) : (
-                    <Link href="/cv-builder" className="w-full h-full flex flex-col items-center justify-center">
-                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <Plus className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="font-semibold text-gray-900 mb-2">{t('dashboard.createNewResume')}</h3>
-                      <p className="text-sm text-gray-600">
-                        {t('dashboard.newResumeDescription')}
-                      </p>
-                    </Link>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })()}
-        </div>
-
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+        {/* Footer */}
+        <footer className="border-t border-gray-200 bg-gray-50">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -1232,7 +1529,8 @@ export default function Dashboard() {
             </p>
           </div>
         </div>
-      </footer>
+        </footer>
+      </div>
 
       {/* Unsubscribe Confirmation Modal */}
       <AlertDialog open={showUnsubscribeModal} onOpenChange={setShowUnsubscribeModal}>
@@ -1300,7 +1598,6 @@ export default function Dashboard() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      </div>
     </>
   );
 }
