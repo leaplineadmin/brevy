@@ -67,25 +67,61 @@ export default function DesignComponents() {
             <TabsContent value="buttons" className="space-y-12">
               <section>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">ButtonPrimary</h2>
-                <p className="text-gray-600 mb-4">Bouton principal avec variantes (default, outline, ghost, etc.)</p>
+                <p className="text-gray-600 mb-4">Bouton principal avec fond bleu foncé (comme le CTA du hero et le bouton principal de la nav)</p>
                 <div className="bg-white p-6 rounded-lg border space-y-4">
-                  <div className="flex flex-wrap gap-4">
-                    <Button variant="default">Button Primary</Button>
-                    <Button variant="outline">Button Outline</Button>
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white">
+                      Button Primary
+                    </Button>
                     <Button variant="ghost">Button Ghost</Button>
-                    <Button variant="secondary">Button Secondary</Button>
                     <Button variant="destructive">Button Destructive</Button>
-                    <Button variant="link">Button Link</Button>
                   </div>
-                  <div className="flex flex-wrap gap-4">
-                    <Button size="sm">Small</Button>
-                    <Button size="default">Default</Button>
-                    <Button size="lg">Large</Button>
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white" size="sm">
+                      Small
+                    </Button>
+                    <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white" size="default">
+                      Default
+                    </Button>
+                    <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white" size="lg">
+                      Large
+                    </Button>
                   </div>
-                  <div className="flex flex-wrap gap-4">
-                    <Button disabled>Disabled</Button>
-                    <Button>
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white" disabled>
+                      Disabled
+                    </Button>
+                    <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
+                      With Icon
+                    </Button>
+                  </div>
+                </div>
+              </section>
+
+              <Separator />
+
+              <section>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">ButtonSecondary</h2>
+                <p className="text-gray-600 mb-4">Bouton secondaire avec bordure bleue et fond clair (comme "Sign In" dans la nav et "View all articles" sur la home)</p>
+                <div className="bg-white p-6 rounded-lg border space-y-4">
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
+                      Button Secondary
+                    </Button>
+                    <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50" size="sm">
+                      Small
+                    </Button>
+                    <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50" size="lg">
+                      Large
+                    </Button>
+                  </div>
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50" disabled>
+                      Disabled
+                    </Button>
+                    <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
+                      <ExternalLink className="w-4 h-4 mr-2" />
                       With Icon
                     </Button>
                   </div>
