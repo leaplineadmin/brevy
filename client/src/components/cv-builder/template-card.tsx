@@ -58,7 +58,7 @@ export function TemplateCard({
               {template.isPremium ? (
                 <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full bg-gradient-to-r from-yellow-100 to-orange-100 text-yellow-700 border border-yellow-300">
                   <Crown className="w-3 h-3" />
-                  Premium
+                  Pro
                 </span>
               ) : (
                 <span className="inline-flex items-center text-xs font-semibold px-2 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-200">
