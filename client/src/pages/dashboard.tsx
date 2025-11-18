@@ -1049,9 +1049,9 @@ export default function Dashboard() {
           }}
         />
       </Helmet>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <div className="flex flex-1 min-h-screen">
-          <aside className="hidden w-64 flex-col border-r border-gray-200 bg-white md:flex">
+      <div className="h-screen bg-gray-50 flex flex-col overflow-hidden">
+        <div className="flex flex-1 overflow-hidden">
+          <aside className="hidden w-64 flex-col border-r border-gray-200 bg-white md:flex fixed left-0 top-0 bottom-0 overflow-y-auto">
             <div className="px-6 pt-6">
               <Link href="/" className="inline-flex items-center gap-2">
                 <img src={logoBrevy} alt="Brevy" className="h-8 w-auto" />
@@ -1083,8 +1083,8 @@ export default function Dashboard() {
             </div>
           </aside>
 
-          <div className="flex flex-1 flex-col">
-            <header className="flex items-center justify-end border-b border-gray-200 bg-white px-4 py-4 sm:px-8">
+          <div className="flex flex-1 flex-col ml-0 md:ml-64 overflow-hidden">
+            <header className="sticky top-0 z-10 flex items-center justify-end border-b border-gray-200 bg-white px-4 py-4 sm:px-8">
               <div className="flex items-center gap-4">
                 <div className="text-right">
                   <p className="text-sm font-semibold text-gray-900">{userDisplayName}</p>
@@ -1128,7 +1128,7 @@ export default function Dashboard() {
               {renderLogoutButton()}
             </div>
 
-            <main className="flex-1 overflow-y-auto px-4 py-8 sm:px-8">
+            <main className="flex-1 overflow-y-auto px-4 py-8 sm:px-8 min-h-0">
               {isSettingsView ? (
                 <div className="space-y-8">
                   <div className="space-y-2">
@@ -1430,82 +1430,82 @@ export default function Dashboard() {
                 </div>
               )}
             </main>
-          </div>
-        </div>
 
-        {/* Footer */}
-        <footer className="border-t border-gray-200 bg-gray-50">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center">
-                <img src={logoBrevy} alt="Brevy" className="h-8 w-auto" />
+            {/* Footer */}
+            <footer className="border-t border-gray-200 bg-gray-50">
+              <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                  <div className="col-span-1 md:col-span-2">
+                    <div className="flex items-center">
+                      <img src={logoBrevy} alt="Brevy" className="h-8 w-auto" />
+                    </div>
+                    <p className="mt-2 text-gray-600">
+                      Create professional resumes in minutes with our modern and customizable templates.
+                    </p>
+                    <p className="mt-2 text-sm text-gray-500">
+                      Need help? Please contact contact@brevy.me
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Product</h4>
+                    <ul className="mt-4 space-y-4">
+                      <li>
+                        <a href="/cv-builder" className="text-base text-gray-500 hover:text-gray-900">
+                          Resume Creator
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/dashboard" className="text-base text-gray-500 hover:text-gray-900">
+                          My Resumes
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Legal</h4>
+                    <ul className="mt-4 space-y-4">
+                      <li>
+                        <a href="/privacy-policy" className="text-base text-gray-500 hover:text-gray-900">
+                          {t('gdpr.cookies.banner.privacyPolicyLink') || 'Privacy Policy'}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/terms-of-service" className="text-base text-gray-500 hover:text-gray-900">
+                          {t('gdpr.auth.termsOfService') || 'Terms of Service'}
+                        </a>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => {
+                            if ((window as any).openCookiePanel) {
+                              (window as any).openCookiePanel();
+                            }
+                          }}
+                          className="text-base text-gray-500 hover:text-gray-700 text-left"
+                        >
+                          {t('gdpr.cookies.banner.manageCookies') || 'Manage cookies'}
+                        </button>
+                      </li>
+                      <li>
+                        <a href="/legal-notice" className="text-base text-gray-500 hover:text-gray-900">
+                          Legal Notice
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="mt-8 border-t border-gray-200 pt-8">
+                  <p className="text-base text-gray-400 text-center">
+                    © 2025 Brevy. All rights reserved.
+                  </p>
+                </div>
               </div>
-              <p className="mt-2 text-gray-600">
-                Create professional resumes in minutes with our modern and customizable templates.
-              </p>
-              <p className="mt-2 text-sm text-gray-500">
-                Need help? Please contact contact@brevy.me
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Product</h4>
-              <ul className="mt-4 space-y-4">
-                <li>
-                  <a href="/cv-builder" className="text-base text-gray-500 hover:text-gray-900">
-                    Resume Creator
-                  </a>
-                </li>
-                <li>
-                  <a href="/dashboard" className="text-base text-gray-500 hover:text-gray-900">
-                    My Resumes
-                  </a>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Legal</h4>
-              <ul className="mt-4 space-y-4">
-                <li>
-                  <a href="/privacy-policy" className="text-base text-gray-500 hover:text-gray-900">
-                    {t('gdpr.cookies.banner.privacyPolicyLink') || 'Privacy Policy'}
-                  </a>
-                </li>
-                <li>
-                  <a href="/terms-of-service" className="text-base text-gray-500 hover:text-gray-900">
-                    {t('gdpr.auth.termsOfService') || 'Terms of Service'}
-                  </a>
-                </li>
-                <li>
-                  <button
-                    onClick={() => {
-                      if ((window as any).openCookiePanel) {
-                        (window as any).openCookiePanel();
-                      }
-                    }}
-                    className="text-base text-gray-500 hover:text-gray-700 text-left"
-                  >
-                    {t('gdpr.cookies.banner.manageCookies') || 'Manage cookies'}
-                  </button>
-                </li>
-                <li>
-                  <a href="/legal-notice" className="text-base text-gray-500 hover:text-gray-900">
-                    Legal Notice
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-8 border-t border-gray-200 pt-8">
-            <p className="text-base text-gray-400 text-center">
-              © 2025 Brevy. All rights reserved.
-            </p>
+            </footer>
           </div>
         </div>
-        </footer>
       </div>
 
       {/* Unsubscribe Confirmation Modal */}
