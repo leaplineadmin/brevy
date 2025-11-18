@@ -115,7 +115,7 @@ export default function Dashboard() {
   };
   const [activeSection, setActiveSection] = useState<'resumes' | 'settings'>(getSectionFromSearch);
   const [selectedCvId, setSelectedCvId] = useState<string | null>(getSelectedCvIdFromSearch);
-  const [expandedResumes, setExpandedResumes] = useState<boolean>(true);
+  const [expandedResumes] = useState<boolean>(true); // Always expanded, no setter needed
   const [localCvs, setLocalCvs] = useState<DashboardCV[]>([]);
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
@@ -1124,11 +1124,9 @@ export default function Dashboard() {
                     <button
                       onClick={() => {
                         if (isResumes) {
-                          setExpandedResumes(!expandedResumes);
-                          if (selectedCvId) {
-                            setSelectedCvId(null);
-                            handleSectionChange('resumes');
-                          }
+                          // Always navigate to main resumes page when clicking "My Resumes"
+                          setSelectedCvId(null);
+                          handleSectionChange('resumes');
                         } else {
                           handleSectionChange(item.id);
                         }
@@ -1140,12 +1138,6 @@ export default function Dashboard() {
                     >
                       <Icon className="h-4 w-4" />
                       {item.label}
-                      {isResumes && (
-                        <ChevronDown className={cn(
-                          "h-4 w-4 ml-auto transition-transform",
-                          expandedResumes && "rotate-180"
-                        )} />
-                      )}
                     </button>
                     {isResumes && showResumes && (
                       <div className="ml-4 space-y-1">
@@ -1415,29 +1407,15 @@ export default function Dashboard() {
                       }
                       return (
                         <div className="space-y-8">
-                          <div className="flex items-center gap-4">
-                            <Button
-                              variant="ghost"
-                              onClick={() => {
-                                setSelectedCvId(null);
-                                handleSectionChange('resumes');
-                              }}
-                              className="flex items-center gap-2"
-                            >
-                              <ChevronDown className="h-4 w-4 rotate-90" />
-                              Back
-                            </Button>
-                          </div>
                           <div className="space-y-2">
                             <h1 className="text-3xl font-bold text-gray-900">
                               {selectedCv.title || t("cvBuilder.title.untitled")}
                             </h1>
-                            <p className="text-gray-500">{t('dashboard.subtitle')}</p>
                           </div>
 
                           <Card>
                             <CardContent className="p-6">
-                              <div className="flex items-start gap-4 mb-6">
+                              <div className="flex items-start gap-4">
                                 <div className="h-24 w-24 overflow-hidden rounded-lg bg-gray-100 flex-shrink-0">
                                   <CVTemplateImage templateId={selectedCv.templateId} />
                                 </div>
@@ -1458,69 +1436,69 @@ export default function Dashboard() {
                                       {selectedCv.isPublished ? t('dashboard.card.published') : t('dashboard.card.draft')}
                                     </Badge>
                                   </div>
-                                  <p className="text-sm text-gray-500">
+                                  <p className="text-sm text-gray-500 mb-4">
                                     {formatDisplayDate(selectedCv.createdAt, selectedCv.updatedAt)}
                                   </p>
-                                </div>
-                              </div>
 
-                              <div className="space-y-4">
-                                <Link href={`/cv-builder?cv=${selectedCv.id}`}>
-                                  <Button
-                                    variant="outline"
-                                    className="w-full justify-start border-gray-200 text-blue-600 hover:bg-blue-50"
-                                    data-testid={`button-edit-${selectedCv.id}`}
-                                  >
-                                    <Edit className="h-4 w-4 mr-2" />
-                                    {t('dashboard.editAndPreview')}
-                                  </Button>
-                                </Link>
-
-                                <PublishButton
-                                  cvId={selectedCv.id}
-                                  isPublished={selectedCv.isPublished || false}
-                                  subdomain={selectedCv.subdomain || ''}
-                                  publishedLanguage={selectedCv.publishedLanguage || language}
-                                  isLocked={selectedCv.isPremiumLocked || false}
-                                  onPublishChange={(published, subdomain, lang) =>
-                                    handlePublishChange(selectedCv.id, published, subdomain, lang)
-                                  }
-                                />
-
-                                <AlertDialog>
-                                  <AlertDialogTrigger asChild>
-                                    <Button
-                                      variant="destructive"
-                                      className="w-full justify-start"
-                                    >
-                                      <Trash2 className="h-4 w-4 mr-2" />
-                                      {t('dashboard.deleteResume')}
-                                    </Button>
-                                  </AlertDialogTrigger>
-                                  <AlertDialogContent>
-                                    <AlertDialogHeader>
-                                      <AlertDialogTitle>
-                                        Are you sure you want to delete "{selectedCv.title || "This resume"}"?
-                                      </AlertDialogTitle>
-                                      <AlertDialogDescription>
-                                        This action cannot be undone. This resume will be permanently deleted from your dashboard.
-                                      </AlertDialogDescription>
-                                    </AlertDialogHeader>
-                                    <AlertDialogFooter>
-                                      <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
-                                      <AlertDialogAction
-                                        onClick={() => {
-                                          handleDeleteCV(selectedCv.id);
-                                          setSelectedCvId(null);
-                                          handleSectionChange('resumes');
-                                        }}
-                                        className="bg-red-600 hover:bg-red-700"
+                                  <div className="flex flex-col gap-3">
+                                    <Link href={`/cv-builder?cv=${selectedCv.id}`}>
+                                      <Button
+                                        variant="outline"
+                                        className="w-full sm:w-auto justify-start border-gray-200 text-blue-600 hover:bg-blue-50"
+                                        data-testid={`button-edit-${selectedCv.id}`}
                                       >
-                                        {t('ui.delete')}
-                                      </AlertDialogAction>
-                                    </AlertDialogFooter>
-                                  </AlertDialogContent>
-                                </AlertDialog>
+                                        <Edit className="h-4 w-4 mr-2" />
+                                        {t('dashboard.editAndPreview')}
+                                      </Button>
+                                    </Link>
+
+                                    <PublishButton
+                                      cvId={selectedCv.id}
+                                      isPublished={selectedCv.isPublished || false}
+                                      subdomain={selectedCv.subdomain || ''}
+                                      publishedLanguage={selectedCv.publishedLanguage || language}
+                                      isLocked={selectedCv.isPremiumLocked || false}
+                                      onPublishChange={(published, subdomain, lang) =>
+                                        handlePublishChange(selectedCv.id, published, subdomain, lang)
+                                      }
+                                    />
+
+                                    <AlertDialog>
+                                      <AlertDialogTrigger asChild>
+                                        <Button
+                                          variant="destructive"
+                                          className="w-full sm:w-auto justify-start"
+                                        >
+                                          <Trash2 className="h-4 w-4 mr-2" />
+                                          {t('dashboard.deleteResume')}
+                                        </Button>
+                                      </AlertDialogTrigger>
+                                      <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                          <AlertDialogTitle>
+                                            Are you sure you want to delete "{selectedCv.title || "This resume"}"?
+                                          </AlertDialogTitle>
+                                          <AlertDialogDescription>
+                                            This action cannot be undone. This resume will be permanently deleted from your dashboard.
+                                          </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                          <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
+                                          <AlertDialogAction
+                                            onClick={() => {
+                                              handleDeleteCV(selectedCv.id);
+                                              setSelectedCvId(null);
+                                              handleSectionChange('resumes');
+                                            }}
+                                            className="bg-red-600 hover:bg-red-700"
+                                          >
+                                            {t('ui.delete')}
+                                          </AlertDialogAction>
+                                        </AlertDialogFooter>
+                                      </AlertDialogContent>
+                                    </AlertDialog>
+                                  </div>
+                                </div>
                               </div>
                             </CardContent>
                           </Card>
