@@ -240,6 +240,7 @@
       "published": "Publié",
       "draft": "Brouillon"
     },
+    "deleteResume": "Supprimer mon CV",
     "settings": {
       "title": "Paramètres",
       "subtitle": "Gère ton abonnement, tes préférences et tes données.",

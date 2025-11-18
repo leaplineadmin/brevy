@@ -31,6 +31,7 @@ import {
   HelpCircle,
   Mail,
   Languages,
+  ChevronDown,
 } from "lucide-react";
 import { DeleteButton } from "@/components/shared/delete-button";
 import { useAuth } from "@/hooks/useAuth";
@@ -106,7 +107,14 @@ export default function Dashboard() {
     const params = new URLSearchParams(window.location.search);
     return params.get('section') === 'settings' ? 'settings' : 'resumes';
   };
+  const getSelectedCvIdFromSearch = () => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('cv') || null;
+  };
   const [activeSection, setActiveSection] = useState<'resumes' | 'settings'>(getSectionFromSearch);
+  const [selectedCvId, setSelectedCvId] = useState<string | null>(getSelectedCvIdFromSearch);
+  const [expandedResumes, setExpandedResumes] = useState<boolean>(true);
   const [localCvs, setLocalCvs] = useState<DashboardCV[]>([]);
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
@@ -135,6 +143,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     setActiveSection(getSectionFromSearch());
+    setSelectedCvId(getSelectedCvIdFromSearch());
   }, [location]);
 
   // Payment polling logic - runs only once when payment params are detected
@@ -912,15 +921,30 @@ export default function Dashboard() {
 
   const handleSectionChange = (section: 'resumes' | 'settings') => {
     setActiveSection(section);
+    setSelectedCvId(null);
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       if (section === 'settings') {
         params.set('section', 'settings');
+        params.delete('cv');
       } else {
         params.delete('section');
+        params.delete('cv');
       }
       const newSearch = params.toString();
       const newPath = `${window.location.pathname}${newSearch ? `?${newSearch}` : ''}`;
+      setLocation(newPath, { replace: true });
+    }
+  };
+
+  const handleCvClick = (cvId: string) => {
+    setSelectedCvId(cvId);
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      params.set('cv', cvId);
+      params.delete('section');
+      const newSearch = params.toString();
+      const newPath = `${window.location.pathname}?${newSearch}`;
       setLocation(newPath, { replace: true });
     }
   };
@@ -1033,7 +1057,11 @@ export default function Dashboard() {
   return (
     <>
       <Helmet>
-        <title>Dashboard | Brevy</title>
+        <title>
+          {selectedCvId
+            ? `${displayCvs.find(cv => cv.id === selectedCvId)?.title || t("cvBuilder.title.untitled")} | Brevy`
+            : 'Dashboard | Brevy'}
+        </title>
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://brevy.me/dashboard" />
         {/* Google tag (gtag.js) */}
@@ -1057,22 +1085,63 @@ export default function Dashboard() {
                 <img src={logoBrevy} alt="Brevy" className="h-8 w-auto" />
               </Link>
             </div>
-            <nav className="mt-8 flex-1 space-y-2 px-4">
+            <nav className="mt-8 flex-1 space-y-2 px-4 overflow-y-auto">
               {sidebarItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
+                const isResumes = item.id === 'resumes';
+                const showResumes = isResumes && expandedResumes;
+                
                 return (
-                  <button
-                    key={item.id}
-                    onClick={() => handleSectionChange(item.id)}
-                    className={cn(
-                      "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition",
-                      isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-50"
+                  <div key={item.id} className="space-y-1">
+                    <button
+                      onClick={() => {
+                        if (isResumes) {
+                          setExpandedResumes(!expandedResumes);
+                          if (selectedCvId) {
+                            setSelectedCvId(null);
+                            handleSectionChange('resumes');
+                          }
+                        } else {
+                          handleSectionChange(item.id);
+                        }
+                      }}
+                      className={cn(
+                        "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition",
+                        isActive ? "bg-blue-50 text-blue-600" : "text-gray-600 hover:bg-gray-50"
+                      )}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {item.label}
+                      {isResumes && (
+                        <ChevronDown className={cn(
+                          "h-4 w-4 ml-auto transition-transform",
+                          expandedResumes && "rotate-180"
+                        )} />
+                      )}
+                    </button>
+                    {isResumes && showResumes && (
+                      <div className="ml-4 space-y-1">
+                        {displayCvs.map((cv) => (
+                          <button
+                            key={cv.id}
+                            onClick={() => handleCvClick(cv.id)}
+                            className={cn(
+                              "flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition",
+                              selectedCvId === cv.id
+                                ? "bg-blue-100 text-blue-700"
+                                : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                            )}
+                          >
+                            <div className="w-8 h-8 flex-shrink-0">
+                              <CVTemplateImage templateId={cv.templateId} />
+                            </div>
+                            <span className="truncate">{cv.title || t("cvBuilder.title.untitled")}</span>
+                          </button>
+                        ))}
+                      </div>
                     )}
-                  >
-                    <Icon className="h-4 w-4" />
-                    {item.label}
-                  </button>
+                  </div>
                 );
               })}
             </nav>
@@ -1303,53 +1372,157 @@ export default function Dashboard() {
                         )}
                       </CardContent>
                     </Card>
-                  ) : (
-                    <div className="grid gap-6 xl:grid-cols-2">
-                      {displayCvs.map((cv: DashboardCV) => (
-                        <Card key={cv.id} className="relative border border-gray-200 bg-white shadow-sm">
-                          <div className="absolute right-3 top-3">
-                            <AlertDialog>
-                              <AlertDialogTrigger asChild>
-                                <div>
-                                  <DeleteButton onClick={() => {}} />
-                                </div>
-                              </AlertDialogTrigger>
-                              <AlertDialogContent>
-                                <AlertDialogHeader>
-                                  <AlertDialogTitle>
-                                    Are you sure you want to delete "{cv.title || "This resume"}"?
-                                  </AlertDialogTitle>
-                                  <AlertDialogDescription>
-                                    This action cannot be undone. This resume will be permanently deleted from your dashboard.
-                                  </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                  <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
-                                  <AlertDialogAction
-                                    onClick={() => handleDeleteCV(cv.id)}
-                                    className="bg-red-600 hover:bg-red-700"
-                                  >
-                                    {t('ui.delete')}
-                                  </AlertDialogAction>
-                                </AlertDialogFooter>
-                              </AlertDialogContent>
-                            </AlertDialog>
+                  ) : selectedCvId ? (
+                    // CV Detail View
+                    (() => {
+                      const selectedCv = displayCvs.find(cv => cv.id === selectedCvId);
+                      if (!selectedCv) {
+                        return (
+                          <div className="text-center py-12">
+                            <p className="text-gray-500">Resume not found</p>
+                            <Button onClick={() => handleSectionChange('resumes')} className="mt-4">
+                              Back to My Resumes
+                            </Button>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div className="space-y-8">
+                          <div className="flex items-center gap-4">
+                            <Button
+                              variant="ghost"
+                              onClick={() => {
+                                setSelectedCvId(null);
+                                handleSectionChange('resumes');
+                              }}
+                              className="flex items-center gap-2"
+                            >
+                              <ChevronDown className="h-4 w-4 rotate-90" />
+                              Back
+                            </Button>
+                          </div>
+                          <div className="space-y-2">
+                            <h1 className="text-3xl font-bold text-gray-900">
+                              {selectedCv.title || t("cvBuilder.title.untitled")}
+                            </h1>
+                            <p className="text-gray-500">{t('dashboard.subtitle')}</p>
                           </div>
 
-                          <CardContent className="space-y-4 p-5">
+                          <Card>
+                            <CardContent className="p-6">
+                              <div className="flex items-start gap-4 mb-6">
+                                <div className="h-24 w-24 overflow-hidden rounded-lg bg-gray-100 flex-shrink-0">
+                                  <CVTemplateImage templateId={selectedCv.templateId} />
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                                    <h3 className="text-xl font-semibold text-gray-900">
+                                      {selectedCv.title || t("cvBuilder.title.untitled")}
+                                    </h3>
+                                    <Badge
+                                      variant="outline"
+                                      className={cn(
+                                        "border-0 px-2 py-0.5 text-xs",
+                                        selectedCv.isPublished
+                                          ? "bg-green-100 text-green-700"
+                                          : "bg-gray-100 text-gray-600"
+                                      )}
+                                    >
+                                      {selectedCv.isPublished ? t('dashboard.card.published') : t('dashboard.card.draft')}
+                                    </Badge>
+                                  </div>
+                                  <p className="text-sm text-gray-500">
+                                    {formatDisplayDate(selectedCv.createdAt, selectedCv.updatedAt)}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="space-y-4">
+                                <Link href={`/cv-builder?cv=${selectedCv.id}`}>
+                                  <Button
+                                    variant="outline"
+                                    className="w-full justify-start border-gray-200 text-blue-600 hover:bg-blue-50"
+                                    data-testid={`button-edit-${selectedCv.id}`}
+                                  >
+                                    <Edit className="h-4 w-4 mr-2" />
+                                    {t('dashboard.editAndPreview')}
+                                  </Button>
+                                </Link>
+
+                                <PublishButton
+                                  cvId={selectedCv.id}
+                                  isPublished={selectedCv.isPublished || false}
+                                  subdomain={selectedCv.subdomain || ''}
+                                  publishedLanguage={selectedCv.publishedLanguage || language}
+                                  isLocked={selectedCv.isPremiumLocked || false}
+                                  onPublishChange={(published, subdomain, lang) =>
+                                    handlePublishChange(selectedCv.id, published, subdomain, lang)
+                                  }
+                                />
+
+                                <AlertDialog>
+                                  <AlertDialogTrigger asChild>
+                                    <Button
+                                      variant="destructive"
+                                      className="w-full justify-start"
+                                    >
+                                      <Trash2 className="h-4 w-4 mr-2" />
+                                      {t('dashboard.deleteResume')}
+                                    </Button>
+                                  </AlertDialogTrigger>
+                                  <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                      <AlertDialogTitle>
+                                        Are you sure you want to delete "{selectedCv.title || "This resume"}"?
+                                      </AlertDialogTitle>
+                                      <AlertDialogDescription>
+                                        This action cannot be undone. This resume will be permanently deleted from your dashboard.
+                                      </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                      <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
+                                      <AlertDialogAction
+                                        onClick={() => {
+                                          handleDeleteCV(selectedCv.id);
+                                          setSelectedCvId(null);
+                                          handleSectionChange('resumes');
+                                        }}
+                                        className="bg-red-600 hover:bg-red-700"
+                                      >
+                                        {t('ui.delete')}
+                                      </AlertDialogAction>
+                                    </AlertDialogFooter>
+                                  </AlertDialogContent>
+                                </AlertDialog>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      );
+                    })()
+                  ) : (
+                    // CV List View
+                    <div className="grid gap-6 xl:grid-cols-2">
+                      {displayCvs.map((cv: DashboardCV) => (
+                        <Card
+                          key={cv.id}
+                          className="cursor-pointer border border-gray-200 bg-white shadow-sm transition hover:shadow-md"
+                          onClick={() => handleCvClick(cv.id)}
+                        >
+                          <CardContent className="p-5">
                             <div className="flex items-start gap-4">
-                              <div className="h-16 w-16 overflow-hidden rounded-lg bg-gray-100">
+                              <div className="h-16 w-16 overflow-hidden rounded-lg bg-gray-100 flex-shrink-0">
                                 <CVTemplateImage templateId={cv.templateId} />
                               </div>
-                              <div className="flex-1">
-                                <div className="flex flex-wrap items-center gap-2">
-                                  <h3 className="text-lg font-semibold text-gray-900">
+                              <div className="flex-1 min-w-0">
+                                <div className="flex flex-wrap items-center gap-2 mb-2">
+                                  <h3 className="text-lg font-semibold text-gray-900 truncate">
                                     {cv.title || t("cvBuilder.title.untitled")}
                                   </h3>
                                   <Badge
                                     variant="outline"
                                     className={cn(
-                                      "border-0 px-2 py-0.5 text-xs",
+                                      "border-0 px-2 py-0.5 text-xs flex-shrink-0",
                                       cv.isPublished
                                         ? "bg-green-100 text-green-700"
                                         : "bg-gray-100 text-gray-600"
@@ -1362,28 +1535,6 @@ export default function Dashboard() {
                                   {formatDisplayDate(cv.createdAt, cv.updatedAt)}
                                 </p>
                               </div>
-                            </div>
-                            <div className="space-y-3">
-                              <Link href={`/cv-builder?cv=${cv.id}`}>
-                                <Button
-                                  variant="outline"
-                                  className="w-full justify-center border-gray-200 text-blue-600 hover:bg-blue-50"
-                                  data-testid={`button-edit-${cv.id}`}
-                                >
-                                  <Edit className="h-4 w-4" />
-                                  {t('dashboard.editAndPreview')}
-                                </Button>
-                              </Link>
-                              <PublishButton
-                                cvId={cv.id}
-                                isPublished={cv.isPublished || false}
-                                subdomain={cv.subdomain || ''}
-                                publishedLanguage={cv.publishedLanguage || language}
-                                isLocked={cv.isPremiumLocked || false}
-                                onPublishChange={(published, subdomain, lang) =>
-                                  handlePublishChange(cv.id, published, subdomain, lang)
-                                }
-                              />
                             </div>
                           </CardContent>
                         </Card>

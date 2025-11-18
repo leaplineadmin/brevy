@@ -240,6 +240,7 @@
       "published": "Published",
       "draft": "Draft"
     },
+    "deleteResume": "Delete my resume",
     "settings": {
       "title": "Settings",
       "subtitle": "Manage your subscription, preferences and data.",
