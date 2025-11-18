@@ -1333,65 +1333,7 @@ export default function Dashboard() {
                     </CardContent>
                   </Card>
                 </div>
-              ) : (
-                <div className="space-y-8">
-                  <div className="space-y-2">
-                    <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
-                    <p className="text-gray-500">{t('dashboard.subtitle')}</p>
-                  </div>
-
-                  {!hasPremiumAccess ? (
-                    <div className="rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-6">
-                      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                        <div>
-                          <p className="text-base font-semibold text-amber-900">{t('dashboard.resumesUpgradeTitle')}</p>
-                          <p className="text-sm text-amber-800">{t('dashboard.resumesUpgradeDescription')}</p>
-                        </div>
-                        <Button className="bg-[#8b4a25] hover:bg-[#6f3719]" onClick={handleUpgradeClick}>
-                          <Sparkles className="h-4 w-4" />
-                          {t('dashboard.resumesUpgradeButton')}
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    hasPremiumAccess && isExpiringSoon && (
-                      <div className="rounded-2xl border border-orange-200 bg-orange-50 p-6">
-                        <div className="flex items-center gap-2">
-                          <Crown className="h-5 w-5 text-orange-600" />
-                          <p className="text-sm font-semibold text-orange-900">
-                            {t('dashboard.settings.subscription.expiringSoon', { days: daysUntilExpiry })}
-                          </p>
-                        </div>
-                        <p className="mt-2 text-sm text-gray-600">
-                          {t('dashboard.settings.subscription.expiringDescription')}
-                        </p>
-                      </div>
-                    )
-                  )}
-
-                  {displayCvs.length === 0 ? (
-                    <Card className="border border-dashed border-gray-200 bg-white">
-                      <CardContent className="flex flex-col items-center gap-4 p-10 text-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600">
-                          <LayoutDashboard className="h-8 w-8" />
-                        </div>
-                        <h3 className="text-xl font-semibold text-gray-900">
-                          {t('dashboard.resumesEmptyTitle')}
-                        </h3>
-                        <p className="text-sm text-gray-500">
-                          {t('dashboard.resumesEmptyDescription')}
-                        </p>
-                        {canCreateNewCv && (
-                          <Link href="/cv-builder">
-                            <Button className="w-full">
-                              <Plus className="h-4 w-4" />
-                              {t('dashboard.createNewResume')}
-                            </Button>
-                          </Link>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ) : selectedCvId ? (
+              ) : selectedCvId ? (
                     // CV Detail View
                     (() => {
                       const selectedCv = displayCvs.find(cv => cv.id === selectedCvId);
@@ -1505,6 +1447,65 @@ export default function Dashboard() {
                         </div>
                       );
                     })()
+                  ) : (
+                    // CV List View
+                    <div className="space-y-8">
+                      <div className="space-y-2">
+                        <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
+                        <p className="text-gray-500">{t('dashboard.subtitle')}</p>
+                      </div>
+
+                      {!hasPremiumAccess ? (
+                    <div className="rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-6">
+                      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                        <div>
+                          <p className="text-base font-semibold text-amber-900">{t('dashboard.resumesUpgradeTitle')}</p>
+                          <p className="text-sm text-amber-800">{t('dashboard.resumesUpgradeDescription')}</p>
+                        </div>
+                        <Button className="bg-[#8b4a25] hover:bg-[#6f3719]" onClick={handleUpgradeClick}>
+                          <Sparkles className="h-4 w-4" />
+                          {t('dashboard.resumesUpgradeButton')}
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    hasPremiumAccess && isExpiringSoon && (
+                      <div className="rounded-2xl border border-orange-200 bg-orange-50 p-6">
+                        <div className="flex items-center gap-2">
+                          <Crown className="h-5 w-5 text-orange-600" />
+                          <p className="text-sm font-semibold text-orange-900">
+                            {t('dashboard.settings.subscription.expiringSoon', { days: daysUntilExpiry })}
+                          </p>
+                        </div>
+                        <p className="mt-2 text-sm text-gray-600">
+                          {t('dashboard.settings.subscription.expiringDescription')}
+                        </p>
+                      </div>
+                    )
+                  )}
+
+                  {displayCvs.length === 0 ? (
+                    <Card className="border border-dashed border-gray-200 bg-white">
+                      <CardContent className="flex flex-col items-center gap-4 p-10 text-center">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                          <LayoutDashboard className="h-8 w-8" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-gray-900">
+                          {t('dashboard.resumesEmptyTitle')}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                          {t('dashboard.resumesEmptyDescription')}
+                        </p>
+                        {canCreateNewCv && (
+                          <Link href="/cv-builder">
+                            <Button className="w-full">
+                              <Plus className="h-4 w-4" />
+                              {t('dashboard.createNewResume')}
+                            </Button>
+                          </Link>
+                        )}
+                      </CardContent>
+                    </Card>
                   ) : (
                     // CV List View
                     <div className="grid gap-6 xl:grid-cols-2">
