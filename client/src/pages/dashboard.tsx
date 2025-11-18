@@ -360,19 +360,27 @@ export default function Dashboard() {
             
             // Étape 5: Clean up SEULEMENT après succès confirmé
             localStorage.removeItem('pending-cv-id');
-            if (urlParams.has('draftId')) {
-              urlParams.delete('draftId');
-              const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
-              window.history.replaceState({}, '', newUrl);
-            }
             
-            // Étape 6: Toast de succès SEULEMENT si le CV est présent dans le state
-            if (newCvFound) {
+            // Étape 6: Redirect to CV detail page if conversion successful
+            if (newCvFound && result.cvId) {
+              // Redirect to the CV detail page
+              const newUrl = `/dashboard?cv=${encodeURIComponent(result.cvId)}`;
+              window.history.replaceState({}, '', newUrl);
+              setSelectedCvId(result.cvId);
+              setActiveSection('resumes');
+              
               toast({
                 title: "Resume saved!",
                 description: "Your resume has been saved to your dashboard.",
               });
             } else {
+              // Clean up URL params if CV not found
+              if (urlParams.has('draftId')) {
+                urlParams.delete('draftId');
+                const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+                window.history.replaceState({}, '', newUrl);
+              }
+              
               toast({
                 title: "Setup complete",
                 description: "Your resume should appear shortly. Please refresh if needed.",
@@ -537,14 +545,19 @@ export default function Dashboard() {
                   });
 
                   if (response.ok) {
+                    const savedCV = await response.json();
                     toast({
                       title: "CV saved!",
                       description: "Your CV has been automatically saved to your dashboard.",
                     });
                     success = true;
                     
-                    // Refresh the CV list to show the new CV
-                    window.location.reload();
+                    // Redirect to CV detail page
+                    if (savedCV?.id) {
+                      window.location.href = `/dashboard?cv=${encodeURIComponent(savedCV.id)}`;
+                    } else {
+                      window.location.reload();
+                    }
                   } else if (response.status === 403) {
                     // Handle premium template restriction
                     const errorData = await response.json();
@@ -570,12 +583,18 @@ export default function Dashboard() {
                       });
                       
                       if (fallbackResponse.ok) {
+                        const savedCV = await fallbackResponse.json();
                         toast({
                           title: "CV saved with free template!",
                           description: "Your CV was saved using the Classic template. Upgrade to Pro to access all templates.",
                         });
                         success = true;
-                        window.location.reload();
+                        // Redirect to CV detail page
+                        if (savedCV?.id) {
+                          window.location.href = `/dashboard?cv=${encodeURIComponent(savedCV.id)}`;
+                        } else {
+                          window.location.reload();
+                        }
                       } else {
                         break;
                       }
@@ -676,6 +695,7 @@ export default function Dashboard() {
             });
 
             if (response.ok) {
+              const savedCV = await response.json();
               localStorage.removeItem('pending-cv-save');
               
               toast({
@@ -683,10 +703,16 @@ export default function Dashboard() {
                 description: t('premium.toasts.welcomeCvSavedDescription'),
               });
               
-              // Refresh to show the new CV
-              setTimeout(() => {
-                window.location.reload();
-              }, 1000);
+              // Redirect to CV detail page
+              if (savedCV?.id) {
+                setTimeout(() => {
+                  window.location.href = `/dashboard?cv=${encodeURIComponent(savedCV.id)}`;
+                }, 1000);
+              } else {
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
+              }
               
               return true; // Indicate CV data was processed
             } else {

@@ -37,7 +37,11 @@ export default function AuthPage() {
   // Redirect authenticated users to dashboard
   useEffect(() => {
     if (user && !authLoading) {
-      setLocation('/dashboard');
+      // Preserve draftId if coming from CV Builder
+      const urlParams = new URLSearchParams(window.location.search);
+      const draftId = urlParams.get('draftId');
+      const redirectPath = draftId ? `/dashboard?draftId=${encodeURIComponent(draftId)}` : '/dashboard';
+      setLocation(redirectPath);
     }
   }, [user, authLoading, setLocation]);
 
@@ -45,6 +49,7 @@ export default function AuthPage() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
+    const state = urlParams.get('state');
     
     if (token) {
       setIsLoading(true);
@@ -57,8 +62,25 @@ export default function AuthPage() {
       .then(response => {
         if (response.ok) {
           // Wait a moment for auth context to update, then redirect
+          // Preserve draftId from state if present
+          let draftId: string | null = null;
+          if (state) {
+            try {
+              const stateData = JSON.parse(decodeURIComponent(state));
+              draftId = stateData.draftId || null;
+            } catch (e) {
+              // If state is not JSON, try to extract draftId directly
+              const stateParams = new URLSearchParams(state);
+              draftId = stateParams.get('draftId');
+            }
+          }
+          // Also check localStorage as fallback
+          if (!draftId) {
+            draftId = localStorage.getItem('pending-cv-id');
+          }
+          const redirectPath = draftId ? `/dashboard?draftId=${encodeURIComponent(draftId)}` : '/dashboard';
           setTimeout(() => {
-            setLocation('/dashboard');
+            setLocation(redirectPath);
           }, 500);
         } else if (response.status === 410) {
           setError('Authentication session expired. Please try again.');

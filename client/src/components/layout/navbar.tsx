@@ -391,7 +391,8 @@ export default function Navbar() {
       if (response.ok) {
         const savedCV = await response.json();
         if (typeof window !== 'undefined') {
-          window.location.href = '/dashboard';
+          // Redirect to CV detail page after save
+          window.location.href = `/dashboard?cv=${encodeURIComponent(savedCV.id)}`;
         }
       } else {
         const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
