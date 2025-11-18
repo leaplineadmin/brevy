@@ -24,6 +24,7 @@ import {
   ExternalLink,
   Plus,
   LogOut as LogOutIcon,
+  Trash2,
   Crown,
   Sparkles,
   LayoutDashboard,
