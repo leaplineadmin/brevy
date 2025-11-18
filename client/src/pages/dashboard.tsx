@@ -1128,7 +1128,8 @@ export default function Dashboard() {
               {renderLogoutButton()}
             </div>
 
-            <main className="flex-1 overflow-y-auto px-4 py-8 sm:px-8 min-h-0">
+            <div className="flex-1 overflow-y-auto min-h-0">
+              <main className="px-4 py-8 sm:px-8">
               {isSettingsView ? (
                 <div className="space-y-8">
                   <div className="space-y-2">
@@ -1429,10 +1430,10 @@ export default function Dashboard() {
                   )}
                 </div>
               )}
-            </main>
+              </main>
 
-            {/* Footer */}
-            <footer className="border-t border-gray-200 bg-gray-50">
+              {/* Footer */}
+              <footer className="border-t border-gray-200 bg-gray-50">
               <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   <div className="col-span-1 md:col-span-2">
@@ -1503,7 +1504,8 @@ export default function Dashboard() {
                   </p>
                 </div>
               </div>
-            </footer>
+              </footer>
+            </div>
           </div>
         </div>
       </div>
