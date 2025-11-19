@@ -1548,37 +1548,45 @@ export default function Dashboard() {
 
                       <Card
                         className={cn(
-                          "border-2 border-dashed bg-white",
+                          "border-2 border-dashed bg-white cursor-pointer transition hover:shadow-md",
                           canCreateNewCv ? "border-gray-300" : "border-gray-200 bg-gray-50"
                         )}
                       >
-                        <CardContent className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+                        <CardContent className="p-5">
                           {canCreateNewCv ? (
-                            <Link href="/cv-builder" className="flex h-full w-full flex-col items-center justify-center gap-3">
-                              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600">
+                            <Link href="/cv-builder" className="flex items-start gap-4">
+                              <div className="h-16 w-16 flex items-center justify-center rounded-lg bg-blue-600 flex-shrink-0">
                                 <Plus className="h-6 w-6 text-white" />
                               </div>
-                              <h3 className="text-lg font-semibold text-gray-900">{t('dashboard.createNewResume')}</h3>
-                              <p className="text-sm text-gray-500">{t('dashboard.newResumeDescription')}</p>
+                              <div className="flex-1 min-w-0">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                  {t('dashboard.createNewResume')}
+                                </h3>
+                                <p className="text-sm text-gray-500">
+                                  {t('dashboard.newResumeDescription')}
+                                </p>
+                              </div>
                             </Link>
                           ) : (
-                            <div className="space-y-3">
-                              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-200">
+                            <div className="flex items-start gap-4">
+                              <div className="h-16 w-16 flex items-center justify-center rounded-lg bg-gray-200 flex-shrink-0">
                                 <Crown className="h-5 w-5 text-gray-600" />
                               </div>
-                              <p className="text-base font-semibold text-gray-900">
-                                {t('dashboard.resumesUpgradeTitle')}
-                              </p>
-                              <p className="text-sm text-gray-500">
-                                {t('dashboard.resumesUpgradeDescription')}
-                              </p>
-                              <Button
-                                className="w-full bg-[#8b4a25] hover:bg-[#6f3719]"
-                                onClick={handleUpgradeClick}
-                              >
-                                <Sparkles className="h-4 w-4" />
-                                {t('dashboard.resumesUpgradeButton')}
-                              </Button>
+                              <div className="flex-1 min-w-0">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                  {t('dashboard.resumesUpgradeTitle')}
+                                </h3>
+                                <p className="text-sm text-gray-500 mb-3">
+                                  {t('dashboard.resumesUpgradeDescription')}
+                                </p>
+                                <Button
+                                  className="bg-[#8b4a25] hover:bg-[#6f3719]"
+                                  onClick={handleUpgradeClick}
+                                >
+                                  <Sparkles className="h-4 w-4" />
+                                  {t('dashboard.resumesUpgradeButton')}
+                                </Button>
+                              </div>
                             </div>
                           )}
                         </CardContent>
