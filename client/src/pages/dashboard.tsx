@@ -1355,7 +1355,7 @@ export default function Dashboard() {
                         );
                       }
                       return (
-                        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.85fr)]">
+                        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
                           <Card className="rounded-none border-0 border-r border-gray-200 bg-transparent shadow-none">
                             <CardContent className="p-6">
                               <div className="flex flex-col gap-5">
