@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, RefreshCw } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface JobMatch {
   id: string;
@@ -31,6 +32,7 @@ interface ResumeJobMatchesResponse {
 
 interface ResumeJobMatchesPanelProps {
   resumeId?: string | null;
+  className?: string;
 }
 
 const LoadingState = () => (
@@ -46,7 +48,7 @@ const LoadingState = () => (
   </div>
 );
 
-export const ResumeJobMatchesPanel = ({ resumeId }: ResumeJobMatchesPanelProps) => {
+export const ResumeJobMatchesPanel = ({ resumeId, className }: ResumeJobMatchesPanelProps) => {
   const resumeJobsPath = resumeId ? `/api/resumes/${resumeId}/jobs` : null;
   const {
     data,
@@ -133,7 +135,7 @@ export const ResumeJobMatchesPanel = ({ resumeId }: ResumeJobMatchesPanelProps) 
   };
 
   return (
-    <Card className="border border-gray-100 shadow-sm">
+    <Card className={cn("border border-gray-100 shadow-sm", className)}>
       <CardHeader>
         <CardTitle>Job opportunities matching this resume</CardTitle>
         <CardDescription>{headerDescription}</CardDescription>
