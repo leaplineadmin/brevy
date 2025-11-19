@@ -1217,7 +1217,7 @@ export default function Dashboard() {
             </div>
 
             <div className="flex-1 overflow-y-auto min-h-0">
-              <main className="px-4 py-8 sm:px-8">
+              <main className="px-4 py-8 sm:px-8 min-h-[calc(100vh-80px)]">
               {isSettingsView ? (
                 <div className="space-y-8">
                   <div className="space-y-2">
