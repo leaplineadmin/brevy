@@ -243,7 +243,7 @@ export function PublishButton({
 
   if (isPublished && subdomain) {
     return (
-      <div className="p-3 bg-green-50 border border-green-200 rounded-lg overflow-hidden">
+      <div className="w-full p-3 bg-green-50 border border-green-200 rounded-lg overflow-hidden">
         <div className="flex items-center gap-2 mb-3">
           <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
           <div className="flex-1 min-w-0">
@@ -312,8 +312,7 @@ export function PublishButton({
       <Button
         onClick={handlePublish}
         disabled={loading || isLocked}
-        variant="outline"
-        size="sm"
+        variant="secondary"
         className={`w-full flex items-center justify-start ${isLocked ? 'opacity-50 cursor-not-allowed' : ''}`}
         data-testid={isLocked ? `button-publish-locked-${cvId}` : `button-publish-${cvId}`}
         title={isLocked ? 'Premium subscription required' : ''}

@@ -327,6 +327,15 @@
     border-color: var(--primary);
   }
 
+  .resumeActions {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .resumeActions > * {
+    width: 100%;
+  }
+
   /* Note: Les styles pour .form-column sont déjà définis plus haut dans le fichier */
 
   .template-column {

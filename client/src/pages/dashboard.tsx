@@ -1382,11 +1382,11 @@ export default function Dashboard() {
                                     {formatDisplayDate(selectedCv.createdAt, selectedCv.updatedAt)}
                                   </p>
 
-                                  <div className="flex flex-col gap-3">
+                                  <div className="resumeActions flex flex-col gap-3 w-full">
                                     <Link href={`/cv-builder?cv=${selectedCv.id}`}>
                                       <Button
-                                        variant="outline"
-                                        className="w-full sm:w-auto justify-start border-gray-200 text-blue-600 hover:bg-blue-50"
+                                        variant="secondary"
+                                        className="w-full justify-start"
                                         data-testid={`button-edit-${selectedCv.id}`}
                                       >
                                         <Edit className="h-4 w-4 mr-2" />
@@ -1409,7 +1409,7 @@ export default function Dashboard() {
                                       <AlertDialogTrigger asChild>
                                         <Button
                                           variant="destructive"
-                                          className="w-full sm:w-auto justify-start"
+                                          className="w-full justify-start"
                                         >
                                           <Trash2 className="h-4 w-4 mr-2" />
                                           {t('dashboard.deleteResume')}
