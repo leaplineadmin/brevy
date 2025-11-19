@@ -1548,7 +1548,7 @@ export default function Dashboard() {
 
                       <Card
                         className={cn(
-                          "border-2 border-dashed bg-white cursor-pointer transition hover:shadow-md",
+                          "border-2 border-dashed bg-transparent cursor-pointer transition hover:shadow-md",
                           canCreateNewCv ? "border-gray-300" : "border-gray-200 bg-gray-50"
                         )}
                       >
