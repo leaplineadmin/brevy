@@ -39,6 +39,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { hasActivePremiumAccess, getDaysUntilPremiumExpiry, isPremiumExpiringSoon } from "@/utils/premium-check";
 import { PublishButton } from "@/components/dashboard/publish-button";
+import { ResumeJobMatchesPanel } from "@/components/dashboard/resume-job-matches-panel";
 import logoBrevy from "@/assets/logo-brevy.svg";
 import { performLogout } from "@/lib/logout";
 import { cn } from "@/lib/utils";
@@ -1355,95 +1356,103 @@ export default function Dashboard() {
                             </h1>
                           </div>
 
-                          <Card>
-                            <CardContent className="p-6">
-                              <div className="flex items-start gap-4">
-                                <div className="h-24 w-24 overflow-hidden rounded-lg bg-gray-100 flex-shrink-0">
-                                  <CVTemplateImage templateId={selectedCv.templateId} />
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                                    <h3 className="text-xl font-semibold text-gray-900">
-                                      {selectedCv.title || t("cvBuilder.title.untitled")}
-                                    </h3>
-                                    <Badge
-                                      variant="outline"
-                                      className={cn(
-                                        "border-0 px-2 py-0.5 text-xs",
-                                        selectedCv.isPublished
-                                          ? "bg-green-100 text-green-700"
-                                          : "bg-gray-100 text-gray-600"
-                                      )}
-                                    >
-                                      {selectedCv.isPublished ? t('dashboard.card.published') : t('dashboard.card.draft')}
-                                    </Badge>
-                                  </div>
-                                  <p className="text-sm text-gray-500 mb-4">
-                                    {formatDisplayDate(selectedCv.createdAt, selectedCv.updatedAt)}
-                                  </p>
-
-                                  <div className="resumeActions flex flex-col gap-3 w-full">
-                                    <Link href={`/cv-builder?cv=${selectedCv.id}`}>
-                                      <Button
-                                        variant="secondary"
-                                        className="w-full justify-start"
-                                        data-testid={`button-edit-${selectedCv.id}`}
-                                      >
-                                        <Edit className="h-4 w-4 mr-2" />
-                                        {t('dashboard.editAndPreview')}
-                                      </Button>
-                                    </Link>
-
-                                    <PublishButton
-                                      cvId={selectedCv.id}
-                                      isPublished={selectedCv.isPublished || false}
-                                      subdomain={selectedCv.subdomain || ''}
-                                      publishedLanguage={selectedCv.publishedLanguage || language}
-                                      isLocked={selectedCv.isPremiumLocked || false}
-                                      onPublishChange={(published, subdomain, lang) =>
-                                        handlePublishChange(selectedCv.id, published, subdomain, lang)
-                                      }
-                                    />
-
-                                    <AlertDialog>
-                                      <AlertDialogTrigger asChild>
-                                        <Button
-                                          variant="destructive"
-                                          className="w-full justify-start"
-                                        >
-                                          <Trash2 className="h-4 w-4 mr-2" />
-                                          {t('dashboard.deleteResume')}
-                                        </Button>
-                                      </AlertDialogTrigger>
-                                      <AlertDialogContent>
-                                        <AlertDialogHeader>
-                                          <AlertDialogTitle>
-                                            Are you sure you want to delete "{selectedCv.title || "This resume"}"?
-                                          </AlertDialogTitle>
-                                          <AlertDialogDescription>
-                                            This action cannot be undone. This resume will be permanently deleted from your dashboard.
-                                          </AlertDialogDescription>
-                                        </AlertDialogHeader>
-                                        <AlertDialogFooter>
-                                          <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
-                                          <AlertDialogAction
-                                            onClick={() => {
-                                              handleDeleteCV(selectedCv.id);
-                                              setSelectedCvId(null);
-                                              handleSectionChange('resumes');
-                                            }}
-                                            className="bg-red-600 hover:bg-red-700"
+                          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.85fr)]">
+                            <div className="space-y-6">
+                              <Card>
+                                <CardContent className="p-6">
+                                  <div className="flex flex-col gap-5">
+                                    <div className="flex items-start gap-4">
+                                      <div className="h-24 w-24 overflow-hidden rounded-lg bg-gray-100 flex-shrink-0">
+                                        <CVTemplateImage templateId={selectedCv.templateId} />
+                                      </div>
+                                      <div className="flex-1">
+                                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                                          <h3 className="text-xl font-semibold text-gray-900">
+                                            {selectedCv.title || t("cvBuilder.title.untitled")}
+                                          </h3>
+                                          <Badge
+                                            variant="outline"
+                                            className={cn(
+                                              "border-0 px-2 py-0.5 text-xs",
+                                              selectedCv.isPublished
+                                                ? "bg-green-100 text-green-700"
+                                                : "bg-gray-100 text-gray-600"
+                                            )}
                                           >
-                                            {t('ui.delete')}
-                                          </AlertDialogAction>
-                                        </AlertDialogFooter>
-                                      </AlertDialogContent>
-                                    </AlertDialog>
+                                            {selectedCv.isPublished ? t('dashboard.card.published') : t('dashboard.card.draft')}
+                                          </Badge>
+                                        </div>
+                                        <p className="text-sm text-gray-500">
+                                          {formatDisplayDate(selectedCv.createdAt, selectedCv.updatedAt)}
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div className="resumeActions flex flex-col gap-3 w-full">
+                                      <Link href={`/cv-builder?cv=${selectedCv.id}`}>
+                                        <Button
+                                          variant="secondary"
+                                          className="w-full justify-start"
+                                          data-testid={`button-edit-${selectedCv.id}`}
+                                        >
+                                          <Edit className="h-4 w-4 mr-2" />
+                                          {t('dashboard.editAndPreview')}
+                                        </Button>
+                                      </Link>
+
+                                      <PublishButton
+                                        cvId={selectedCv.id}
+                                        isPublished={selectedCv.isPublished || false}
+                                        subdomain={selectedCv.subdomain || ''}
+                                        publishedLanguage={selectedCv.publishedLanguage || language}
+                                        isLocked={selectedCv.isPremiumLocked || false}
+                                        onPublishChange={(published, subdomain, lang) =>
+                                          handlePublishChange(selectedCv.id, published, subdomain, lang)
+                                        }
+                                      />
+
+                                      <AlertDialog>
+                                        <AlertDialogTrigger asChild>
+                                          <Button
+                                            variant="destructive"
+                                            className="w-full justify-start"
+                                          >
+                                            <Trash2 className="h-4 w-4 mr-2" />
+                                            {t('dashboard.deleteResume')}
+                                          </Button>
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                          <AlertDialogHeader>
+                                            <AlertDialogTitle>
+                                              Are you sure you want to delete "{selectedCv.title || "This resume"}"?
+                                            </AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                              This action cannot be undone. This resume will be permanently deleted from your dashboard.
+                                            </AlertDialogDescription>
+                                          </AlertDialogHeader>
+                                          <AlertDialogFooter>
+                                            <AlertDialogCancel>{t('ui.cancel')}</AlertDialogCancel>
+                                            <AlertDialogAction
+                                              onClick={() => {
+                                                handleDeleteCV(selectedCv.id);
+                                                setSelectedCvId(null);
+                                                handleSectionChange('resumes');
+                                              }}
+                                              className="bg-red-600 hover:bg-red-700"
+                                            >
+                                              {t('ui.delete')}
+                                            </AlertDialogAction>
+                                          </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                      </AlertDialog>
+                                    </div>
                                   </div>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
+                                </CardContent>
+                              </Card>
+                            </div>
+
+                            <ResumeJobMatchesPanel resumeId={selectedCv.id} />
+                          </div>
                         </div>
                       );
                     })()

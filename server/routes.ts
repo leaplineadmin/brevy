@@ -10,13 +10,14 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "./db";
 import { eq, and, or } from "drizzle-orm";
-import { users as usersTable, cvDrafts, draftPayloadSchema } from "@shared/schema";
+import { users as usersTable, cvDrafts, draftPayloadSchema, type CV } from "@shared/schema";
 import bcrypt from "bcryptjs";
 import Stripe from "stripe";
 import crypto from "crypto";
 import { createLogContext, type LogContext } from '../shared/correlation';
 import cvRoutes from "./routes/cv.routes";
 import userRoutes from "./routes/user.routes";
+import OpenAI from "openai";
 
 // Initialize Stripe with proper version
 const stripe = process.env.STRIPE_SECRET_KEY 
@@ -24,6 +25,237 @@ const stripe = process.env.STRIPE_SECRET_KEY
       apiVersion: "2023-10-16" as any,
     })
   : null;
+
+const openaiClient = process.env.OPENAI_API_KEY
+  ? new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    })
+  : null;
+
+type JobSearchProfile = {
+  title: string;
+  location: string;
+  country_code: string;
+  keywords: string[];
+};
+
+type JobMatch = {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  url: string;
+  description: string;
+  remoteAvailable?: boolean;
+  matchScore?: number;
+};
+
+const JOB_PROFILE_SYSTEM_PROMPT = `You are an assistant that extracts job-search parameters from resumes. 
+Your task is to analyze the resume and return a compact JSON object describing what kind of job the candidate is currently looking for.
+Always answer with STRICT JSON only. Do not include any explanation, comments or markdown.`;
+
+const buildJobProfileUserPrompt = (resumeText: string) => `Here is the resume content:
+---
+${resumeText}
+---
+From this resume, infer the most relevant current job search target and return a JSON object with:
+- "title": a short English job title for the target role (e.g. "Senior Sales Engineer", "Product Manager", "Data Analyst").
+- "location": the preferred city and country written as "City, Country" (try to infer from the resume; if unknown, put an empty string).
+- "country_code": a 2-letter lowercase ISO country code for the main job search country (e.g. "fr", "us", "de"). If you cannot infer it, guess the most likely country from the resume language and cities.
+- "keywords": an array of 5 to 10 key technical or functional keywords that describe the target role (skills, technologies, domain).
+
+Example of the expected JSON format:
+{
+  "title": "Sales Engineer",
+  "location": "Paris, France",
+  "country_code": "fr",
+  "keywords": ["SaaS", "B2B", "pre-sales", "CRM", "HubSpot"]
+}`;
+
+const truncate = (value: string, limit = 600) => {
+  if (!value) return "";
+  return value.length > limit ? `${value.slice(0, limit)}…` : value;
+};
+
+const parseCvDataPayload = (cv: CV) => {
+  try {
+    const rawData = typeof cv.data === "string" ? JSON.parse(cv.data) : cv.data;
+    if (rawData && typeof rawData === "object" && "cvData" in rawData) {
+      return (rawData as any).cvData || {};
+    }
+    return rawData || {};
+  } catch (error) {
+    console.warn("Failed to parse CV data payload", error);
+    return {};
+  }
+};
+
+const buildResumeText = (cv: CV): string => {
+  const data = parseCvDataPayload(cv) as any;
+  const personal = data?.personalInfo || data || {};
+  const lines: string[] = [];
+
+  lines.push(`Resume title: ${cv.title || "Untitled resume"}`);
+
+  const name = [personal?.firstName || cv.firstName, personal?.lastName || cv.lastName]
+    .filter(Boolean)
+    .join(" ");
+  if (name) {
+    lines.push(`Name: ${name}`);
+  }
+
+  const position = personal?.position || personal?.jobTitle || cv.position;
+  if (position) {
+    lines.push(`Target position: ${position}`);
+  }
+
+  const location = [personal?.city || cv.city, personal?.country || cv.country].filter(Boolean).join(", ");
+  if (location) {
+    lines.push(`Location: ${location}`);
+  }
+
+  const summary = personal?.summary || cv.summary;
+  if (summary) {
+    lines.push(`Summary: ${summary}`);
+  }
+
+  if (Array.isArray(data?.skills) && data.skills.length > 0) {
+    const skills = data.skills
+      .map((skill: any) => skill?.name)
+      .filter(Boolean)
+      .join(", ");
+    if (skills) {
+      lines.push(`Skills: ${skills}`);
+    }
+  }
+
+  if (Array.isArray(data?.experience) && data.experience.length > 0) {
+    lines.push("Experience:");
+    data.experience.forEach((exp: any) => {
+      const period = [exp?.from || exp?.startMonth, exp?.to || exp?.endMonth].filter(Boolean).join(" - ");
+      const experienceHeader = [exp?.position || exp?.jobTitle, exp?.company, exp?.location, period]
+        .filter(Boolean)
+        .join(" | ");
+      if (experienceHeader) {
+        lines.push(`- ${experienceHeader}`);
+      }
+      if (exp?.summary || exp?.description) {
+        lines.push(`  ${exp.summary || exp.description}`);
+      }
+    });
+  }
+
+  if (Array.isArray(data?.education) && data.education.length > 0) {
+    lines.push("Education:");
+    data.education.forEach((edu: any) => {
+      const educationHeader = [edu?.degree || edu?.diploma, edu?.school, edu?.location]
+        .filter(Boolean)
+        .join(" | ");
+      if (educationHeader) {
+        lines.push(`- ${educationHeader}`);
+      }
+    });
+  }
+
+  return lines.filter(Boolean).join("\n");
+};
+
+const generateJobSearchProfile = async (resumeText: string): Promise<JobSearchProfile> => {
+  if (!openaiClient) {
+    throw new Error("openai_unavailable");
+  }
+
+  const completion = await openaiClient.chat.completions.create({
+    model: process.env.OPENAI_JOB_MODEL || "gpt-4o-mini",
+    messages: [
+      { role: "system", content: JOB_PROFILE_SYSTEM_PROMPT },
+      { role: "user", content: buildJobProfileUserPrompt(resumeText) },
+    ],
+    temperature: 0.2,
+    response_format: { type: "json_object" },
+  });
+
+  const content = completion.choices[0]?.message?.content;
+  if (!content) {
+    throw new Error("profile_generation_failed");
+  }
+
+  try {
+    const parsed = JSON.parse(content);
+    return {
+      title: parsed.title || "",
+      location: parsed.location || "",
+      country_code: (parsed.country_code || "us").toLowerCase(),
+      keywords: Array.isArray(parsed.keywords) ? parsed.keywords.filter(Boolean) : [],
+    };
+  } catch (error) {
+    const parseError = new Error("profile_parse_error");
+    (parseError as any).cause = error;
+    throw parseError;
+  }
+};
+
+const normalizeJob = (job: any): JobMatch => {
+  const locationParts = [job?.job_city, job?.job_state, job?.job_country].filter(Boolean);
+  const location = locationParts.join(", ") || job?.job_country || "Remote";
+  const description =
+    job?.job_description ||
+    (Array.isArray(job?.job_highlights) ? job.job_highlights.join("\n") : "") ||
+    "";
+
+  return {
+    id:
+      job?.job_id ||
+      `${job?.job_title || "job"}-${job?.employer_name || "company"}-${job?.job_city || ""}-${job?.job_country || ""}`,
+    title: job?.job_title || "Job opportunity",
+    company: job?.employer_name || "Company confidential",
+    location,
+    url: job?.job_apply_link || job?.job_offer_link || job?.job_google_link || job?.job_url || "",
+    description: truncate(description),
+    remoteAvailable: Boolean(job?.job_is_remote),
+    matchScore: typeof job?.job_score === "number" ? job.job_score : undefined,
+  };
+};
+
+const fetchJobMatchesForProfile = async (profile: JobSearchProfile): Promise<JobMatch[]> => {
+  const { RAPIDAPI_HOST, RAPIDAPI_KEY } = process.env;
+  if (!RAPIDAPI_HOST || !RAPIDAPI_KEY) {
+    throw new Error("missing_rapidapi_env");
+  }
+
+  const keywordString = (profile.keywords || []).join(" ");
+  const query = [profile.title, profile.location, keywordString].filter(Boolean).join(" ").trim() || profile.title || keywordString || "job opportunity";
+  const params = new URLSearchParams({
+    query,
+    page: "1",
+    num_pages: "1",
+    country: (profile.country_code || "us").toLowerCase(),
+    date_posted: "week",
+  });
+
+  const url = `https://${RAPIDAPI_HOST}/search?${params.toString()}`;
+  const response = await fetch(url, {
+    headers: {
+      "X-RapidAPI-Key": RAPIDAPI_KEY,
+      "X-RapidAPI-Host": RAPIDAPI_HOST,
+    },
+  });
+
+  if (!response.ok) {
+    const error = new Error("job_api_error");
+    (error as any).statusCode = 502;
+    throw error;
+  }
+
+  const payload = await response.json();
+  const rawJobs = Array.isArray(payload?.data)
+    ? payload.data
+    : Array.isArray(payload?.jobs)
+    ? payload.jobs
+    : [];
+
+  return rawJobs.map(normalizeJob).filter((job) => Boolean(job.url));
+};
 
 // Configure multer for file uploads - utilise la mémoire pour traiter les fichiers avant S3
 const upload = multer({
@@ -712,6 +944,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json(cv);
     } catch (error: any) {
       return res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/resumes/:id/jobs", async (req: any, res) => {
+    if (!checkAuthentication(req, res)) {
+      return;
+    }
+
+    const { RAPIDAPI_KEY, RAPIDAPI_HOST } = process.env;
+    if (!RAPIDAPI_KEY || !RAPIDAPI_HOST) {
+      console.warn("Resume job matches requested but RapidAPI env vars are missing");
+      return res.status(500).json({ error: "missing_rapidapi_env" });
+    }
+
+    if (!openaiClient) {
+      console.warn("Resume job matches requested but OpenAI client is not configured");
+      return res.status(500).json({ error: "server_error" });
+    }
+
+    try {
+      const resumeId = req.params.id;
+      const cv = await storage.getCVById(resumeId);
+
+      if (!cv) {
+        return res.status(404).json({ error: "resume_not_found" });
+      }
+
+      if (cv.userId !== req.user.id) {
+        return res.status(403).json({ error: "forbidden" });
+      }
+
+      const resumeText = buildResumeText(cv);
+      const profile = await generateJobSearchProfile(resumeText);
+      const jobs = await fetchJobMatchesForProfile(profile);
+
+      return res.json({ profile, jobs });
+    } catch (error: any) {
+      if (error?.message === "job_api_error" || error?.statusCode === 502) {
+        console.error("Job API error:", error);
+        return res.status(502).json({ error: "job_api_error" });
+      }
+
+      if (error?.message === "missing_rapidapi_env") {
+        console.warn("Missing RapidAPI env vars while fetching job matches");
+        return res.status(500).json({ error: "missing_rapidapi_env" });
+      }
+
+      console.error("Failed to load resume job matches:", error);
+      return res.status(500).json({ error: "server_error" });
     }
   });
 
